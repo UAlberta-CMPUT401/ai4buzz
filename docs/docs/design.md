@@ -2,18 +2,16 @@
 
 ## Architecture/Component Diagram
 
-[![Architecture](https://raw.githubusercontent.com/UAlberta-CMPUT401/ai4buzz/main/docs/images/architecture.png)](https://raw.githubusercontent.com/UAlberta-CMPUT401/ai4buzz/main/docs/images/architecture.png)
-
-<!-- https://raw.githubusercontent.com/UAlberta-CMPUT401/ai4buzz/main/docs/images/ -->
+[![Architecture](https://github.com/UAlberta-CMPUT401/ai4buzz/blob/7ba47096418a21b7711ce711465dbca56b277125/docs/images/architecture.png)](https://github.com/UAlberta-CMPUT401/ai4buzz/blob/7ba47096418a21b7711ce711465dbca56b277125/docs/images/architecture.png)
 
 ## UML Class Diagram
 
-[![UML](https://raw.githubusercontent.com/UAlberta-CMPUT401/ai4buzz/main/docs/images/uml.png)](https://raw.githubusercontent.com/UAlberta-CMPUT401/ai4buzz/main/docs/images/uml.png)
+[![UML](https://github.com/UAlberta-CMPUT401/ai4buzz/blob/7ba47096418a21b7711ce711465dbca56b277125/docs/images/uml.jpg)](https://github.com/UAlberta-CMPUT401/ai4buzz/blob/7ba47096418a21b7711ce711465dbca56b277125/docs/images/uml.jpg)
 
 ## Sequence Diagram
 
-[![Sequence](https://raw.githubusercontent.com/UAlberta-CMPUT401/ai4buzz/main/docs/images/sequence-diagram.png)](https://raw.githubusercontent.com/UAlberta-CMPUT401/ai4buzz/main/docs/images/sequence-diagram.png)
+[![Sequence](https://github.com/UAlberta-CMPUT401/ai4buzz/blob/7ba47096418a21b7711ce711465dbca56b277125/docs/images/sequence-diagram.jpeg)](https://github.com/UAlberta-CMPUT401/ai4buzz/blob/7ba47096418a21b7711ce711465dbca56b277125/docs/images/sequence-diagram.jpeg)
 
 ## Low-Fidelity User interface
 
-[![Low-Fidelity User interface](https://raw.githubusercontent.com/UAlberta-CMPUT401/ai4buzz/main/docs/images/wireframes.png)](https://raw.githubusercontent.com/UAlberta-CMPUT401/ai4buzz/main/docs/images/wireframes.png)
+[![Low-Fidelity User interface](https://github.com/UAlberta-CMPUT401/ai4buzz/blob/7ba47096418a21b7711ce711465dbca56b277125/docs/images/wireframes.png)](https://github.com/UAlberta-CMPUT401/ai4buzz/blob/7ba47096418a21b7711ce711465dbca56b277125/docs/images/wireframes.png)
