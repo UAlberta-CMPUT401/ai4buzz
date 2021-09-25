@@ -53,9 +53,9 @@
 
 | **Rubric Description**     | **Task To-Do** | **Assigned To** | **Date To Complete By** |
 | -------------------------- | -------------- | --------------- | ----------------------- |
-| Web client view collage    |                |                 | November 24             |
-| Web client view dendrogram |                |                 | November 24             |
-| Web client authentication  |                |                 | November 24             |
+| Web client view collage    | US 1.12        |                 | November 24             |
+| Web client view dendrogram | US 1.13        |                 | November 24             |
+| Web client authentication  | US 1.14        |                 | November 24             |
 
 ## Team Canvas
 
