@@ -146,15 +146,7 @@ This project is to develop a web service to allow researchers to gain insight in
 > 2. If the user inputs incorrect information, it declines entry onto website
 > 3. Ensure that the user cannot access other parts of the website until they have authenticated
 
-### US 1.15 - Web client image upload
-
-> **As** a web user, **I want** to upload an image on the website, and download the report **so that** I can do the analysis locally.
-
-> **Acceptance Tests**
-
-> 1. Allow the user to download the analysis report of the image in some format like csv.
-
-### US 1.16 - Web client JSON download
+### US 1.15 - Web client JSON download
 
 > **As** a web user, **I want** to be able to generate an entire report of the features above in a JSON file, **so I** can use the file to do additional analysis.
 
@@ -163,7 +155,7 @@ This project is to develop a web service to allow researchers to gain insight in
 > 1. Allow web user to download the report as a json file on click of a download button
 > 2. Ensure that user can only request a download if they have uploaded an image(s) for analysis
 
-### US 1.17 - Image Streaming
+### US 1.16 - Image Streaming
 
 > **As** a researcher, **I want** to be able to stream images to a web service, **so that** I can get analysis in real time.
 
@@ -172,19 +164,26 @@ This project is to develop a web service to allow researchers to gain insight in
 > 1. Allow client to initialize a connection to the web service over a streaming protocol
 > 2. Allow for images to be streamed to backend and results to be streamed back
 
+### US 1.17 - Text Detection
+
+> **As** a researcher, **I want** to detect if an image has text in it **so that** I can analyze the impact the presence of text has in an images popularity
+
+> **Acceptance Tests**
+
+> 1. Model correctly detects whether there is text in an image or not
+> 2. Ensure model accuracy better than 80%
+
 ## MoSCoW
 
 ### Must Have
 
 - US 1.01 - Image upload in batches
 - US 1.02 - Image analysis
-- US 1.03 - Generate Dendrogram
-- US 1.04 - Generate Collage
 - US 1.05 - Color scheme analysis
 - US 1.06 - Image sentiment classification
 - US 1.07 - Object detection
 - US 1.08 - Facial detection
-- US 1.09 - Text extraction
+- US 1.17 - Text Detection
 
 ### Should Have
 
@@ -193,14 +192,18 @@ This project is to develop a web service to allow researchers to gain insight in
 - US 1.12 - Web client view collage
 - US 1.13 - Web client view dendrogram
 - US 1.14 - Web client authentication
-- US 1.15 - Web client image upload
-- US 1.16 - Web client JSON download
+- US 1.15 - Web client JSON download
+- US 1.04 - Generate Collage
 
 ### Could Have
 
-- US 1.17 - Image Streaming
+- US 1.16 - Image Streaming
+- US 1.03 - Generate Dendrogram
+- US 1.09 - Text extraction
 
 ### Would Like but Won’t get
+
+- None
 
 ## Similar Products
 
@@ -229,10 +232,17 @@ This project is to develop a web service to allow researchers to gain insight in
 - [Keras Documentation](https://keras.io/)
 - [Pytorch Documentation](https://pytorch.org/)
 
-### Backend: FastAPI
+### Backend: FastAPI + PostgreSQL
 
 - [FastAPI Documentation](https://fastapi.tiangolo.com/)
+- [SQLAlchemy](https://www.sqlalchemy.org/)
+- [PostgreSQL](https://www.postgresql.org/docs/)
 
 ### Frontend: React
 
 - [React Documentation](https://reactjs.org/)
+
+### Deployment: Docker
+
+- [Deploy FastAPI with Docker](https://fastapi.tiangolo.com/deployment/docker/)
+- [Get started with docker](https://docs.docker.com/)
