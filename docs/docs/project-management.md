@@ -7,3 +7,5 @@
 ## Project Plan
 
 ## Team Canvas
+
+[![Architecture](images/canvas.png)](images/canvas.png)
