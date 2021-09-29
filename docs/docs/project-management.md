@@ -45,7 +45,7 @@
 | Generate Dendrogram     | US 1.03        |                 | November 13             |
 | Web client analysis     | US 1.11        |                 | November 13             |
 | Web client image upload | US 1.10        |                 | November 13             |
-| Web clietn JSON         | US 1.15        |                 | November 13             |
+| Web client JSON         | US 1.15        |                 | November 13             |
 
 ### Sprint 4
 
