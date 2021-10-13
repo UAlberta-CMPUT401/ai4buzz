@@ -1,7 +1,17 @@
 .DS_STORE
+__pycache__/
 
-*/__pycache__
 env
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+**/__pycache__/
+
+
+*.db
 
 .idea
 .ipynb_checkpoints
@@ -28,3 +38,4 @@ archive.zip
 # vim temporary files
 *~
 .*.sw?
+
