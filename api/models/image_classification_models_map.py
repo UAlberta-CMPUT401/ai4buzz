@@ -3,7 +3,7 @@
 We can use this to simply change the model name and use a new model of our liking."""
 
 
-model_handle_map = {
+MODEL_HANDLE_MAP = {
   "efficientnetv2-s": "https://tfhub.dev/google/imagenet/efficientnet_v2_imagenet1k_s/classification/2",
   "efficientnetv2-m": "https://tfhub.dev/google/imagenet/efficientnet_v2_imagenet1k_m/classification/2",
   "efficientnetv2-l": "https://tfhub.dev/google/imagenet/efficientnet_v2_imagenet1k_l/classification/2",
@@ -56,7 +56,7 @@ model_handle_map = {
   "mobilenet_v3_large_075_224": "https://tfhub.dev/google/imagenet/mobilenet_v3_large_075_224/classification/5",
 }
 
-model_image_size_map = {
+MODEL_IMAGE_SIZE_MAP = {
   "efficientnetv2-s": 384,
   "efficientnetv2-m": 480,
   "efficientnetv2-l": 480,

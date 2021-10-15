@@ -1,16 +1,13 @@
 """Contains class to detect objects in an image."""
-import tensorflow as tf
-import tensorflow_hub as hub
-
 import requests
 from PIL import Image
 from io import BytesIO
 
-import matplotlib.pyplot as plt
 import numpy as np
 
 import descriptions
 import object_detection_models_map
+import tf_hub_client
 
 
 class ObjectDetector:
@@ -18,8 +15,11 @@ class ObjectDetector:
         trained on the COCO 2017 dataset."""
 
     _model_name: str
+    _tf_hub_client: tf_hub_client.TFHubClient
 
-    def __init__(self, model_name: str = 'Faster R-CNN Inception ResNet V2 1024x1024') -> None:
+    def __init__(self, tf_hub_client: tf_hub_client.TFHubClient, 
+        model_name: str = 'Faster R-CNN Inception ResNet V2 1024x1024') -> None:
+        self._tf_hub_client = tf_hub_client
         self._model_name = model_name
 
     def get_descriptions(self, image):
@@ -37,9 +37,8 @@ class ObjectDetector:
             (1, im_height, im_width, 3)).astype(np.uint8)
 
     def _make_prediction(self, image):
-        model_handle = object_detection_models_map.MODEL_HANDLE_MAP[self._model_name]
-        hub_model = hub.load(model_handle)
-        results = hub_model(image)
+        object_detector = self._tf_hub_client.get_object_detection_model_from_cahce_else_load(self._model_name)
+        results = object_detector(image)
 
         predictions = []
         for i in range(int(results['num_detections'][0].numpy())):
@@ -54,4 +53,4 @@ if __name__=='__main__':
     response = requests.get(image_path, headers=user_agent)
     image = Image.open(BytesIO(response.content))
     # ObjectDetector().get_descriptions(image).descriptions returns [('person', 0.99), ('boat', 0.77), ...]
-    print(ObjectDetector().get_descriptions(image).descriptions)
+    print(ObjectDetector(tf_hub_client.TFHubClient()).get_descriptions(image).descriptions)
