@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Depends, status, Response, HTTPException
+from fastapi import FastAPI, Depends, status, Response, HTTPException, File, UploadFile
 from sqlalchemy.orm.session import Session
 from . import schemas, models
 from .database import engine, SessionLocal
@@ -18,7 +18,10 @@ def get_db():
         db.close()
 
 @app.get('/getImageFeatures')
-def getFeatures():
+def getFeatures(file: UploadFile = File(...)):
+    extension = file.filename.split(".")[-1] in ("jpg", "jpeg", "png")
+    if not extension:
+        return "Image must be jpg or png format"
     return {'Got Image Features'}
 
 @app.post('/users')
