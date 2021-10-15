@@ -39,3 +39,4 @@ archive.zip
 *~
 .*.sw?
 
+venv/
