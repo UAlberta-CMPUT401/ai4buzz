@@ -21,8 +21,7 @@ def get_db():
 def getFeatures():
     return {'Got Image Features'}
 
-
-@app.post('/user')
+@app.post('/users')
 def create_user(request: schemas.User, db: Session = Depends(get_db) ):
     new_user = models.User(name= request.name, email = request.email, 
     password = Hash.bcrypt(request.password))

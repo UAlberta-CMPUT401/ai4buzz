@@ -11,7 +11,7 @@ __pycache__/
 **/__pycache__/
 
 
-*.db
+.db
 
 .idea
 .ipynb_checkpoints
