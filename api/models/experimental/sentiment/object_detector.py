@@ -9,8 +9,8 @@ from io import BytesIO
 import matplotlib.pyplot as plt
 import numpy as np
 
-import descriptions
-import object_detection_models_map
+from . import descriptions
+from . import object_detection_models_map
 
 
 class ObjectDetector:
