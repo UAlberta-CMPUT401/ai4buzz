@@ -1,10 +1,14 @@
 from fastapi import FastAPI, Depends, status, Response, HTTPException, File, UploadFile
 from sqlalchemy.orm.session import Session
-from . import schemas, models
-from .database import engine, SessionLocal
 from sqlalchemy.orm import Session
-from .hashing import Hash 
+from io import BytesIO
+from PIL import Image
 
+from . import schemas
+from api.models.image_describer import ImageDescriber
+from api.database import engine, SessionLocal
+from api.database import models
+from api.utils.hashing import Hash
 
 app = FastAPI()
 
@@ -17,12 +21,15 @@ def get_db():
     finally:
         db.close()
 
-@app.get('/getImageFeatures')
-def getFeatures(file: UploadFile = File(...)):
+@app.post('/getImageFeatures')
+async def get_features(file: UploadFile = File(...)):
     extension = file.filename.split(".")[-1] in ("jpg", "jpeg", "png")
     if not extension:
         return "Image must be jpg or png format"
-    return {'Got Image Features'}
+    image = Image.open(BytesIO(await file.read()))
+    image_describer = ImageDescriber()
+    image_features = image_describer.get_features_by_image(image)
+    return image_features
 
 @app.post('/users')
 def create_user(request: schemas.User, db: Session = Depends(get_db) ):
