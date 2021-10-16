@@ -33,8 +33,8 @@ async def get_features(file: UploadFile = File(...)):
 
 @app.post('/users')
 def create_user(request: schemas.User, db: Session = Depends(get_db) ):
-    new_user = models.User(name= request.name, email = request.email, 
-    password = Hash.bcrypt(request.password))
+    new_user = models.User(email = request.email, 
+    hashed_password = Hash.bcrypt(request.password))
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
