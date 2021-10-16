@@ -1,3 +1,6 @@
 class FeatureAnalyzer:
-    def __init__(self):
-        pass
+    def get_descriptions(self, image):
+        raise NotImplementedError
+
+    def _format_description(self, description): 
+        raise NotImplementedError
