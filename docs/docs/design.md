@@ -2,7 +2,7 @@
 
 ## Architecture/Component Diagram
 
-[![Architecture](images/architecture.png)](images/architecture.png)
+[![Architecture](images/architecture.jpg)](images/architecture.png)
 
 ## UML Class Diagram
 
