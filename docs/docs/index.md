@@ -68,7 +68,7 @@ This project is to develop a web service to allow researchers to gain insight in
 > **Acceptance Tests**
 
 > 1. Given an image, return the sentiment of the image as a string
-> 2. Need to ensure 80-90% accuracy
+> 2. Need to ensure 70-80% accuracy
 
 ### US 1.07 - Object detection
 
