@@ -9,11 +9,21 @@ from api.models.feature_analyzer import FeatureAnalyzer
 
 class ColorSchemeAnalyzer(FeatureAnalyzer):
     def get_descriptions(self, image):
+        """ get color palette of image
+
+        :param image: PIL image object
+        :return: dict containing color count and rgb values of colors
+        """
         colour_palette = self._get_palette(image, 3)
         # k_means_colour_palette = self._get_palette_k_means(image, 3)
         return self._format_description(colour_palette)
 
     def _format_description(self, description):
+        """ format color palette description data
+
+        :param description: dictionary of color palette data
+        :return: formatted dictionary of color palette data
+        """
         return {
             "count": len(description),
             "colors": [color.rgb for color in description]
