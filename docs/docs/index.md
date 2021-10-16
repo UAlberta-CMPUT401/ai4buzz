@@ -211,7 +211,7 @@ This project is to develop a web service to allow researchers to gain insight in
 
 - [Google Vision AI API](https://cloud.google.com/vision)
 
-  - Machine learning as a service by providing pretrained models to analyze images or training models in the cloud
+  - Cloud based image detection and classification service.
   - The “Try me” section of the page has a simple and nice UI which we will draw inspiration from
   - The response schema is also something that we might draw inspiration from
 
