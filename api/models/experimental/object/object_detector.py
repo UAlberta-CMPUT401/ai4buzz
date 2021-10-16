@@ -11,9 +11,10 @@ import numpy as np
 
 from . import descriptions
 from . import object_detection_models_map
+from api.models.feature_analyzer import FeatureAnalyzer
 
 
-class ObjectDetector:
+class ObjectDetector(FeatureAnalyzer):
     """Used to detect objects present in a image using TF HUB models
         trained on the COCO 2017 dataset."""
 
@@ -26,8 +27,28 @@ class ObjectDetector:
         """image: PIL.JpegImagePlugin.JpegImageFile"""
         image = self._process_image_for_model(image)
         predictions = self._make_prediction(image)
-        return descriptions.Descriptions(feature="Object Detection", 
+        description = descriptions.Descriptions(feature="Object Detection", 
             model_name=self._model_name, descriptions=predictions)
+        return self._format_description(description.descriptions)
+    
+    def _format_description(self, description):
+        """
+        format the description of the object detection result
+
+        description: Descriptions
+        :return: dict
+        """
+        objects = dict()
+        for obj_name, confidence in description:
+            if obj_name not in objects:
+                objects[obj_name] = {
+                    "freq": 1,
+                    "confidences": [confidence.item()] 
+                }
+            else:
+                objects[obj_name]["freq"] += 1
+                objects[obj_name]["confidences"].append(confidence.item())
+        return objects
 
     def _process_image_for_model(self, image):
         """image: PIL.JpegImagePlugin.JpegImageFile"""
