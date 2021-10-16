@@ -3,6 +3,7 @@ import numpy as np
 
 from .experimental.colour.colour_palette import ColorSchemeAnalyzer
 from .experimental.object.object_detector import ObjectDetector
+from .experimental.sentiment.sentiment_analyzer import SentimentAnalyzer
 
 class ImageDescriber():
     def __init__(self):
@@ -13,9 +14,13 @@ class ImageDescriber():
         color_scheme_analysis = colorSchemeAnalyzer.get_descriptions(image)
         object_detector = ObjectDetector()
         object_detections = object_detector.get_descriptions(image)
+        sentiment_analyzer = SentimentAnalyzer(batch_size=1)
+        sentiment_analysis = sentiment_analyzer.get_descriptions([image])
+
         return {
             "color_scheme_analysis": color_scheme_analysis,
-            "object_detection": object_detections
+            "object_detection": object_detections,
+            "sentiment_analysis": sentiment_analysis
         }
 
     def _get_descriptions(self):
