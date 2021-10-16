@@ -62,10 +62,11 @@ class ObjectDetector(FeatureAnalyzer):
 
     def _make_prediction(self, image):
         """ perform object detection on image
-
+        
         :param image: PIL image class
         :return: list of tuples of detected objects and their confidence levels
         """
+
         object_detector = self._tf_hub_client.get_object_detection_model_from_cache_else_load(self._model_name)
         results = object_detector(image)
 
