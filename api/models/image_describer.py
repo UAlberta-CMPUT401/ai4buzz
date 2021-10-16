@@ -6,10 +6,12 @@ from .experimental.object.object_detector import ObjectDetector
 from .experimental.sentiment.sentiment_analyzer import SentimentAnalyzer
 
 class ImageDescriber():
-    def __init__(self):
-        pass
-
     def get_features_by_image(self, image):
+        """ perform analysis and data extraction on image 
+
+        :param image: PIL image object
+        :return: dict containing formatted analysis data
+        """
         colorSchemeAnalyzer = ColorSchemeAnalyzer()
         color_scheme_analysis = colorSchemeAnalyzer.get_descriptions(image)
         object_detector = ObjectDetector()
@@ -23,9 +25,6 @@ class ImageDescriber():
             "sentiment_analysis": sentiment_analysis
         }
 
-    def _get_descriptions(self):
-        pass
-
     def _preprocess_image(self, image):
         """ convert image into an np array
 
@@ -33,6 +32,3 @@ class ImageDescriber():
         :return: numpy array
         """
         return np.array(image)
-
-    def _generate_report(self):
-        pass
