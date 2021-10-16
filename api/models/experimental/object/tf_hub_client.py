@@ -5,8 +5,8 @@ import tensorflow_hub as hub
 
 from typing import Tuple, List
 
-import image_classification_models_map
-import object_detection_models_map
+from . import image_classification_models_map
+from . import object_detection_models_map
 
 class TFHubClient:
     """Allows us to get models from TFHUB."""
@@ -21,7 +21,7 @@ class TFHubClient:
             tf.saved_model.save(classifier, model_path)
         return classifier
 
-    def get_object_detection_model_from_cahce_else_load(self, model_name: str):
+    def get_object_detection_model_from_cache_else_load(self, model_name: str):
         is_model_cahced, model_path = self._is_model_cached("object_detection", model_name)
         if is_model_cahced:
             object_detector = tf.saved_model.load(model_path)

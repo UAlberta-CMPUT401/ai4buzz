@@ -40,4 +40,4 @@ archive.zip
 .*.sw?
 
 venv/
-api/models/cached_tf_models/
+api/models/experimental/object/cached_tf_models
