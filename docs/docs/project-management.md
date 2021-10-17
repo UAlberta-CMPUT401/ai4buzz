@@ -40,7 +40,7 @@
 | **Rubric Description**        | **Task To-Do** | **Assigned To**                                    | **Date To Complete By** |
 | ----------------------------  | -------------- | -------------------------------------------------- | ----------------------- |
 | Image Analysis Results        | US 1.02        | Adit Rada, William Xu                              | November 13             |
-| Text Extraction & Detection   | US 1.09, 1.11  | Adit Rada, William Xu                              | November 13             |
+| Text Extraction & Detection   | US 1.09, 1.11  | Adit Rada, Ian Dicipulo                            | November 13             |
 | Generate Collage              | US 1.04        | Alexander Schafer, William Xu                      | November 13             |
 | Generate Dendrogram           | US 1.03        | Alexander Schafer, William Xu                      | November 13             |
 | Web client analysis           | US 2.02        | Sandip Saha Joy, Neilzon Viloria, Ian Dicipulo     | November 13             |
