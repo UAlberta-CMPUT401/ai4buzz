@@ -40,4 +40,4 @@ class FaceDetector():
 
 if __name__ == "__main__":
     FaceDetector = FaceDetector()
-    print("Found", FaceDetector.get_descriptions('face_detection_test.png'), "faces!")
+    print(FaceDetector.get_descriptions('face_detection_test.png'))
