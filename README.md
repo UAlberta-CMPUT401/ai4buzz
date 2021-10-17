@@ -14,4 +14,4 @@ https://ualberta-cmput401.github.io/ai4buzz/
 3. generate virtual environment with `python3 -m venv env`
 4. activate virtual env with `source env/bin/activate`
 5. install requirements with `pip install -r requirements.txt`
-6. run app with `uvicorn src.main:app --reload`
+6. run app with `uvicorn api.main:app --reload`
