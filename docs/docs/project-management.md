@@ -37,15 +37,16 @@
 
 **Due: November 13**
 
-| **Rubric Description**  | **Task To-Do** | **Assigned To** | **Date To Complete By** |
-| ----------------------- | -------------- | --------------- | ----------------------- |
-| Image Analysis Results  | US 1.02        |                 | November 13             |
-| Text Detection          | US 1.17        |                 | November 13             |
-| Generate Collage        | US 1.04        |                 | November 13             |
-| Generate Dendrogram     | US 1.03        |                 | November 13             |
-| Web client analysis     | US 2.02        |                 | November 13             |
-| Web client image upload | US 2.01        |                 | November 13             |
-| Web client JSON         | US 2.06        |                 | November 13             |
+| **Rubric Description**        | **Task To-Do** | **Assigned To**                                    | **Date To Complete By** |
+| ----------------------------  | -------------- | -------------------------------------------------- | ----------------------- |
+| Image Analysis Results        | US 1.02        | Adit Rada, William Xu                              | November 13             |
+| Text Extraction & Detection   | US 1.09, 1.11  | Adit Rada, Ian Dicipulo                            | November 13             |
+| Generate Collage              | US 1.04        | Alexander Schafer, William Xu                      | November 13             |
+| Generate Dendrogram           | US 1.03        | Alexander Schafer, William Xu                      | November 13             |
+| Web client analysis           | US 2.02        | Sandip Saha Joy, Neilzon Viloria, Ian Dicipulo     | November 13             |
+| Web client image upload       | US 2.01        | Neilzon Viloria, Alexander Schafer                 | November 13             |
+| Web client JSON               | US 2.06        | Sandip Saha Joy, Ian Dicipulo                      | November 13             |
+| Web client authentication     | US 2.05        | Sandip Saha Joy, Neilzon Viloria                   | November 13             |
 
 ### Sprint 4
 
@@ -55,8 +56,6 @@
 | -------------------------- | -------------- | --------------- | ----------------------- |
 | Web client view collage    | US 2.03        |                 | November 24             |
 | Web client view dendrogram | US 2.04        |                 | November 24             |
-| Web client authentication  | US 2.05        |                 | November 24             |
-| Text extraction            | US 1.09        |                 | November 24             |
 | Image Streaming            | US 1.10        |                 | November 24             |
 
 
