@@ -58,6 +58,7 @@
 | Web client view dendrogram | US 2.04        |                 | November 24             |
 | Image Streaming            | US 1.10        |                 | November 24             |
 
+
 ## Team Canvas
 
 [![Architecture](images/canvas.png)](images/canvas.png)
