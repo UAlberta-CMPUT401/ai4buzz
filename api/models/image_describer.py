@@ -26,7 +26,7 @@ class ImageDescriber():
         return {
             "color_scheme_analysis": color_scheme_analysis,
             "object_detection": object_detections,
-            "sentiment_analysis": sentiment_analysis
+            "sentiment_analysis": sentiment_analysis,
             "facial_analysis": facial_analysis
         }
 
