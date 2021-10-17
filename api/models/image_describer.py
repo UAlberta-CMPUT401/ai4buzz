@@ -5,7 +5,7 @@ from .experimental.colour.colour_palette import ColorSchemeAnalyzer
 from .experimental.object.object_detector import ObjectDetector
 from .experimental.sentiment.sentiment_analyzer import SentimentAnalyzer
 from .experimental.object.tf_hub_client import TFHubClient
-from .experimental.object.face_detection import FaceDetector
+#from .experimental.object.face_detection import FaceDetector
 
 class ImageDescriber():
     def get_features_by_image(self, image):
