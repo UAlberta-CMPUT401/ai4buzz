@@ -20,14 +20,14 @@ class ImageDescriber():
         object_detections = object_detector.get_descriptions(image)
         sentiment_analyzer = SentimentAnalyzer(batch_size=1)
         sentiment_analysis = sentiment_analyzer.get_descriptions([image])
-        facialDetector = FaceDetector()
-        facial_analysis = facialDetector.get_descriptions(image)
+        #facialDetector = FaceDetector()
+        #facial_analysis = facialDetector.get_descriptions(image)
 
         return {
             "color_scheme_analysis": color_scheme_analysis,
             "object_detection": object_detections,
             "sentiment_analysis": sentiment_analysis,
-            "facial_analysis": facial_analysis
+            #"facial_analysis": facial_analysis
         }
 
     def _preprocess_image(self, image):
