@@ -118,7 +118,7 @@ This project is to develop a web service to allow researchers to gain insight in
 > 1. Model correctly detects whether there is text in an image or not
 > 2. Ensure model accuracy better than 80%
 
-### US 2.01 - Web client upload
+### US 2.01 - Web client image upload
 
 > **As** a web user, **I want** to upload one or many images, **so that** the images can be analyzed
 
