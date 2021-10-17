@@ -43,9 +43,9 @@
 | Text Detection          | US 1.17        |                 | November 13             |
 | Generate Collage        | US 1.04        |                 | November 13             |
 | Generate Dendrogram     | US 1.03        |                 | November 13             |
-| Web client analysis     | US 1.11        |                 | November 13             |
-| Web client image upload | US 1.10        |                 | November 13             |
-| Web client JSON         | US 1.15        |                 | November 13             |
+| Web client analysis     | US 2.02        |                 | November 13             |
+| Web client image upload | US 2.01        |                 | November 13             |
+| Web client JSON         | US 2.06        |                 | November 13             |
 
 ### Sprint 4
 
@@ -53,9 +53,12 @@
 
 | **Rubric Description**     | **Task To-Do** | **Assigned To** | **Date To Complete By** |
 | -------------------------- | -------------- | --------------- | ----------------------- |
-| Web client view collage    | US 1.12        |                 | November 24             |
-| Web client view dendrogram | US 1.13        |                 | November 24             |
-| Web client authentication  | US 1.14        |                 | November 24             |
+| Web client view collage    | US 2.03        |                 | November 24             |
+| Web client view dendrogram | US 2.04        |                 | November 24             |
+| Web client authentication  | US 2.05        |                 | November 24             |
+| Text extraction            | US 1.09        |                 | November 24             |
+| Image Streaming            | US 1.10        |                 | November 24             |
+
 
 ## Team Canvas
 
