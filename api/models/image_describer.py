@@ -4,6 +4,7 @@ import numpy as np
 from .experimental.colour.colour_palette import ColorSchemeAnalyzer
 from .experimental.object.object_detector import ObjectDetector
 from .experimental.sentiment.sentiment_analyzer import SentimentAnalyzer
+from .experimental.object.image_classifiier import ImageClassifier
 from .experimental.object.tf_hub_client import TFHubClient
 #from .experimental.object.face_detection import FaceDetector
 
@@ -18,6 +19,16 @@ class ImageDescriber():
         color_scheme_analysis = colorSchemeAnalyzer.get_descriptions(image)
         object_detector = ObjectDetector(TFHubClient())
         object_detections = object_detector.get_descriptions(image)
+        image_classifier = ImageClassifier(TFHubClient())
+        image_classification = image_classifier.get_descriptions(image)
+
+        objects = dict()
+        for obj_name, confidence in image_classification.descriptions:
+            if obj_name not in objects:
+                objects[obj_name] = confidence.item() 
+
+        print(objects)
+
         sentiment_analyzer = SentimentAnalyzer(batch_size=1)
         sentiment_analysis = sentiment_analyzer.get_descriptions([image])
         #facialDetector = FaceDetector()
@@ -27,6 +38,7 @@ class ImageDescriber():
             "color_scheme_analysis": color_scheme_analysis,
             "object_detection": object_detections,
             "sentiment_analysis": sentiment_analysis,
+            "image_classification": objects
             #"facial_analysis": facial_analysis
         }
 

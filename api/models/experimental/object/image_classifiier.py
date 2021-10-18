@@ -7,9 +7,9 @@ from io import BytesIO
 
 import numpy as np
 
-import descriptions
-import image_classification_models_map
-import tf_hub_client
+from . import descriptions
+from . import image_classification_models_map
+from . import tf_hub_client
 
 
 
