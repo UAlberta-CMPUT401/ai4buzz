@@ -9,9 +9,22 @@ https://ualberta-cmput401.github.io/ai4buzz/
 
 # Local Setup
 
+## Prerequisites
+
+- Python 3.9
+- Yarn and Nodejs
+
+## API
+
 1. clone the repo
-2. `cd` into the root of the project
+2. `cd` into the `backend` directory
 3. generate virtual environment with `python3 -m venv env`
 4. activate virtual env with `source env/bin/activate`
 5. install requirements with `pip install -r requirements.txt`
 6. run app with `uvicorn api.main:app --reload`
+
+## Web Client
+
+1. clone the repo if you haven't already
+2. `cd` into `frontend` directory
+3. use `yarn start` to start app locally
