@@ -4,12 +4,12 @@ from unittest import TestCase
 from unittest import mock
 import unittest
 
-import image_classifiier
+from .image_classifiier import ImageClassifier
 
 class ImageClassifierTest(TestCase):
 
     def run():
-        image_classifiier.ImageClassifier().get_descriptions()
+        ImageClassifier().get_descriptions()
 
 
 if __name__ == '__main__':
