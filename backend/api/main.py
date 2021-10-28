@@ -8,7 +8,7 @@ from api import schemas
 from api.models.image_describer import ImageDescriber
 from api.database import engine, SessionLocal
 from api.database import models
-from api.utils.hashing import Hash
+from api.utils.hashing import Hash, pwd_cxt
 
 app = FastAPI()
 
@@ -43,3 +43,14 @@ def create_user(request: schemas.User, db: Session = Depends(get_db) ):
     db.commit()
     db.refresh(new_user)
     return new_user
+
+@app.post('/login')
+def get_token(user: schemas.User, db: Session = Depends(get_db)): 
+    db_user = db.query(models.User).filter(models.User.email == user.email).first()
+    print(user, db_user)
+    if not db_user:
+        return Response(content='User not found', status_code=status.HTTP_404_NOT_FOUND)
+    passwords_match = pwd_cxt.verify(user.password, db_user.hashed_password)
+    if not passwords_match:
+        return Response(content='Invalid password', status_code=status.HTTP_401_UNAUTHORIZED)
+    return 'new token'
