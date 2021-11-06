@@ -1,23 +1,16 @@
 """Contains class to classify images."""
 import tensorflow as tf
-
-import requests
-from PIL import Image
-from io import BytesIO
-
 import numpy as np
 
-import descriptions
-import image_classification_models_map
-import tf_hub_client
-
+from api.image_features import descriptions
+from api.image_features import tf_hub_client
+from api.image_features.image_classification import image_classification_models_map
 
 
 class ImageClassifier:
     """Uses pretrained models to classify images."""
 
     _model_name: str
-    _NUM_OF_IMAGE_NET_CLASSES = 1000
     _tf_hub_client: tf_hub_client.TFHubClient
 
     def __init__(self, tf_hub_client: tf_hub_client.TFHubClient, 
@@ -66,28 +59,19 @@ class ImageClassifier:
         return jpg_image
 
     def _make_prediction(self, image):
-        model_handle = image_classification_models_map.MODEL_HANDLE_MAP[self._model_name]
-
         classifier = self._tf_hub_client.get_image_classification_model_from_cache_else_load(self._model_name)
         probabilities = tf.nn.softmax(classifier(image)).numpy()
         top_5 = tf.argsort(probabilities, axis=-1, direction="DESCENDING")[0][:5].numpy()
 
         # Some models include an additional 'background' class in the predictions, so
         # we must account for this when reading the class labels.
-        includes_background_class = probabilities.shape[1] == self._NUM_OF_IMAGE_NET_CLASSES + 1
         imagenet_classes = self._tf_hub_client.get_imagenet_classes()
+        num_of_imagenet_classes = len(imagenet_classes)
+        includes_background_class = probabilities.shape[1] == num_of_imagenet_classes + 1
+
         predictions = []
         for i, item in enumerate(top_5):
             class_index = item if not includes_background_class else item - 1
             predictions.append((imagenet_classes[class_index], probabilities[0][top_5][i]))
 
         return predictions
-
-
-if __name__=='__main__':
-    img_url = 'https://media.nationalgeographic.org/assets/photos/000/267/26734.jpg'
-    user_agent = {'User-agent': 'Colab Sample (https://tensorflow.org)'}
-    response = requests.get(img_url, headers=user_agent)
-    image = Image.open(BytesIO(response.content))
-    # ImageClassifier().get_descriptions(image).descriptions returns [('seashore', 0.99), ('beach', 0.77), ...]
-    print(ImageClassifier(tf_hub_client.TFHubClient()).get_descriptions(image).descriptions)

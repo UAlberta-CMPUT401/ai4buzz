@@ -5,8 +5,8 @@ import tensorflow_hub as hub
 
 from typing import Tuple, List
 
-import image_classification_models_map
-import object_detection_models_map
+from api.image_features.image_classification import image_classification_models_map
+from api.image_features.object_detection import object_detection_models_map
 
 class TFHubClient:
     """Allows us to get models from TFHUB."""
