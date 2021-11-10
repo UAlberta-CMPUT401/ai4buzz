@@ -1,5 +1,7 @@
-from fastapi import FastAPI, Depends, status, Response, HTTPException, File, UploadFile
+from typing import *
+from fastapi import FastAPI, Depends, status, Response, File, UploadFile
 from fastapi.encoders import jsonable_encoder
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from sqlalchemy.orm.session import Session
 from sqlalchemy.orm import Session
@@ -15,6 +17,14 @@ from api.middleware.auth import verify_jwt
 from api.utils.auth import sign_jwt
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=['*'],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 models.Base.metadata.create_all(engine)
 
@@ -50,13 +60,14 @@ def login_user(user: schemas.User, db: Session = Depends(get_db)):
     response_data = {'access_token': access_token}
     return JSONResponse(content=jsonable_encoder(response_data))
 
-@app.post('/getImageFeatures', response_model=schemas.ImageDescription)
-async def get_features(file: UploadFile = File(...), user: str = Depends(verify_jwt)):
-    print('got here', user)
-    extension = file.filename.split(".")[-1] in ("jpg", "jpeg", "png")
-    if not extension:
-        return Response(content='File type must be jpeg or png', status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
-    image = Image.open(BytesIO(await file.read()))
+@app.post('/getImageFeatures',response_model=schemas.ImageDescription)
+async def get_features(files: List[UploadFile] = File(...), user: str = Depends(verify_jwt)):
+    image_bytes = []
+    for file in files:
+        extension = file.filename.split(".")[-1] in ("jpg", "jpeg", "png")
+        if not extension:
+            return Response(content='File type must be .jpeg, .jpg or .png', status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
+        image_bytes.append(Image.open(BytesIO(await file.read())))
     image_describer = ImageDescriber()
-    image_features = image_describer.get_features_by_image(image)
+    image_features = image_describer.get_features_by_image(image_bytes[0])
     return image_features
