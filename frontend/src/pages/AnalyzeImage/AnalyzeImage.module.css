@@ -1,0 +1,29 @@
+.analyzeImagePage {
+  display: flex;
+  justify-content: center;
+  padding-top: 15rem;
+}
+
+.images {
+  padding-bottom: 1rem;
+}
+
+.fileName {
+  color: #888e99;
+}
+
+input[type='file'] {
+  font-size: 1.1rem;
+  padding-bottom: 1rem;
+}
+
+.uploadImagesButton,
+#file-upload-button {
+  font-size: 1.1rem;
+  padding: 0.4rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  color: #253251;
+  border: none;
+  width: 100%;
+}
