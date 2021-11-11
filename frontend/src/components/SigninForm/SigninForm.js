@@ -8,6 +8,7 @@ const SigninForm = ({
   onSubmit,
   onEmailChange,
   onPasswordChange,
+  error,
 }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -16,6 +17,8 @@ const SigninForm = ({
 
   return (
     <form onSubmit={handleSubmit} className={styles.signinForm}>
+      <h1>{authType}</h1>
+      {error ? <div className="error">{error}</div> : null}
       <div>
         <label className={styles.labelName}>Email</label>
         <input
