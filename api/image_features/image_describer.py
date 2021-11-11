@@ -8,6 +8,7 @@ from api.image_features.object_detection.object_detector import ObjectDetector
 from api.image_features.sentiment_analysis.sentiment_analyzer import SentimentAnalyzer
 from api.image_features.image_classification.image_classifiier import ImageClassifier
 from api.image_features.tf_hub_client import TFHubClient
+from api.image_features.text_recognition.text_recognizer import TextRecognizer
 
 
 class ImageDescriber():
@@ -34,9 +35,13 @@ class ImageDescriber():
         sentiment_analyzer = SentimentAnalyzer(batch_size=1)
         sentiment_analysis = sentiment_analyzer.get_descriptions([image])
 
+        text_recognizer = TextRecognizer()
+        text = text_recognizer.get_descriptions(image)
+
         return {
             "color_scheme_analysis": color_scheme_analysis,
             "object_detection": object_detection_report,
             "sentiment_analysis": sentiment_analysis,
             "image_classification": image_classification_report,
+            "text_recognition": text,
         }
