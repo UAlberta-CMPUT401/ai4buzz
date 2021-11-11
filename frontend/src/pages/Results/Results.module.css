@@ -1,0 +1,21 @@
+.resultsPage {
+  width: 100%;
+  margin: auto;
+}
+
+.resultTitle {
+  margin-left: 3rem;
+}
+
+.resultList {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+}
+
+.image {
+  max-height: 256px;
+}
+
+.results {
+}
