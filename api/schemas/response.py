@@ -5,3 +5,4 @@ class ImageDescription(BaseModel):
     color_scheme_analysis: dict
     object_detection: dict
     image_classification: dict
+    text_recognition: str

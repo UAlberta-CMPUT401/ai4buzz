@@ -25,7 +25,7 @@ class ImageClassifierTest(TestCase):
             model_name=mock_model_name,
             descriptions=[('p', 70), ('q', 9), ('r', 8), ('t', 7), ('u', 5)]
         )
-        print(actual_detections)
+
         self.assertEqual(expected_detections, actual_detections)
         mock_tf_hub_client.get_imagenet_classes.assert_called_once_with()
         mock_tf_hub_client.get_image_classification_model_from_cache_else_load.\

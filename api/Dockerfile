@@ -2,11 +2,11 @@ FROM python:3.9
 
 WORKDIR /app
 
-COPY ./api /app/api
+COPY ./ /app/api
 
-COPY ./requirements.txt /app/requirements.txt
-
-RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
+RUN apt update
 RUN apt-get -y install tesseract-ocr
+RUN pip install --upgrade pip
+RUN pip install --upgrade -r /app/api/requirements.txt
 
 CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "80"]

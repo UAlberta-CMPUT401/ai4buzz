@@ -1,7 +1,9 @@
 absl-py==0.14.1
 asgiref==3.4.1
 astunparse==1.6.3
+attrs==21.2.0
 bcrypt==3.2.0
+beautifulsoup4==4.10.0
 cachetools==4.2.4
 certifi==2021.10.8
 cffi==1.15.0
@@ -10,7 +12,9 @@ clang==5.0
 click==8.0.1
 colorgram.py==1.2.0
 cycler==0.10.0
+Cython==0.29.24
 fastapi==0.68.1
+filelock==3.3.2
 flatbuffers==1.12
 gast==0.4.0
 gdown==4.2.0
@@ -24,6 +28,7 @@ h5py==3.1.0
 httptools==0.2.0
 idna==3.3
 imageio==2.9.0
+iniconfig==1.1.1
 keras==2.6.0
 Keras-Preprocessing==1.1.2
 kiwisolver==1.3.2
@@ -35,15 +40,22 @@ oauthlib==3.1.1
 opencv-python-headless==4.5.3.56
 opencv-utils==0.0.2
 opt-einsum==3.3.0
+packaging==21.2
 passlib==1.7.4
 Pillow==8.3.2
+pluggy==1.0.0
 protobuf==3.18.1
 psycopg2==2.9.1
+py==1.11.0
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pycparser==2.20
 pydantic==1.8.2
+PyJWT==2.3.0
 pyparsing==2.4.7
+PySocks==1.7.1
+pytesseract==0.3.8
+pytest==6.2.5
 python-dateutil==2.8.2
 python-dotenv==0.19.0
 python-multipart==0.0.5
@@ -55,6 +67,7 @@ rsa==4.7.2
 scikit-image==0.18.3
 scipy==1.7.1
 six==1.15.0
+soupsieve==2.3.1
 SQLAlchemy==1.4.25
 starlette==0.14.2
 tensorboard==2.7.0
@@ -65,8 +78,10 @@ tensorflow-estimator==2.6.0
 tensorflow-hub==0.12.0
 termcolor==1.1.0
 tifffile==2021.10.12
+toml==0.10.2
 torch==1.9.1
 torchvision==0.10.1
+tqdm==4.62.3
 typing-extensions==3.7.4.3
 urllib3==1.26.7
 uvicorn==0.15.0
@@ -75,5 +90,4 @@ watchgod==0.7
 websockets==10.0
 Werkzeug==2.0.2
 wrapt==1.12.1
-opencv-python==4.1.2.30
 pytesseract==0.3.8

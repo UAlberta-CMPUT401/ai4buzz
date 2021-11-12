@@ -1,17 +1,60 @@
+import { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import AnalyzeImage from './pages/AnalyzeImage/AnalyzeImage';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
-
+import Collage from './pages/Collage/Collage';
+import Results from './pages/Results/Results';
+import Dendrogram from './pages/Dendrogram/Dendrogram';
 import './App.css';
+import ResultsNav from './components/ResultsNav/ResultsNav';
+import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRoute';
 
 function App() {
+  const [images, setImages] = useState([]);
+  const [results, setResults] = useState();
+
   return (
     <Router>
       <Switch>
-        <Route path="/analyze-image" exact component={AnalyzeImage} />
         <Route path="/login" exact component={Login} />
         <Route path="/signup" exact component={Signup} />
+        <AuthenticatedRoute
+          path="/analyze-image"
+          exact
+          render={() => {
+            return (
+              <AnalyzeImage
+                setResults={setResults}
+                setFiles={setImages}
+                files={images}
+              />
+            );
+          }}
+        />
+        <ResultsNav>
+          <AuthenticatedRoute
+            path="/results"
+            exact
+            component={() => {
+              return <Results data={results} images={images} />;
+            }}
+          />
+          <AuthenticatedRoute
+            path="/collage"
+            exact
+            component={() => {
+              return <Collage data={results} />;
+            }}
+          />
+          <AuthenticatedRoute
+            path="/dendrogram"
+            exact
+            component={() => {
+              return <Dendrogram data={results} />;
+            }}
+          />
+        </ResultsNav>
       </Switch>
     </Router>
   );
