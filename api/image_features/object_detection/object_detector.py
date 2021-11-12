@@ -40,7 +40,8 @@ class ObjectDetector:
         predictions = []
         for i in range(int(results['num_detections'][0].numpy())):
             detection_class = object_detection_models_map.COOC_CATEGORY_INDEX[results['detection_classes'][0][i].numpy()]['name']
-            detection_confidence = results['detection_scores'][0][i].numpy()
+            # numpy() to convert from tf to np dtype .item() to convert from numpy.float32 to float
+            detection_confidence = results['detection_scores'][0][i].numpy().item()
             if detection_confidence > self._MINIMUM_THRESHOLD_CONFIDENCE:
                 predictions.append((detection_class, detection_confidence))
         return predictions

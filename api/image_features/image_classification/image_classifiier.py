@@ -72,6 +72,6 @@ class ImageClassifier:
         predictions = []
         for i, item in enumerate(top_5):
             class_index = item if not includes_background_class else item - 1
-            predictions.append((imagenet_classes[class_index], probabilities[0][top_5][i]))
+            predictions.append((imagenet_classes[class_index], probabilities[0][top_5][i].item()))
 
         return predictions
