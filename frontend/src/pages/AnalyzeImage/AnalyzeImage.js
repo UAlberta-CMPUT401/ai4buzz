@@ -2,21 +2,31 @@ import React, { useState } from 'react';
 import { Route, useHistory } from 'react-router-dom';
 import { uploadImages } from '../../services/imageAnalysis';
 import LoadingOverlay from '../../components/LoadingOverlay/LoadingOverlay';
+import Cookies from 'js-cookie';
 
 import styles from './AnalyzeImage.module.css';
 
 const AnalyzeImage = ({ setResults, setFiles, files }) => {
   const history = useHistory();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const handleUpload = async (e) => {
-    // prevent page refresh
-    e.preventDefault();
-    setLoading(true);
-    const res = await uploadImages(files);
-    setResults(res.data);
-    setLoading(false);
-    history.push('/results');
+    try {
+      // prevent page refresh
+      setError('');
+      e.preventDefault();
+      setLoading(true);
+      const res = await uploadImages(files, Cookies.get('access_token'));
+      setResults(res.data);
+      setLoading(false);
+      history.push('/results');
+    } catch (err) {
+      console.error(err);
+      setError('There was an error during analysis.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleChangeFiles = (e) => {
@@ -34,6 +44,7 @@ const AnalyzeImage = ({ setResults, setFiles, files }) => {
         <form>
           <div>
             <h1>Upload Images</h1>
+            <div className="error">{error}</div>
           </div>
           <div className={styles.images}>
             <h3>Images</h3>

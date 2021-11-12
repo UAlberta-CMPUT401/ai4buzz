@@ -8,6 +8,7 @@ import Results from './pages/Results/Results';
 import Dendrogram from './pages/Dendrogram/Dendrogram';
 import './App.css';
 import ResultsNav from './components/ResultsNav/ResultsNav';
+import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRoute';
 
 function App() {
   const [images, setImages] = useState([]);
@@ -18,7 +19,7 @@ function App() {
       <Switch>
         <Route path="/login" exact component={Login} />
         <Route path="/signup" exact component={Signup} />
-        <Route
+        <AuthenticatedRoute
           path="/analyze-image"
           exact
           render={() => {
@@ -32,21 +33,21 @@ function App() {
           }}
         />
         <ResultsNav>
-          <Route
+          <AuthenticatedRoute
             path="/results"
             exact
             component={() => {
               return <Results data={results} images={images} />;
             }}
           />
-          <Route
+          <AuthenticatedRoute
             path="/collage"
             exact
             component={() => {
               return <Collage data={results} />;
             }}
           />
-          <Route
+          <AuthenticatedRoute
             path="/dendrogram"
             exact
             component={() => {
