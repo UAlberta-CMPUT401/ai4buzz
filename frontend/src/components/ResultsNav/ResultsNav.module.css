@@ -1,0 +1,35 @@
+.navbar {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.navTab {
+  font-size: 1.3rem;
+  margin: 0 1rem;
+  padding: 1rem;
+  color: rgb(161, 161, 161);
+  cursor: pointer;
+  user-select: none;
+}
+
+.navTabActive {
+  color: #fff;
+
+  /* background: #ff6ed0;
+  background: -webkit-linear-gradient(
+    to right,
+    #ff6ed0 0%,
+    #a52bff 50%,
+    #00edff 100%
+  );
+  background: -moz-linear-gradient(
+    to right,
+    #ff6ed0 0%,
+    #a52bff 50%,
+    #00edff 100%
+  );
+  background: linear-gradient(to right, #ff6ed0 0%, #a52bff 50%, #00edff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
+}
