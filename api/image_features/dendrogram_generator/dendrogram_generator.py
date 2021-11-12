@@ -3,10 +3,10 @@ class DendrogramGenerator:
         pass
 
     def generate(self, report):
-        """ generates a Dendrogram as a png
+        """ 
+        generates a Dendrogram as an image object
         
         :param report: Dictionary of the feature analysis
         :returns type: Dendrogram
         """
-        x =  report
         pass

@@ -42,6 +42,7 @@ class ImageDescriber():
 
         collage_generator = CollageGenerator()
         collage = collage_generator.generate(images)
+
         # TODO: convert to base64 encoded string
         # feature_analysis_results['collage'] = collage_base64_string
 
