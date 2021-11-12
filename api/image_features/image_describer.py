@@ -24,21 +24,21 @@ class ImageDescriber():
         report_generator_ = ReportGenerator()
 
         colorSchemeAnalyzer = ColorSchemeAnalyzer()
-        color_scheme_analysis = colorSchemeAnalyzer.get_descriptions(image)
+        color_scheme_analysis = colorSchemeAnalyzer.get_descriptions(images[0])
 
         object_detector = ObjectDetector(TFHubClient())
-        object_detections_descriptions = object_detector.get_descriptions(image)
+        object_detections_descriptions = object_detector.get_descriptions(images[0])
         object_detection_report = report_generator_.generate_report(object_detections_descriptions)
 
         image_classifier = ImageClassifier(TFHubClient())
-        image_classification_descreptions = image_classifier.get_descriptions(image)
+        image_classification_descreptions = image_classifier.get_descriptions(images[0])
         image_classification_report = report_generator_.generate_report(image_classification_descreptions)
 
-        sentiment_analyzer = SentimentAnalyzer(batch_size=1)
-        sentiment_analysis = sentiment_analyzer.get_descriptions([image])
+        sentiment_analyzer = SentimentAnalyzer(batch_size=len(images))
+        sentiment_analysis = sentiment_analyzer.get_descriptions(images)
 
         text_recognizer = TextRecognizer()
-        text = text_recognizer.get_descriptions(image)
+        text = text_recognizer.get_descriptions(images[0])
 
         collage_generator = CollageGenerator()
         collage = collage_generator.generate(images)
@@ -53,7 +53,7 @@ class ImageDescriber():
             "text_recognition": text,
         }
 
-        dendrogram_generator = DendrogramGenerator
+        dendrogram_generator = DendrogramGenerator()
         dendrogram = dendrogram_generator.generate(feature_analysis_results) 
         # TODO: convert to base64 encoded string
         # feature_analysis_results['dendrogram'] = dendrogram_base64_string

@@ -8,4 +8,5 @@ class CollageGenerator:
         :images type: List of images
         :returns type: Collage
         """
+        x = images
         pass

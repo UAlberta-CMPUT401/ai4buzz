@@ -8,4 +8,5 @@ class DendrogramGenerator:
         :param report: Dictionary of the feature analysis
         :returns type: Dendrogram
         """
+        x =  report
         pass
