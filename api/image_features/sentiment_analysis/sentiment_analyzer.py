@@ -2,16 +2,16 @@
 Module containing class to analyze and classify sentiments in image
 
 """
-import gdown
+# ### For local running
 # import sys
 # sys.path.insert(0,'C:/Users/Joy/UofA-Drive/Fall-2021/CMPUT-401/Project/ai4buzz')
 # model_path = 'vgg19_finetuned_all.pth'
 
-url = 'https://drive.google.com/uc?id=1SwbKfAUFWUvJ1vQG9jFLBarcNuSeLelH'
-output = 'api/image_features/sentiment_analysis/vgg19_finetuned_all.pth'
-gdown.download(url, output, quiet=False)
+import gdown, os.path
+model_url = 'https://drive.google.com/uc?id=1SwbKfAUFWUvJ1vQG9jFLBarcNuSeLelH'
 model_path = 'api/image_features/sentiment_analysis/vgg19_finetuned_all.pth'
-
+if not os.path.exists(model_path):
+    gdown.download(model_url, model_path)
 
 from api.image_features.sentiment_analysis.vgg19 import KitModel as VGG19
 from api.image_features.feature_analyzer import FeatureAnalyzer
@@ -127,4 +127,7 @@ if __name__=='__main__':
     start_time = timeit.default_timer()
     print(SentimentAnalyzer(batch_size).get_descriptions(ImageList))
     end_time = timeit.default_timer()
-    print("\nTotal run time of testing the sentiment model with {0} image & {1} batch_size = {2:.1f} seconds".format(len(ImageList), batch_size, end_time - start_time))
+    print("\nTotal run time of testing the sentiment model with {0} image & {1} batch_size = {2:.1f} seconds".format(
+        len(ImageList), 
+        batch_size, 
+        end_time - start_time))
