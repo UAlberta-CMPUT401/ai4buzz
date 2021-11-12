@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Route, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { uploadImages } from '../../services/imageAnalysis';
 import LoadingOverlay from '../../components/LoadingOverlay/LoadingOverlay';
 import Cookies from 'js-cookie';

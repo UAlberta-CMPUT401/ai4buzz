@@ -8,10 +8,14 @@ const ObjectDetectionResults = ({ results }) => {
     <>
       {Object.keys(results).map((object, idx) => {
         return (
-          <div>
+          <div key={idx}>
             <div>{object}</div>
             {results[object].confidences.map((confidence, idx) => {
-              return <div className="value">{confidence.toFixed(7)}</div>;
+              return (
+                <div className="value" key={idx}>
+                  {confidence.toFixed(7)}
+                </div>
+              );
             })}
           </div>
         );

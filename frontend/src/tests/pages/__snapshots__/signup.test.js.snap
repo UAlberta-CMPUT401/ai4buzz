@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders signup page correctly 1`] = `
+<div
+  className="signupPage"
+>
+  <h1
+    className="title"
+  >
+    AI4Buzz
+  </h1>
+  <form
+    className="signinForm"
+    onSubmit={[Function]}
+  >
+    <h1>
+      Signup
+    </h1>
+    <label
+      className="labelName"
+    >
+      Email
+    </label>
+    <input
+      className="signinInput"
+      onChange={[Function]}
+      placeholder="email"
+      type="email"
+    />
+    <label
+      className="labelName"
+    >
+      Password
+    </label>
+    <input
+      className="signinInput"
+      onChange={[Function]}
+      placeholder="password"
+      type="password"
+    />
+    <div
+      className="buttonGradient"
+    >
+      <button
+        className="submitButton"
+      >
+        Signup
+      </button>
+    </div>
+    <a
+      className="switchAuth"
+      href="/login"
+      onClick={[Function]}
+    >
+      Login
+    </a>
+  </form>
+</div>
+`;
