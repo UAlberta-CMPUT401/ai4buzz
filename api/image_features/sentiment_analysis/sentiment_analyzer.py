@@ -11,15 +11,15 @@ model_path = 'api/image_features/sentiment_analysis/vgg19_finetuned_all.pth'
 from api.image_features.sentiment_analysis.vgg19 import KitModel as VGG19
 from api.image_features.feature_analyzer import FeatureAnalyzer
 
-import torch
+import torch, requests, timeit
 from torchvision import transforms
 from torch.utils.data import Dataset, DataLoader
 from PIL import Image, ImageFile
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 import numpy as np
 import matplotlib.pyplot as plt
-import requests
 from io import BytesIO
+from glob import glob
 
 
 class ImageListDataset(Dataset):
@@ -110,7 +110,16 @@ class SentimentAnalyzer(FeatureAnalyzer):
 
 
 if __name__=='__main__':
-    image_path = 'https://www.gannett-cdn.com/media/2019/06/07/USATODAY/usatsports/america-fought-two-wars.jpg'
-    response = requests.get(image_path)
-    ImageList = [Image.open(BytesIO(response.content))]
-    print(SentimentAnalyzer(batch_size=1).get_descriptions(ImageList))
+    FnameList = sorted(glob('C:/Users/Joy/UofA-Drive/Fall-2021/CMPUT-401/Project/images/*', recursive=True))
+    print(FnameList)
+    ImageList = [Image.open(Fname) for Fname in FnameList]
+
+    # image_path = 'https://www.gannett-cdn.com/media/2019/06/07/USATODAY/usatsports/america-fought-two-wars.jpg'
+    # response = requests.get(image_path)
+    # ImageList = [Image.open(BytesIO(response.content))]
+
+    batch_size = 25
+    start_time = timeit.default_timer()
+    print(SentimentAnalyzer(batch_size).get_descriptions(ImageList))
+    end_time = timeit.default_timer()
+    print("\nTotal run time of testing the sentiment model with {0} image & {1} batch_size = {2:.1f} seconds".format(len(ImageList), batch_size, end_time - start_time))
