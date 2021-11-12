@@ -69,5 +69,5 @@ async def get_features(files: List[UploadFile] = File(...), user: str = Depends(
             return Response(content='File type must be .jpeg, .jpg or .png', status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
         image_bytes.append(Image.open(BytesIO(await file.read())))
     image_describer = ImageDescriber()
-    image_features = image_describer.get_features_by_image(image_bytes[0])
+    image_features = image_describer.get_features_by_image(image_bytes)
     return image_features

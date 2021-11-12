@@ -1,0 +1,1 @@
+from .collage_generator import CollageGenerator
