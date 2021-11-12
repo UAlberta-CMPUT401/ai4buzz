@@ -2,12 +2,17 @@
 Module containing class to analyze and classify sentiments in image
 
 """
-
+import gdown
 # import sys
 # sys.path.insert(0,'C:/Users/Joy/UofA-Drive/Fall-2021/CMPUT-401/Project/ai4buzz')
 # model_path = 'vgg19_finetuned_all.pth'
 
+url = 'https://drive.google.com/uc?id=1SwbKfAUFWUvJ1vQG9jFLBarcNuSeLelH'
+output = 'api/image_features/sentiment_analysis/vgg19_finetuned_all.pth'
+gdown.download(url, output, quiet=False)
 model_path = 'api/image_features/sentiment_analysis/vgg19_finetuned_all.pth'
+
+
 from api.image_features.sentiment_analysis.vgg19 import KitModel as VGG19
 from api.image_features.feature_analyzer import FeatureAnalyzer
 

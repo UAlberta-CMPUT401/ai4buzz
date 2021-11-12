@@ -41,3 +41,4 @@ archive.zip
 
 venv/
 cached_tf_models/
+*.pth
