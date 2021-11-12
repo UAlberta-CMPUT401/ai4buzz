@@ -26,16 +26,16 @@ class ReportGenerator:
             if obj_class not in objects:
                 objects[obj_class] = {
                     "freq": 1,
-                    "confidences": [obj_confidence] 
+                    "confidences": [obj_confidence.item()] 
                 }
             else:
                 objects[obj_class]["freq"] += 1
-                objects[obj_class]["confidences"].append(obj_confidence)
+                objects[obj_class]["confidences"].append(obj_confidence.item())
         return objects
 
     def  _generate_report_for_image_classification(self,
         descriptions_: descriptions.Descriptions) -> Dict[str, float]:
         classes = dict()
         for image_class, class_confidence in descriptions_.descriptions:
-            classes[image_class] = class_confidence
+            classes[image_class] = class_confidence.item()
         return classes
