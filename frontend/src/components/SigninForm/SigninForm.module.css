@@ -19,7 +19,8 @@
   }
 }
 
-.signinInput {
+.signinInputEmail,
+.signinInputPassword {
   display: block;
   font-size: 1.12em;
   padding: 0.4rem;

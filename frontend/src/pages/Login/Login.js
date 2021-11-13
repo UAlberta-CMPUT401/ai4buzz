@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Cookies from 'js-cookie';
-import { useHistory } from 'react-router';
+import { useHistory } from 'react-router-dom';
 
 import { login } from '../../services/auth';
 import SigninForm from '../../components/SigninForm/SigninForm';

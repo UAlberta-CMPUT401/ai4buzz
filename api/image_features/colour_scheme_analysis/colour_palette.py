@@ -14,7 +14,7 @@ class ColorSchemeAnalyzer(FeatureAnalyzer):
         :param image: PIL image object
         :return: dict containing color count and rgb values of colors
         """
-        colour_palette = self._get_palette(image, 3)
+        colour_palette = self._get_palette(image, 20)
         # k_means_colour_palette = self._get_palette_k_means(image, 3)
         return self._format_description(colour_palette)
 
@@ -24,9 +24,25 @@ class ColorSchemeAnalyzer(FeatureAnalyzer):
         :param description: dictionary of color palette data
         :return: formatted dictionary of color palette data
         """
+        colors = []
+        count = 0
+        for color in description:
+            if color.proportion > 0.05:
+                
+
+                colors.append(
+                    {  
+                        "red": color.rgb.r,
+                        "green": color.rgb.g,
+                        "blue": color.rgb.b,
+                        "proportion": color.proportion
+                    }
+                )
+                count = count + 1
+
         return {
-            "count": len(description),
-            "colors": [color.rgb for color in description]
+            "count": count ,
+            "colors": colors
         }
 
     def _get_palette(self, img, num_colours):

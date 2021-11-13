@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders ImageClassification component correctly 1`] = `
+<div>
+  <div>
+    <div>
+      web site
+    </div>
+    <div
+      className="value"
+    >
+      0.9249884
+    </div>
+  </div>
+  <div>
+    <div>
+      book jacket
+    </div>
+    <div
+      className="value"
+    >
+      0.0196852
+    </div>
+  </div>
+  <div>
+    <div>
+      comic book
+    </div>
+    <div
+      className="value"
+    >
+      0.0121827
+    </div>
+  </div>
+  <div>
+    <div>
+      envelope
+    </div>
+    <div
+      className="value"
+    >
+      0.0011725
+    </div>
+  </div>
+  <div>
+    <div>
+      analog clock
+    </div>
+    <div
+      className="value"
+    >
+      0.0009475
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,197 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders Results page correctly 1`] = `
+<div
+  className="resultsPage"
+>
+  <h1
+    className="resultTitle"
+  >
+    Analysis Results
+  </h1>
+  <div
+    className="resultList"
+  >
+    <div>
+      <h4>
+        chucknorris.png
+      </h4>
+      <div
+        className="imageContainer"
+      >
+        <img
+          alt="results"
+          className="image"
+        />
+      </div>
+      <div>
+        <div
+          className="gradient"
+        >
+          <div
+            className="analysisHeader"
+          >
+            Color Analysis
+          </div>
+        </div>
+        <div>
+          {"count":3,"colors":[[5,41,64],[253,252,252],[36,14,27]]}
+        </div>
+        <div
+          className="gradient"
+        >
+          <div
+            className="analysisHeader"
+          >
+            Object Detection
+          </div>
+        </div>
+        <div>
+          <div>
+            <div>
+              person
+            </div>
+            <div
+              className="value"
+            >
+              0.9994099
+            </div>
+            <div
+              className="value"
+            >
+              0.9985186
+            </div>
+          </div>
+        </div>
+        <div
+          className="gradient"
+        >
+          <div
+            className="analysisHeader"
+          >
+            Image Classification
+          </div>
+        </div>
+        <div>
+          <div>
+            <div>
+              <div>
+                web site
+              </div>
+              <div
+                className="value"
+              >
+                0.9249884
+              </div>
+            </div>
+            <div>
+              <div>
+                book jacket
+              </div>
+              <div
+                className="value"
+              >
+                0.0196852
+              </div>
+            </div>
+            <div>
+              <div>
+                comic book
+              </div>
+              <div
+                className="value"
+              >
+                0.0121827
+              </div>
+            </div>
+            <div>
+              <div>
+                envelope
+              </div>
+              <div
+                className="value"
+              >
+                0.0011725
+              </div>
+            </div>
+            <div>
+              <div>
+                analog clock
+              </div>
+              <div
+                className="value"
+              >
+                0.0009475
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="gradient"
+        >
+          <div
+            className="analysisHeader"
+          >
+            Sentiment Classification
+          </div>
+        </div>
+        <div>
+          <div>
+            <div>
+              <div>
+                Negative
+              </div>
+              <div
+                className="value"
+              >
+                68.18%
+              </div>
+            </div>
+            <div>
+              <div>
+                Neutral
+              </div>
+              <div
+                className="value"
+              >
+                15.44%
+              </div>
+            </div>
+            <div>
+              <div>
+                Postive
+              </div>
+              <div
+                className="value"
+              >
+                16.38%
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="gradient"
+        >
+          <div
+            className="analysisHeader"
+          >
+            Text Recognition
+          </div>
+        </div>
+        <div>
+          Extracted:
+           
+          <div
+            className="value"
+          >
+            “Oh you're a software engineer? So you
+have a rainbow computer with 2
+monitors?
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

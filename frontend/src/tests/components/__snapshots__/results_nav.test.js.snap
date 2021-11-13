@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders Results Nav 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="navbar"
+  >
+    <div
+      className="navTab navTabActive"
+      onClick={[Function]}
+    >
+      Results
+    </div>
+    <div
+      className="navTab "
+      onClick={[Function]}
+    >
+      Collage
+    </div>
+    <div
+      className="navTab "
+      onClick={[Function]}
+    >
+      Dendrogram
+    </div>
+  </div>
+</div>
+`;
