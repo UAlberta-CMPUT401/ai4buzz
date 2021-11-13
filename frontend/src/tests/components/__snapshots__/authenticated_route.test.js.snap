@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Redirects authenticated route page to login page if access token is not there 1`] = `
+<div
+  className="loginPage"
+>
+  <h1
+    className="title"
+  >
+    AI4Buzz
+  </h1>
+  <form
+    className="signinForm"
+    onSubmit={[Function]}
+  >
+    <h1>
+      Login
+    </h1>
+    <label
+      className="labelName"
+    >
+      Email
+    </label>
+    <input
+      className="signinInputEmail"
+      onChange={[Function]}
+      placeholder="email"
+      type="email"
+    />
+    <label
+      className="labelName"
+    >
+      Password
+    </label>
+    <input
+      className="signinInputPassword"
+      onChange={[Function]}
+      placeholder="password"
+      type="password"
+    />
+    <div
+      className="buttonGradient"
+    >
+      <button
+        className="submitButton"
+      >
+        Login
+      </button>
+    </div>
+    <a
+      className="switchAuth"
+      href="/signup"
+      onClick={[Function]}
+    >
+      Signup
+    </a>
+  </form>
+</div>
+`;
+
+exports[`Renders authenticated route page correctly if access token is available 1`] = `null`;

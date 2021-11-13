@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders SigninForm for auth type 'Login' correctly 1`] = `
+<form
+  className="signinForm"
+  onSubmit={[Function]}
+>
+  <h1>
+    Login
+  </h1>
+  <label
+    className="labelName"
+  >
+    Email
+  </label>
+  <input
+    className="signinInputEmail"
+    onChange={[Function]}
+    placeholder="email"
+    type="email"
+  />
+  <label
+    className="labelName"
+  >
+    Password
+  </label>
+  <input
+    className="signinInputPassword"
+    onChange={[Function]}
+    placeholder="password"
+    type="password"
+  />
+  <div
+    className="buttonGradient"
+  >
+    <button
+      className="submitButton"
+    >
+      Login
+    </button>
+  </div>
+  <a
+    className="switchAuth"
+    href="/signup"
+    onClick={[Function]}
+  >
+    Signup
+  </a>
+</form>
+`;
+
+exports[`Renders SigninForm for auth type 'SignUp' correctly 1`] = `
+<form
+  className="signinForm"
+  onSubmit={[Function]}
+>
+  <h1>
+    SignUp
+  </h1>
+  <label
+    className="labelName"
+  >
+    Email
+  </label>
+  <input
+    className="signinInputEmail"
+    onChange={[Function]}
+    placeholder="email"
+    type="email"
+  />
+  <label
+    className="labelName"
+  >
+    Password
+  </label>
+  <input
+    className="signinInputPassword"
+    onChange={[Function]}
+    placeholder="password"
+    type="password"
+  />
+  <div
+    className="buttonGradient"
+  >
+    <button
+      className="submitButton"
+    >
+      SignUp
+    </button>
+  </div>
+  <a
+    className="switchAuth"
+    href="/login"
+    onClick={[Function]}
+  >
+    Login
+  </a>
+</form>
+`;

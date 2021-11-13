@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders Analyze Image page correctly 1`] = `
+<div
+  className="analyzeImagePage"
+>
+  <form>
+    <div>
+      <h1>
+        Upload Images
+      </h1>
+      <div
+        className="error"
+      />
+    </div>
+    <div
+      className="images"
+    >
+      <h3>
+        Images
+      </h3>
+      <div
+        className="fileName"
+      >
+        chucknorris.png
+      </div>
+    </div>
+    <input
+      className="chooseFilesInput"
+      multiple={true}
+      onChange={[Function]}
+      type="file"
+    />
+    <div
+      className="buttonGradient"
+    >
+      <button
+        className="uploadImagesButton"
+        onClick={[Function]}
+      >
+        Analyze
+      </button>
+    </div>
+  </form>
+</div>
+`;

@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders ImageClassification component correctly 1`] = `
+<div>
+  <div>
+    <div>
+      Negative
+    </div>
+    <div
+      className="value"
+    >
+      68.18%
+    </div>
+  </div>
+  <div>
+    <div>
+      Neutral
+    </div>
+    <div
+      className="value"
+    >
+      15.44%
+    </div>
+  </div>
+  <div>
+    <div>
+      Postive
+    </div>
+    <div
+      className="value"
+    >
+      16.38%
+    </div>
+  </div>
+</div>
+`;

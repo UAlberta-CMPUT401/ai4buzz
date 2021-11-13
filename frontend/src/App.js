@@ -1,5 +1,10 @@
 import { useState } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
 import AnalyzeImage from './pages/AnalyzeImage/AnalyzeImage';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
@@ -17,6 +22,9 @@ function App() {
   return (
     <Router>
       <Switch>
+        <Route exact path="/">
+          <Redirect to="/analyze-image" />
+        </Route>
         <Route path="/login" exact component={Login} />
         <Route path="/signup" exact component={Signup} />
         <AuthenticatedRoute
