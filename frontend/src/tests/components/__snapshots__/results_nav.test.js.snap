@@ -8,6 +8,12 @@ exports[`Renders Results Nav 1`] = `
     className="navbar"
   >
     <div
+      className="back"
+      onClick={[Function]}
+    >
+      Back to image upload
+    </div>
+    <div
       className="navTab navTabActive"
       onClick={[Function]}
     >
@@ -24,6 +30,11 @@ exports[`Renders Results Nav 1`] = `
       onClick={[Function]}
     >
       Dendrogram
+    </div>
+    <div
+      className="logo"
+    >
+      AI4Buzz
     </div>
   </div>
 </div>

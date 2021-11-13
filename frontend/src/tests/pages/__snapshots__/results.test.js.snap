@@ -4,190 +4,220 @@ exports[`Renders Results page correctly 1`] = `
 <div
   className="resultsPage"
 >
-  <h1
-    className="resultTitle"
-  >
-    Analysis Results
-  </h1>
-  <div
-    className="resultList"
-  >
-    <div>
-      <h4>
-        chucknorris.png
-      </h4>
+  <div>
+    <h1
+      className="resultTitle"
+    >
+      Analysis Results
+    </h1>
+    <div
+      className="resultListContainer"
+    >
       <div
-        className="imageContainer"
+        className="imageFeatureResult"
       >
-        <img
-          alt="results"
-          className="image"
-        />
-      </div>
-      <div>
+        <h4>
+          chucknorris.png
+        </h4>
         <div
-          className="gradient"
+          className="imageContainer"
         >
-          <div
-            className="analysisHeader"
-          >
-            Color Analysis
-          </div>
+          <img
+            alt="results"
+            className="image"
+          />
         </div>
         <div>
-          {"count":3,"colors":[[5,41,64],[253,252,252],[36,14,27]]}
-        </div>
-        <div
-          className="gradient"
-        >
           <div
-            className="analysisHeader"
+            className="gradient"
           >
-            Object Detection
+            <div
+              className="analysisHeader"
+            >
+              Color Analysis
+            </div>
           </div>
-        </div>
-        <div>
+          <div>
+            {"count":2,"colors":[{"red":5,"green":41,"blue":64,"proportion":0.5235686765073805},{"red":253,"green":252,"blue":252,"proportion":0.17823367525644232}]}
+          </div>
+          <div
+            className="gradient"
+          >
+            <div
+              className="analysisHeader"
+            >
+              Object Detection
+            </div>
+          </div>
+          <div>
+            <div
+              className="objectDetectionResultsData"
+            >
+              <div>
+                person
+              </div>
+              <div>
+                <div
+                  className="value"
+                >
+                  99.941
+                  %
+                </div>
+                <div
+                  className="value"
+                >
+                  99.852
+                  %
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="gradient"
+          >
+            <div
+              className="analysisHeader"
+            >
+              Image Classification
+            </div>
+          </div>
           <div>
             <div>
-              person
+              <div
+                className="imageClassificationResultsData"
+              >
+                <div>
+                  web site
+                </div>
+                <div
+                  className="value"
+                >
+                  92.499
+                  %
+                </div>
+              </div>
+              <div
+                className="imageClassificationResultsData"
+              >
+                <div>
+                  book jacket
+                </div>
+                <div
+                  className="value"
+                >
+                  1.969
+                  %
+                </div>
+              </div>
+              <div
+                className="imageClassificationResultsData"
+              >
+                <div>
+                  comic book
+                </div>
+                <div
+                  className="value"
+                >
+                  1.218
+                  %
+                </div>
+              </div>
+              <div
+                className="imageClassificationResultsData"
+              >
+                <div>
+                  envelope
+                </div>
+                <div
+                  className="value"
+                >
+                  0.117
+                  %
+                </div>
+              </div>
+              <div
+                className="imageClassificationResultsData"
+              >
+                <div>
+                  analog clock
+                </div>
+                <div
+                  className="value"
+                >
+                  0.095
+                  %
+                </div>
+              </div>
             </div>
+          </div>
+          <div
+            className="gradient"
+          >
+            <div
+              className="analysisHeader"
+            >
+              Sentiment Classification
+            </div>
+          </div>
+          <div>
+            <div>
+              <div
+                className="sentimentClassificationData"
+              >
+                <div>
+                  Negative
+                </div>
+                <div
+                  className="value"
+                >
+                  68.18%
+                </div>
+              </div>
+              <div
+                className="sentimentClassificationData"
+              >
+                <div>
+                  Neutral
+                </div>
+                <div
+                  className="value"
+                >
+                  15.44%
+                </div>
+              </div>
+              <div
+                className="sentimentClassificationData"
+              >
+                <div>
+                  Postive
+                </div>
+                <div
+                  className="value"
+                >
+                  16.38%
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="gradient"
+          >
+            <div
+              className="analysisHeader"
+            >
+              Text Recognition
+            </div>
+          </div>
+          <div>
+            Extracted:
             <div
               className="value"
             >
-              0.9994099
-            </div>
-            <div
-              className="value"
-            >
-              0.9985186
-            </div>
-          </div>
-        </div>
-        <div
-          className="gradient"
-        >
-          <div
-            className="analysisHeader"
-          >
-            Image Classification
-          </div>
-        </div>
-        <div>
-          <div>
-            <div>
-              <div>
-                web site
-              </div>
-              <div
-                className="value"
-              >
-                0.9249884
-              </div>
-            </div>
-            <div>
-              <div>
-                book jacket
-              </div>
-              <div
-                className="value"
-              >
-                0.0196852
-              </div>
-            </div>
-            <div>
-              <div>
-                comic book
-              </div>
-              <div
-                className="value"
-              >
-                0.0121827
-              </div>
-            </div>
-            <div>
-              <div>
-                envelope
-              </div>
-              <div
-                className="value"
-              >
-                0.0011725
-              </div>
-            </div>
-            <div>
-              <div>
-                analog clock
-              </div>
-              <div
-                className="value"
-              >
-                0.0009475
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="gradient"
-        >
-          <div
-            className="analysisHeader"
-          >
-            Sentiment Classification
-          </div>
-        </div>
-        <div>
-          <div>
-            <div>
-              <div>
-                Negative
-              </div>
-              <div
-                className="value"
-              >
-                68.18%
-              </div>
-            </div>
-            <div>
-              <div>
-                Neutral
-              </div>
-              <div
-                className="value"
-              >
-                15.44%
-              </div>
-            </div>
-            <div>
-              <div>
-                Postive
-              </div>
-              <div
-                className="value"
-              >
-                16.38%
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="gradient"
-        >
-          <div
-            className="analysisHeader"
-          >
-            Text Recognition
-          </div>
-        </div>
-        <div>
-          Extracted:
-           
-          <div
-            className="value"
-          >
-            “Oh you're a software engineer? So you
+              “Oh you're a software engineer? So you
 have a rainbow computer with 2
 monitors?
 
+            </div>
           </div>
         </div>
       </div>

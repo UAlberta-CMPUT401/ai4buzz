@@ -1,19 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Renders ImageClassification component correctly 1`] = `
-<div>
+<div
+  className="objectDetectionResultsData"
+>
   <div>
     person
   </div>
-  <div
-    className="value"
-  >
-    0.9994099
-  </div>
-  <div
-    className="value"
-  >
-    0.9985186
+  <div>
+    <div
+      className="value"
+    >
+      99.941
+      %
+    </div>
+    <div
+      className="value"
+    >
+      99.852
+      %
+    </div>
   </div>
 </div>
 `;
