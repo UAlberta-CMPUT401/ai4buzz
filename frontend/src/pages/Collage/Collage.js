@@ -1,8 +1,13 @@
-const Collage = ({ imageBytes }) => {
-  console.log(imageBytes);
+import styles from './Collage.module.css';
+
+const Collage = ({ imgString }) => {
   return (
-    <div>
-      <img src={`data:image/jpeg;base64,${imageBytes.collage}`} alt="collage" />
+    <div className={styles.collagePage}>
+      <img
+        className={styles.collage}
+        src={`data:image/jpeg;base64,${imgString}`}
+        alt="collage"
+      />
     </div>
   );
 };
