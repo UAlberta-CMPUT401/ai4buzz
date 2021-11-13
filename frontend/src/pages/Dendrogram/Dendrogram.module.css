@@ -1,0 +1,10 @@
+.dendrogramPage {
+  padding-top: 3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.dendrogram {
+  width: 80%;
+  max-width: 80%;
+}

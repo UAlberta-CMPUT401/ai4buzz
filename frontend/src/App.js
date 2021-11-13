@@ -45,21 +45,26 @@ function App() {
             path="/results"
             exact
             component={() => {
-              return <Results data={results} images={images} />;
+              return (
+                <Results
+                  featureAnalysisResults={results?.feature_analysis_results}
+                  images={images}
+                />
+              );
             }}
           />
           <AuthenticatedRoute
             path="/collage"
             exact
             component={() => {
-              return <Collage data={results} />;
+              return <Collage imgString={results?.collage_image_string} />;
             }}
           />
           <AuthenticatedRoute
             path="/dendrogram"
             exact
             component={() => {
-              return <Dendrogram data={results} />;
+              return <Dendrogram data={results?.dendrogram_image_string} />;
             }}
           />
         </ResultsNav>

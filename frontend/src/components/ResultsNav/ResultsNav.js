@@ -12,6 +12,12 @@ const ResultsNav = ({ children }) => {
     <div className="container">
       <div className={styles.navbar}>
         <div
+          onClick={() => history.push('/analyze-image')}
+          className={styles.back}
+        >
+          Back to image upload
+        </div>
+        <div
           className={`${styles.navTab} ${
             path === '/results' ? styles.navTabActive : ''
           }`}
@@ -35,6 +41,7 @@ const ResultsNav = ({ children }) => {
         >
           Dendrogram
         </div>
+        <div className={styles.logo}>AI4Buzz</div>
       </div>
       {children}
     </div>

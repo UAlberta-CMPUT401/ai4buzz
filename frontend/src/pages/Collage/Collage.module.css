@@ -1,0 +1,10 @@
+.collagePage {
+  padding-top: 3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.collage {
+  width: 80%;
+  max-width: 80%;
+}

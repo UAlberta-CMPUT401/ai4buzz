@@ -1,7 +1,7 @@
-const Dendrogram = ({ imageBytes }) => {
+const Dendrogram = ({ imgString }) => {
   return (
     <div>
-      <img src={`data:image/jpeg;base64,${imageBytes.collage}`} alt="collage" />
+      <img src={`data:image/jpeg;base64,${imgString}`} alt="collage" />
     </div>
   );
 };

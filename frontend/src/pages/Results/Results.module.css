@@ -1,11 +1,16 @@
 .resultsPage {
-  /* margin: auto; */
-  padding: 0 256px 100px 256px;
+  padding: 0 0 100px 0;
+  display: flex;
+  justify-content: center;
 }
 
 .imageContainer {
   display: flex;
   justify-content: center;
+}
+
+.imageFeatureResult {
+  margin-bottom: 5rem;
 }
 
 .gradient {
@@ -26,20 +31,21 @@
 }
 
 .resultTitle {
-  margin-left: 3rem;
+  margin-left: 1.5rem;
 }
 
-.resultList {
-  display: flex;
-  justify-content: center;
+.resultListContainer {
+  width: 512px;
 }
 
 .image {
-  max-height: 256px;
+  max-height: 512px;
+  max-width: 512px;
 }
 
-@media (max-width: 1024px) {
-  /* .resultList {
-    padding: 0 1rem 100px 1rem;
-  } */
+@media (max-width: 712px) {
+  .resultListContainer {
+    width: 100%;
+    padding: 0 1rem;
+  }
 }

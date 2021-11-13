@@ -2,6 +2,24 @@
   display: flex;
   width: 100%;
   justify-content: center;
+  position: relative;
+}
+
+.back {
+  cursor: pointer;
+  position: absolute;
+  padding: 1.1rem 2rem;
+  font-size: 0.9rem;
+  left: 0;
+}
+
+.logo {
+  position: absolute;
+  padding: 1rem 2rem;
+  font-family: 'Cutive Mono';
+  right: 0;
+  font-weight: 900;
+  font-size: 1.3rem;
 }
 
 .navTab {
@@ -15,21 +33,4 @@
 
 .navTabActive {
   color: #fff;
-
-  /* background: #ff6ed0;
-  background: -webkit-linear-gradient(
-    to right,
-    #ff6ed0 0%,
-    #a52bff 50%,
-    #00edff 100%
-  );
-  background: -moz-linear-gradient(
-    to right,
-    #ff6ed0 0%,
-    #a52bff 50%,
-    #00edff 100%
-  );
-  background: linear-gradient(to right, #ff6ed0 0%, #a52bff 50%, #00edff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; */
 }
