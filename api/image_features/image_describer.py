@@ -11,6 +11,9 @@ from api.image_features.sentiment_analysis.sentiment_analyzer import SentimentAn
 from api.image_features.image_classification.image_classifiier import ImageClassifier
 from api.image_features.tf_hub_client import TFHubClient
 from api.image_features.text_recognition.text_recognizer import TextRecognizer
+import base64
+from io import BytesIO
+
 
 
 class ImageDescriber():
@@ -50,9 +53,14 @@ class ImageDescriber():
                 "text_recognition": text,
             }
 
-
         collage_generator = CollageGenerator()
         collage = collage_generator.generate(images)
+
+        # convert to base64
+        buffer = BytesIO()
+        collage_rgb = collage.convert('RGB')
+        collage_rgb.save(buffer, format="JPEG")
+        collage_image_string = base64.b64encode(buffer.getvalue())
 
         # TODO: convert to base64 encoded string
         # feature_analysis_results['collage'] = collage_base64_string
@@ -62,4 +70,7 @@ class ImageDescriber():
         # TODO: convert to base64 encoded string
         # feature_analysis_results['dendrogram'] = dendrogram_base64_string
 
-        return feature_analysis_results
+        return {
+            "feature_analysis_results": feature_analysis_results,
+            "collage_image_string": collage_image_string
+        }
