@@ -60,7 +60,7 @@ def login_user(user: schemas.User, db: Session = Depends(get_db)):
     response_data = {'access_token': access_token}
     return JSONResponse(content=jsonable_encoder(response_data))
 
-@app.post('/getImageFeatures',response_model=schemas.ImageDescription)
+@app.post('/getImageFeatures')#,response_model=schemas.ImageDescription)
 async def get_features(files: List[UploadFile] = File(...), user: str = Depends(verify_jwt)):
     image_bytes = []
     for file in files:

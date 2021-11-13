@@ -98,10 +98,6 @@ class SentimentAnalyzer(FeatureAnalyzer):
         Method for format the description of the sentiment analysis result
         """
 
-        self.description_dict["image_"+str(self.image_ID+1)] = {}
-        
-        self.description_dict["image_"+str(self.image_ID+1)]["sentiment_array[neg,neu,pos]"] = description
-
         degrees_dict = {}
         for i in range(len(description)):
             if i == 0:
@@ -111,7 +107,13 @@ class SentimentAnalyzer(FeatureAnalyzer):
             elif i == 2:
                 degrees_dict["Postive"] = '{:.2%}'.format(description[i])
         
-        self.description_dict["image_"+str(self.image_ID+1)]["degrees"] = degrees_dict
+        # self.description_dict["image_"+str(self.image_ID+1)] = {}
+        # self.description_dict["image_"+str(self.image_ID+1)]["sentiment_array[neg,neu,pos]"] = description
+        # self.description_dict["image_"+str(self.image_ID+1)]["degrees"] = degrees_dict
+
+        self.description_dict = {}
+        self.description_dict["sentiment_array[neg,neu,pos]"] = description
+        self.description_dict["degrees"] = degrees_dict
 
 
 if __name__=='__main__':
