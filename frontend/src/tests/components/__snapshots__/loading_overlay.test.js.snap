@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders loading overlay correctly 1`] = `
+<div
+  className="loadingOverlay"
+>
+  <div>
+    <object
+      data="spinner.svg"
+      type="image/svg+xml"
+    >
+      svg-animation
+    </object>
+    <div
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      This might take a bit...
+    </div>
+  </div>
+</div>
+`;

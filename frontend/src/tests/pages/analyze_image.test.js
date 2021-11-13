@@ -3,7 +3,6 @@ import renderer from 'react-test-renderer';
 import AnalyzeImage from '../../pages/AnalyzeImage/AnalyzeImage';
 import { BrowserRouter } from 'react-router-dom';
 
-//  https://developer.mozilla.org/en-US/docs/Web/API/File/File
 it('Renders Analyze Image page correctly', () => {
   Object.defineProperty(window.document, 'cookie', {
     writable: true,

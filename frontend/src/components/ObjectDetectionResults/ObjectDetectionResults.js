@@ -3,7 +3,6 @@ import React from 'react';
 import styles from './ObjectDetectionResults.module.css';
 
 const ObjectDetectionResults = ({ results }) => {
-  console.log(results);
   return (
     <>
       {Object.keys(results).map((object, idx) => {

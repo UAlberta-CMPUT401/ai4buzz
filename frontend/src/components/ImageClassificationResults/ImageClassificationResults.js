@@ -5,7 +5,7 @@ const ImageClassificationResults = ({ results }) => {
     <div>
       {Object.keys(results).map((object, idx) => {
         return (
-          <div>
+          <div key={idx}>
             <div>{object}</div>
             <div className="value">{results[object].toFixed(7)}</div>
           </div>
