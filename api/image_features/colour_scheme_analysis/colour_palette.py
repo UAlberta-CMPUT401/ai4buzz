@@ -4,10 +4,10 @@ from skimage import io
 from PIL import Image
 import numpy as np
 
-from api.image_features.feature_analyzer import FeatureAnalyzer
+#from api.image_features.feature_analyzer import FeatureAnalyzer
 
 
-class ColorSchemeAnalyzer(FeatureAnalyzer):
+class ColorSchemeAnalyzer():
     def get_descriptions(self, image):
         """ get color palette of image
 
