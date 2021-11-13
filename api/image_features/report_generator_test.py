@@ -11,10 +11,12 @@ class ReportGeneratorTest(TestCase):
 
     def test_generate_report_object_detection(self):
         object_detections_description = descriptions.Descriptions(feature='Object Detection',
-            model_name='Mock Model', descriptions=[('person', 98), ('bicycle', 97), ('bicycle', 47)]
+            model_name='Mock Model', descriptions=[('person', 98), ('bicycle', 97), ('bicycle', 47)],
+            processed_image='9j'
         )
         expected_report = {'person': {'freq': 1, 'confidences': [98]},
-                            'bicycle': {'freq': 2, 'confidences': [97, 47]}
+                            'bicycle': {'freq': 2, 'confidences': [97, 47]},
+                            'processes_bounding_boxes_image_as_base64_string': '9j'
         }
 
         report_generator_ = report_generator.ReportGenerator()
