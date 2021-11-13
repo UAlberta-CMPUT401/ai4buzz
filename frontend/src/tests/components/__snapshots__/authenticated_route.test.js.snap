@@ -22,7 +22,7 @@ exports[`Redirects authenticated route page to login page if access token is not
       Email
     </label>
     <input
-      className="signinInput"
+      className="signinInputEmail"
       onChange={[Function]}
       placeholder="email"
       type="email"
@@ -33,7 +33,7 @@ exports[`Redirects authenticated route page to login page if access token is not
       Password
     </label>
     <input
-      className="signinInput"
+      className="signinInputPassword"
       onChange={[Function]}
       placeholder="password"
       type="password"

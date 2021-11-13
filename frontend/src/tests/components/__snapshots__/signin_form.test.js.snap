@@ -14,7 +14,7 @@ exports[`Renders SigninForm for auth type 'Login' correctly 1`] = `
     Email
   </label>
   <input
-    className="signinInput"
+    className="signinInputEmail"
     onChange={[Function]}
     placeholder="email"
     type="email"
@@ -25,7 +25,7 @@ exports[`Renders SigninForm for auth type 'Login' correctly 1`] = `
     Password
   </label>
   <input
-    className="signinInput"
+    className="signinInputPassword"
     onChange={[Function]}
     placeholder="password"
     type="password"
@@ -63,7 +63,7 @@ exports[`Renders SigninForm for auth type 'SignUp' correctly 1`] = `
     Email
   </label>
   <input
-    className="signinInput"
+    className="signinInputEmail"
     onChange={[Function]}
     placeholder="email"
     type="email"
@@ -74,7 +74,7 @@ exports[`Renders SigninForm for auth type 'SignUp' correctly 1`] = `
     Password
   </label>
   <input
-    className="signinInput"
+    className="signinInputPassword"
     onChange={[Function]}
     placeholder="password"
     type="password"

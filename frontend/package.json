@@ -17,7 +17,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --testPathIgnorePatterns=.*e2e.test.js",
+    "test:e2e": "react-scripts test --testPathPattern=.*e2e.test.js$",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -39,6 +40,9 @@
     ]
   },
   "devDependencies": {
-    "react-test-renderer": "^17.0.2"
+    "@babel/helper-compilation-targets": "^7.16.3",
+    "puppeteer": "^11.0.0",
+    "react-test-renderer": "^17.0.2",
+    "serve": "^13.0.2"
   }
 }

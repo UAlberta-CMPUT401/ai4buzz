@@ -22,7 +22,7 @@ exports[`Renders signup page correctly 1`] = `
       Email
     </label>
     <input
-      className="signinInput"
+      className="signinInputEmail"
       onChange={[Function]}
       placeholder="email"
       type="email"
@@ -33,7 +33,7 @@ exports[`Renders signup page correctly 1`] = `
       Password
     </label>
     <input
-      className="signinInput"
+      className="signinInputPassword"
       onChange={[Function]}
       placeholder="password"
       type="password"

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Renders login page correctly 1`] = `
+exports[`Test Login Page Renders login page correctly 1`] = `
 <div
   className="loginPage"
 >
@@ -22,7 +22,7 @@ exports[`Renders login page correctly 1`] = `
       Email
     </label>
     <input
-      className="signinInput"
+      className="signinInputEmail"
       onChange={[Function]}
       placeholder="email"
       type="email"
@@ -33,7 +33,7 @@ exports[`Renders login page correctly 1`] = `
       Password
     </label>
     <input
-      className="signinInput"
+      className="signinInputPassword"
       onChange={[Function]}
       placeholder="password"
       type="password"

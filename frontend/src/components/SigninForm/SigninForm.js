@@ -22,16 +22,18 @@ const SigninForm = ({
 
       <label className={styles.labelName}>Email</label>
       <input
+        id="signin__email__input"
         placeholder="email"
-        className={styles.signinInput}
+        className={styles.signinInputEmail}
         type="email"
         onChange={(e) => onEmailChange(e.target.value)}
       />
 
       <label className={styles.labelName}>Password</label>
       <input
+        id="signin__password__input"
         placeholder="password"
-        className={styles.signinInput}
+        className={styles.signinInputPassword}
         type="password"
         onChange={(e) => onPasswordChange(e.target.value)}
       />
