@@ -29,7 +29,7 @@ This project is to develop a web service to allow researchers to gain insight in
 > 2. Expose endpoint that allows for the upload of multiple base 64 encoded image
 > 3. Throw an error if the user tries to send data that is not of the expected format
 
-### US 1.02 - Analysis response
+### US 1.02 - Image analysis result
 
 > **As** a researcher, **I want** to retrieve the results of the analysis using a web API, **so that** I can run my own analysis on the results
 
@@ -179,8 +179,8 @@ This project is to develop a web service to allow researchers to gain insight in
 
 ### Must Have
 
-- US 1.01 - Image upload in batches
-- US 1.02 - Image analysis
+- US 1.01 - Image upload
+- US 1.02 - Image analysis results
 - US 1.05 - Color scheme analysis
 - US 1.06 - Image sentiment classification
 - US 1.07 - Object detection
@@ -191,16 +191,16 @@ This project is to develop a web service to allow researchers to gain insight in
 
 - US 2.01 - Webclient image upload
 - US 2.02 - Webclient analysis
+- US 1.04 - Generate Collage
 - US 2.03 - Web client view collage
-- US 2.04 - Web client view dendrogram
 - US 2.05 - Web client authentication
 - US 2.06 - Web client JSON download
-- US 1.04 - Generate Collage
+- US 1.10 - Batch processing
 
 ### Could Have
 
-- US 1.10 - Image Streaming
 - US 1.03 - Generate Dendrogram
+- US 2.04 - Web client view dendrogram
 - US 1.09 - Text extraction
 
 ### Would Like but Won’t get

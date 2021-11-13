@@ -2,6 +2,7 @@
 Module containing class to analyze and classify sentiments in image
 
 """
+
 # ### For local running
 # import sys
 # sys.path.insert(0,'C:/Users/Joy/UofA-Drive/Fall-2021/CMPUT-401/Project/ai4buzz')
