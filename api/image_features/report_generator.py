@@ -21,17 +21,19 @@ class ReportGenerator:
 
     def  _generate_report_for_object_detection(self, descriptions_: descriptions.Descriptions) -> \
         Dict[str, Dict[str, Union[int, List[float]]]]:
-        objects = dict()
+        object_detections = dict()
         for obj_class, obj_confidence in descriptions_.descriptions:
-            if obj_class not in objects:
-                objects[obj_class] = {
+            if obj_class not in object_detections:
+                object_detections[obj_class] = {
                     "freq": 1,
                     "confidences": [obj_confidence] 
                 }
             else:
-                objects[obj_class]["freq"] += 1
-                objects[obj_class]["confidences"].append(obj_confidence)
-        return objects
+                object_detections[obj_class]["freq"] += 1
+                object_detections[obj_class]["confidences"].append(obj_confidence)
+        object_detections[
+            'processes_bounding_boxes_image_as_base64_string'] = descriptions_.processed_image
+        return object_detections
 
     def  _generate_report_for_image_classification(self,
         descriptions_: descriptions.Descriptions) -> Dict[str, float]:
