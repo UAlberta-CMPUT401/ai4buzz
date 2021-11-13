@@ -100,14 +100,14 @@ This project is to develop a web service to allow researchers to gain insight in
 > 1. Extracts text from an image
 > 2. Need to ensure 80-90% accuracy
 
-### US 1.10 - Image Streaming
+### US 1.10 - Batch processing
 
-> **As** a researcher, **I want** to be able to stream images to a web service, **so that** I can get analysis in real time.
+> **As** a researcher, **I want** to be able to upload more than one image to a web service, **so that** I can get batch image analysis in real time.
 
 > **Acceptance Tests**
 
-> 1. Allow client to initialize a connection to the web service over a streaming protocol
-> 2. Allow for images to be streamed to backend and results to be streamed back
+> 1. Allow client to upload more than one image to the web service
+> 2. Allow for images to be sent to backend and results to be sent back
 
 ### US 1.11 - Text Detection
 
