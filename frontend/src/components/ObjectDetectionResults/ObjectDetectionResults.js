@@ -6,6 +6,9 @@ const ObjectDetectionResults = ({ results }) => {
   return (
     <>
       {Object.keys(results).map((object, idx) => {
+        // ignore the bounding box image string
+        if (object === 'processes_bounding_boxes_image_as_base64_string')
+          return null;
         return (
           <div key={idx} className={styles.objectDetectionResultsData}>
             <div>{object}</div>
