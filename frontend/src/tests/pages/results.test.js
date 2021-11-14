@@ -4,41 +4,44 @@ import renderer from 'react-test-renderer';
 import { BrowserRouter } from 'react-router-dom';
 
 const mockData = {
-  sentiment_analysis: {
+  feature_analysis_results: {
     image_1: {
-      'sentiment_array[neg,neu,pos]': [
-        0.6817643046379089, 0.1544295847415924, 0.16380618512630463,
-      ],
-      degrees: {
-        Negative: '68.18%',
-        Neutral: '15.44%',
-        Postive: '16.38%',
+      color_scheme_analysis: {
+        count: 5,
+        colors: [
+          { red: 230, green: 226, blue: 216, proportion: 0.4253989209432653 },
+          { red: 9, green: 24, blue: 38, proportion: 0.16556650478570417 },
+          { red: 172, green: 165, blue: 158, proportion: 0.15257673629119714 },
+          { red: 112, green: 96, blue: 78, proportion: 0.09586900439840229 },
+          { red: 37, green: 33, blue: 23, proportion: 0.07738628479823256 },
+        ],
       },
+      object_detection: {
+        person: { freq: 1, confidences: [0.9984568357467651] },
+        laptop: {
+          freq: 2,
+          confidences: [0.9387264847755432, 0.6356411576271057],
+        },
+        cup: { freq: 1, confidences: [0.9060431718826294] },
+        processes_bounding_boxes_image_as_base64_string: 'base 64 image string',
+      },
+      sentiment_analysis: {
+        'sentiment_array[neg,neu,pos]': [
+          0.5963839888572693, 0.13197453320026398, 0.2716415226459503,
+        ],
+        degrees: { Negative: '59.64%', Neutral: '13.20%', Postive: '27.16%' },
+      },
+      image_classification: {
+        'cellular telephone': 0.6936329007148743,
+        notebook: 0.19310395419597626,
+        'hand-held computer': 0.04424683377146721,
+        'web site': 0.021844087168574333,
+        television: 0.014548316597938538,
+      },
+      text_recognition: '',
     },
   },
-  color_scheme_analysis: {
-    count: 3,
-    colors: [
-      [5, 41, 64],
-      [253, 252, 252],
-      [36, 14, 27],
-    ],
-  },
-  object_detection: {
-    person: {
-      freq: 2,
-      confidences: [0.9994099140167236, 0.9985186457633972],
-    },
-  },
-  image_classification: {
-    'web site': 0.9249883890151978,
-    'book jacket': 0.01968519203364849,
-    'comic book': 0.012182716280221939,
-    envelope: 0.0011725202202796936,
-    'analog clock': 0.0009474915568716824,
-  },
-  text_recognition:
-    "“Oh you're a software engineer? So you\nhave a rainbow computer with 2\nmonitors?\n\f",
+  collage_image_string: 'base 64 string',
 };
 
 const files = [
@@ -49,12 +52,11 @@ const files = [
 
 global.URL.createObjectURL = jest.fn();
 
-// https://developer.mozilla.org/en-US/docs/Web/API/File/File
 it('Renders Results page correctly', () => {
   const tree = renderer
     .create(
       <BrowserRouter>
-        <Results data={mockData} images={files} />
+        <Results results={mockData} images={files} />
       </BrowserRouter>
     )
     .toJSON();

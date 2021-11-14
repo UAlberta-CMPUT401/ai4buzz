@@ -2,54 +2,69 @@
 
 exports[`Renders ImageClassification component correctly 1`] = `
 <div>
-  <div>
+  <div
+    className="imageClassificationResultsData"
+  >
     <div>
       web site
     </div>
     <div
       className="value"
     >
-      0.9249884
+      92.499
+      %
     </div>
   </div>
-  <div>
+  <div
+    className="imageClassificationResultsData"
+  >
     <div>
       book jacket
     </div>
     <div
       className="value"
     >
-      0.0196852
+      1.969
+      %
     </div>
   </div>
-  <div>
+  <div
+    className="imageClassificationResultsData"
+  >
     <div>
       comic book
     </div>
     <div
       className="value"
     >
-      0.0121827
+      1.218
+      %
     </div>
   </div>
-  <div>
+  <div
+    className="imageClassificationResultsData"
+  >
     <div>
       envelope
     </div>
     <div
       className="value"
     >
-      0.0011725
+      0.117
+      %
     </div>
   </div>
-  <div>
+  <div
+    className="imageClassificationResultsData"
+  >
     <div>
       analog clock
     </div>
     <div
       className="value"
     >
-      0.0009475
+      0.095
+      %
     </div>
   </div>
 </div>
