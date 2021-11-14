@@ -19,9 +19,9 @@ This project is to develop a web service to allow researchers to gain insight in
 
 ## User Stories
 
-### US 1.01 - Image upload
+### US 1.01 - REST API and Database setup
 
-> **As** a researcher, **I want** to upload one or many images using a web API, **so that** the images can be analyzed
+> **As** a researcher, **I want** to register myself in the database when I initially set up the API, **so that** images are analyzed with those who have permission
 
 > **Acceptance Tests**
 
@@ -179,7 +179,7 @@ This project is to develop a web service to allow researchers to gain insight in
 
 ### Must Have
 
-- US 1.01 - Image upload
+- US 1.01 - REST API and Database setup
 - US 1.02 - Image analysis results
 - US 1.05 - Color scheme analysis
 - US 1.06 - Image sentiment classification
