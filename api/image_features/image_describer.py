@@ -37,7 +37,7 @@ class ImageDescriber():
            
             object_detections_descriptions = object_detector.get_descriptions(image)
             object_detection_report = report_generator_.generate_report(object_detections_descriptions)
-           
+
             image_classification_descreptions = image_classifier.get_descriptions(image)
             image_classification_report = report_generator_.generate_report(image_classification_descreptions)
           

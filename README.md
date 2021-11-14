@@ -28,3 +28,8 @@ https://ualberta-cmput401.github.io/ai4buzz/
 1. clone the repo if you haven't already
 2. `cd` into `frontend` directory
 3. use `yarn start` to start app locally
+
+# Testing
+
+- Endpoint test API: `pytest api/test/test_endpoints.py`
+- Unit test models: `python -m unittest discover -p "\*\_\_test.py"`
