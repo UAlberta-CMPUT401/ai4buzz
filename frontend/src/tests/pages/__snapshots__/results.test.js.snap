@@ -10,6 +10,12 @@ exports[`Renders Results page correctly 1`] = `
     >
       Analysis Results
     </h1>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Export to JSON
+    </button>
     <div
       className="resultListContainer"
     >
@@ -38,7 +44,7 @@ exports[`Renders Results page correctly 1`] = `
             </div>
           </div>
           <div>
-            {"count":2,"colors":[{"red":5,"green":41,"blue":64,"proportion":0.5235686765073805},{"red":253,"green":252,"blue":252,"proportion":0.17823367525644232}]}
+            {"count":5,"colors":[{"red":230,"green":226,"blue":216,"proportion":0.4253989209432653},{"red":9,"green":24,"blue":38,"proportion":0.16556650478570417},{"red":172,"green":165,"blue":158,"proportion":0.15257673629119714},{"red":112,"green":96,"blue":78,"proportion":0.09586900439840229},{"red":37,"green":33,"blue":23,"proportion":0.07738628479823256}]}
           </div>
           <div
             className="gradient"
@@ -60,13 +66,43 @@ exports[`Renders Results page correctly 1`] = `
                 <div
                   className="value"
                 >
-                  99.941
+                  99.846
+                  %
+                </div>
+              </div>
+            </div>
+            <div
+              className="objectDetectionResultsData"
+            >
+              <div>
+                laptop
+              </div>
+              <div>
+                <div
+                  className="value"
+                >
+                  93.873
                   %
                 </div>
                 <div
                   className="value"
                 >
-                  99.852
+                  63.564
+                  %
+                </div>
+              </div>
+            </div>
+            <div
+              className="objectDetectionResultsData"
+            >
+              <div>
+                cup
+              </div>
+              <div>
+                <div
+                  className="value"
+                >
+                  90.604
                   %
                 </div>
               </div>
@@ -87,12 +123,51 @@ exports[`Renders Results page correctly 1`] = `
                 className="imageClassificationResultsData"
               >
                 <div>
+                  cellular telephone
+                </div>
+                <div
+                  className="value"
+                >
+                  69.363
+                  %
+                </div>
+              </div>
+              <div
+                className="imageClassificationResultsData"
+              >
+                <div>
+                  notebook
+                </div>
+                <div
+                  className="value"
+                >
+                  19.310
+                  %
+                </div>
+              </div>
+              <div
+                className="imageClassificationResultsData"
+              >
+                <div>
+                  hand-held computer
+                </div>
+                <div
+                  className="value"
+                >
+                  4.425
+                  %
+                </div>
+              </div>
+              <div
+                className="imageClassificationResultsData"
+              >
+                <div>
                   web site
                 </div>
                 <div
                   className="value"
                 >
-                  92.499
+                  2.184
                   %
                 </div>
               </div>
@@ -100,51 +175,12 @@ exports[`Renders Results page correctly 1`] = `
                 className="imageClassificationResultsData"
               >
                 <div>
-                  book jacket
+                  television
                 </div>
                 <div
                   className="value"
                 >
-                  1.969
-                  %
-                </div>
-              </div>
-              <div
-                className="imageClassificationResultsData"
-              >
-                <div>
-                  comic book
-                </div>
-                <div
-                  className="value"
-                >
-                  1.218
-                  %
-                </div>
-              </div>
-              <div
-                className="imageClassificationResultsData"
-              >
-                <div>
-                  envelope
-                </div>
-                <div
-                  className="value"
-                >
-                  0.117
-                  %
-                </div>
-              </div>
-              <div
-                className="imageClassificationResultsData"
-              >
-                <div>
-                  analog clock
-                </div>
-                <div
-                  className="value"
-                >
-                  0.095
+                  1.455
                   %
                 </div>
               </div>
@@ -170,7 +206,7 @@ exports[`Renders Results page correctly 1`] = `
                 <div
                   className="value"
                 >
-                  68.18%
+                  59.64%
                 </div>
               </div>
               <div
@@ -182,7 +218,7 @@ exports[`Renders Results page correctly 1`] = `
                 <div
                   className="value"
                 >
-                  15.44%
+                  13.20%
                 </div>
               </div>
               <div
@@ -194,7 +230,7 @@ exports[`Renders Results page correctly 1`] = `
                 <div
                   className="value"
                 >
-                  16.38%
+                  27.16%
                 </div>
               </div>
             </div>
@@ -213,10 +249,7 @@ exports[`Renders Results page correctly 1`] = `
             <div
               className="value"
             >
-              “Oh you're a software engineer? So you
-have a rainbow computer with 2
-monitors?
-
+              
             </div>
           </div>
         </div>
