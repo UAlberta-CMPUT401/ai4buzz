@@ -17,7 +17,7 @@ https://ualberta-cmput401.github.io/ai4buzz/
 ## API
 
 1. clone the repo
-2. `cd` into the `backend` directory
+2. `cd` into the `api` directory
 3. generate virtual environment with `python3 -m venv env`
 4. activate virtual env with `source env/bin/activate`
 5. install requirements with `pip install -r requirements.txt`
