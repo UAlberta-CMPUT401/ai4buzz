@@ -2,8 +2,11 @@ FROM python:3.9
 
 WORKDIR /app
 
-COPY ./ /app/api
+COPY ./api /app/api
 
+COPY ./object_detection /app/object_detection
+
+# RUN apt clean
 RUN apt update
 RUN apt-get -y install tesseract-ocr
 RUN pip install --upgrade pip

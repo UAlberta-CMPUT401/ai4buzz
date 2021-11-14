@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import styles from './ResultsNav.module.css';
 

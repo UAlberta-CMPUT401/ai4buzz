@@ -1,4 +1,5 @@
 import React from 'react';
+import FacialAnalysisResults from '../../components/FacialAnalysisResults/FacialAnalysisResults';
 import ImageClassificationResults from '../../components/ImageClassificationResults/ImageClassificationResults';
 import ObjectDetectionResults from '../../components/ObjectDetectionResults/ObjectDetectionResults';
 import SentimentClassification from '../../components/SentimentClassification/SentimentClassification';
@@ -99,6 +100,14 @@ const Results = ({ results, images }) => {
                     <div className="value">
                       {imageFeatures.text_recognition}
                     </div>
+                  </div>
+                  <div className={styles.gradient}>
+                    <div className={styles.analysisHeader}>Facial Analysis</div>
+                  </div>
+                  <div>
+                    <FacialAnalysisResults
+                      facialResults={imageFeatures?.face_analysis?.analysis}
+                    />
                   </div>
                 </div>
               </div>
