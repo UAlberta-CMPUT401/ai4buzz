@@ -1,4 +1,5 @@
 import pytest
+import os
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -120,7 +121,9 @@ def test_get_image_features_success(test_db):
     signup_response = client.post(
         "/users", json={"email": "non_existent@test.com", "password": "wrongpassword"}
     )
+    test = os.path.dirname(__file__)
+    file_path = os.path.join(test, './test.jpeg')
     response = client.post(
-        f"/getImageFeatures?access_token={signup_response.json()['access_token']}", files={"files": ("test.png", open('test.png', 'rb'), 'image/png')}
+        f"/getImageFeatures?access_token={signup_response.json()['access_token']}", files={"files": ("test.jpeg", open(file_path, 'rb'), 'image/jpeg')}
     )
     assert response.status_code == 200
