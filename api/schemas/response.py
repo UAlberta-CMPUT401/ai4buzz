@@ -9,6 +9,7 @@ class ImageDescription(BaseModel):
     object_detection: dict
     image_classification: dict
     text_recognition: str
+    face_analysis: str
 
 class GetImageFeaturesResponse(BaseModel):
     feature_analysis_results: dict
