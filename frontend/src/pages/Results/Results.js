@@ -5,10 +5,40 @@ import SentimentClassification from '../../components/SentimentClassification/Se
 import styles from './Results.module.css';
 
 const Results = ({ featureAnalysisResults, images }) => {
+  const downloadFile = ({ featureAnalysisResults, fileName, fileType }) => {
+    const blob = new Blob([featureAnalysisResults], { type: fileType });
+    console.log(featureAnalysisResults, blob);
+
+    const a = document.createElement('a');
+    a.download = fileName;
+    a.href = window.URL.createObjectURL(blob);
+    const clickEvt = new MouseEvent('click', {
+      view: window,
+      bubbles: true,
+      cancelable: true,
+    });
+    a.dispatchEvent(clickEvt);
+    a.remove();
+  };
+
+  const exportToJson = (e) => {
+    e.preventDefault();
+    downloadFile({
+      featureAnalysisResults: JSON.stringify(featureAnalysisResults),
+      fileName: 'results.json',
+      fileType: 'text/json',
+    });
+  };
+
   return (
     <div className={styles.resultsPage}>
       <div>
         <h1 className={styles.resultTitle}>Analysis Results</h1>
+
+        <button type="button" onClick={exportToJson}>
+          Export to JSON
+        </button>
+
         <div className={styles.resultListContainer}>
           {images.map((image, idx) => {
             const imageFeatures = featureAnalysisResults[`image_${idx + 1}`];
