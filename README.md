@@ -31,5 +31,11 @@ https://ualberta-cmput401.github.io/ai4buzz/
 
 # Testing
 
+## Backend
+
 - Endpoint test API: `pytest api/test/test_endpoints.py`
-- Unit test models: `python -m unittest discover -p "\*\_\_test.py"`
+- Unit test models: `python -m unittest discover -p "*__test.py"`
+
+## Frontend
+
+- snap shot test: `yarn test`
