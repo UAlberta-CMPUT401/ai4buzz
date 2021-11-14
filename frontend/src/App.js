@@ -45,12 +45,7 @@ function App() {
             path="/results"
             exact
             component={() => {
-              return (
-                <Results
-                  featureAnalysisResults={results?.feature_analysis_results}
-                  images={images}
-                />
-              );
+              return <Results results={results} images={images} />;
             }}
           />
           <AuthenticatedRoute

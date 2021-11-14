@@ -4,7 +4,7 @@ import ObjectDetectionResults from '../../components/ObjectDetectionResults/Obje
 import SentimentClassification from '../../components/SentimentClassification/SentimentClassification';
 import styles from './Results.module.css';
 
-const Results = ({ featureAnalysisResults, images }) => {
+const Results = ({ results, images }) => {
   const downloadFile = ({ featureAnalysisResults, fileName, fileType }) => {
     const blob = new Blob([featureAnalysisResults], { type: fileType });
 
@@ -23,7 +23,7 @@ const Results = ({ featureAnalysisResults, images }) => {
   const exportToJson = (e) => {
     e.preventDefault();
     downloadFile({
-      featureAnalysisResults: JSON.stringify(featureAnalysisResults),
+      featureAnalysisResults: JSON.stringify(results),
       fileName: 'results.json',
       fileType: 'text/json',
     });
@@ -40,7 +40,8 @@ const Results = ({ featureAnalysisResults, images }) => {
 
         <div className={styles.resultListContainer}>
           {images.map((image, idx) => {
-            const imageFeatures = featureAnalysisResults[`image_${idx + 1}`];
+            const imageFeatures =
+              results.feature_analysis_results[`image_${idx + 1}`];
             return (
               <div className={styles.imageFeatureResult} key={idx}>
                 <h4>{image.name}</h4>
