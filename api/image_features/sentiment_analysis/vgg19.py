@@ -113,7 +113,7 @@ class KitModel(nn.Module):
         drop7           = F.dropout(input = relu7, p = 0.5, training = self.training, inplace = True)
         fc8_retrain_0   = drop7.view(drop7.size(0), -1)
         fc8_retrain_1   = self.fc8_retrain_1(fc8_retrain_0)
-        softmax         = F.softmax(fc8_retrain_1)
+        softmax         = F.softmax(fc8_retrain_1, dim = 1)
         return softmax
 
 

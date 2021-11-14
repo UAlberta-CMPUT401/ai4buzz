@@ -25,9 +25,9 @@ This project is to develop a web service to allow researchers to gain insight in
 
 > **Acceptance Tests**
 
-> 1. Expose endpoint that allows for the upload of a base 64 encoded image
-> 2. Expose endpoint that allows for the upload of multiple base 64 encoded image
-> 3. Throw an error if the user tries to send data that is not of the expected format
+> 1. Expose endpoint that allows for the upload of multiple images
+> 2. Throw an error if the user tries to send data that is not of the expected format
+> 3. Only allow registered users to acess other endpoints
 
 ### US 1.02 - Image analysis result
 
