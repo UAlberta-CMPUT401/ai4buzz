@@ -6,7 +6,7 @@ export const uploadImages = async (imageFiles, access_token) => {
     formData.append('files', image);
   }
   return await axios.post(
-    `http://localhost:8000/getImageFeatures?access_token=${access_token}`,
+    `http://[2605:fd00:4:1001:f816:3eff:fe26:70dd]/getImageFeatures?access_token=${access_token}`,
     formData,
     {
       headers: {

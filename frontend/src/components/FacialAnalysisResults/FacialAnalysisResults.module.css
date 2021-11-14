@@ -1,0 +1,8 @@
+.faceResults {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tabbedData {
+  padding-left: 1rem;
+}

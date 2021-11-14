@@ -67,14 +67,6 @@ class ImageDescriber():
         collage_rgb.save(buffer, format="JPEG")
         collage_image_string = base64.b64encode(buffer.getvalue())
 
-        # TODO: convert to base64 encoded string
-        # feature_analysis_results['collage'] = collage_base64_string
-
-        # dendrogram_generator = DendrogramGenerator()
-        # dendrogram = dendrogram_generator.generate(feature_analysis_results) 
-        # TODO: convert to base64 encoded string
-        # feature_analysis_results['dendrogram'] = dendrogram_base64_string
-
         return {
             "feature_analysis_results": feature_analysis_results,
             "collage_image_string": collage_image_string
