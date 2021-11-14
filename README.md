@@ -7,6 +7,10 @@ https://ualberta-cmput401.github.io/ai4buzz/
 - Base url: http://[2605:fd00:4:1001:f816:3eff:fe26:70dd]
 - Docs: http://[2605:fd00:4:1001:f816:3eff:fe26:70dd]/docs
 
+# Web client
+
+- Url: http://[2605:fd00:4:1001:f816:3eff:fe67:1ff9]
+
 # Local Setup
 
 ## Prerequisites
