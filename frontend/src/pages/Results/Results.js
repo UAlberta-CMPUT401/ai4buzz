@@ -7,7 +7,6 @@ import styles from './Results.module.css';
 const Results = ({ featureAnalysisResults, images }) => {
   const downloadFile = ({ featureAnalysisResults, fileName, fileType }) => {
     const blob = new Blob([featureAnalysisResults], { type: fileType });
-    console.log(featureAnalysisResults, blob);
 
     const a = document.createElement('a');
     a.download = fileName;
