@@ -40,16 +40,14 @@ const Results = ({ results, images }) => {
         </button>
 
         <div className={styles.resultListContainer}>
-          {images.map((image, idx) => {
-            const imageFeatures =
-              results.feature_analysis_results[`image_${idx + 1}`];
+          {results.feature_analysis_results.map((imageFeatures, idx) => {
             return (
               <div className={styles.imageFeatureResult} key={idx}>
-                <h4>{image.name}</h4>
+                <h4>{imageFeatures.id}</h4>
                 <div className={styles.imageContainer}>
                   <img
                     className={styles.image}
-                    src={URL.createObjectURL(image)}
+                    src={`data:image/jpeg;base64,${imageFeatures.object_detection.processes_bounding_boxes_image_as_base64_string}`}
                     alt="results"
                   />
                 </div>
@@ -96,10 +94,16 @@ const Results = ({ results, images }) => {
                     </div>
                   </div>
                   <div>
-                    Extracted:
-                    <div className="value">
-                      {imageFeatures.text_recognition}
-                    </div>
+                    {imageFeatures.text_recognition === '' ? (
+                      'No text detected'
+                    ) : (
+                      <div>
+                        Extracted:
+                        <div className="value">
+                          {imageFeatures.text_recognition}
+                        </div>
+                      </div>
+                    )}
                   </div>
                   <div className={styles.gradient}>
                     <div className={styles.analysisHeader}>Facial Analysis</div>
