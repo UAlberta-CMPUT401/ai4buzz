@@ -33,33 +33,36 @@ class ImageDescriber():
         text_recognizer = TextRecognizer()
         face_detector = FaceDetector()
 
-        feature_analysis_results = {}
-        for idx, image in enumerate(images):
-            color_scheme_analysis = colorSchemeAnalyzer.get_descriptions(image)
+        feature_analysis_results = []
+        for image in images:
+            image_bytes = image["bytes"]
+
+            color_scheme_analysis = colorSchemeAnalyzer.get_descriptions(image_bytes)
            
-            object_detections_descriptions = object_detector.get_descriptions(image)
+            object_detections_descriptions = object_detector.get_descriptions(image_bytes)
             object_detection_report = report_generator_.generate_report(object_detections_descriptions)
 
-            image_classification_descreptions = image_classifier.get_descriptions(image)
+            image_classification_descreptions = image_classifier.get_descriptions(image_bytes)
             image_classification_report = report_generator_.generate_report(image_classification_descreptions)
           
-            text = text_recognizer.get_descriptions(image)
+            text = text_recognizer.get_descriptions(image_bytes)
        
-            sentiment_analysis = sentiment_analyzer.get_descriptions([image])
-            text = text_recognizer.get_descriptions(image)
-            face_analysis = face_detector.get_descriptions(image)
+            sentiment_analysis = sentiment_analyzer.get_descriptions([image_bytes])
 
-            feature_analysis_results["image_" + str(idx + 1)] = {
+            face_analysis = face_detector.get_descriptions(image_bytes)
+
+            feature_analysis_results.append({
+                "id": image["id"],
                 "color_scheme_analysis": color_scheme_analysis,
                 "object_detection": object_detection_report,
                 "sentiment_analysis": sentiment_analysis,
                 "image_classification": image_classification_report,
                 "text_recognition": text,
                 "face_analysis": face_analysis,
-            }
+            })
 
         collage_generator = CollageGenerator()
-        collage = collage_generator.generate(images)
+        collage = collage_generator.generate([img['bytes'] for img in images])
 
         # convert to base64
         buffer = BytesIO()
