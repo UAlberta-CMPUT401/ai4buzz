@@ -5,83 +5,139 @@ const FacialAnalysisResults = ({ facialResults }) => {
   console.log(facialResults);
   return (
     <div>
-      {facialResults.map((faceData, idx) => {
-        return (
-          <div key={idx}>
-            <div>Emotion</div>
-            <div className={styles.tabbedData}>
-              <div>angry</div>
-              <div className={styles.tabbedData}>{faceData.emotion.angry}</div>
-              <div>disgust</div>
-              <div className={styles.tabbedData}>
-                {faceData.emotion.disgust}
+      {facialResults.length
+        ? facialResults.map((faceData, idx) => {
+            return (
+              <div key={idx}>
+                <div className={styles.faceResults}>
+                  <div>Age</div>
+                  <div className="value">{faceData.age}</div>
+                </div>
+
+                <div className={styles.faceResults}>
+                  <div>Gender</div>
+                  <div className="value">{faceData.gender}</div>
+                </div>
+
+                <div className={styles.faceResults}>
+                  <div>Dominant Emotion</div>
+                  <div className="value">{faceData.dominant_emotion}</div>
+                </div>
+
+                <div>Emotion</div>
+                <div className={styles.tabbedData}>
+                  <div className={styles.faceResults}>
+                    <div>angry</div>
+                    <div className="value">
+                      {faceData.emotion.angry.toFixed(3)}%
+                    </div>
+                  </div>
+                  <div className={styles.faceResults}>
+                    <div>disgust</div>
+                    <div className="value">
+                      {faceData.emotion.disgust.toFixed(3)}%
+                    </div>
+                  </div>
+                  <div className={styles.faceResults}>
+                    <div>fear</div>
+                    <div className="value">
+                      {faceData.emotion.fear.toFixed(3)}%
+                    </div>
+                  </div>
+                  <div className={styles.faceResults}>
+                    <div>happy</div>
+                    <div className="value">
+                      {faceData.emotion.happy.toFixed(3)}%
+                    </div>
+                  </div>
+                  <div className={styles.faceResults}>
+                    <div>sad</div>
+                    <div className="value">
+                      {faceData.emotion.sad.toFixed(3)}%
+                    </div>
+                  </div>
+                  <div className={styles.faceResults}>
+                    <div>surprise</div>
+                    <div className="value">
+                      {faceData.emotion.surprise.toFixed(3)}%
+                    </div>
+                  </div>
+                  <div className={styles.faceResults}>
+                    <div>neutral</div>
+                    <div className="value">
+                      {faceData.emotion.neutral.toFixed(3)}%
+                    </div>
+                  </div>
+                </div>
+
+                <div className={styles.faceResults}>
+                  <div>Dominant Race</div>
+                  <div className="value">{faceData.dominant_race}</div>
+                </div>
+
+                <div>Race</div>
+                <div className={styles.tabbedData}>
+                  <div className={styles.faceResults}>
+                    <div>Asian</div>
+                    <div className="value">
+                      {faceData.race['asian'].toFixed(3)}%
+                    </div>
+                  </div>
+                  <div className={styles.faceResults}>
+                    <div>Indian</div>
+                    <div className="value">
+                      {faceData.race['indian'].toFixed(3)}%
+                    </div>
+                  </div>
+                  <div className={styles.faceResults}>
+                    <div>Middle Eastern</div>
+                    <div className="value">
+                      {faceData.race['middle eastern'].toFixed(3)}%
+                    </div>
+                  </div>
+                  <div className={styles.faceResults}>
+                    <div>White</div>
+                    <div className="value">
+                      {faceData.race['white'].toFixed(3)}%
+                    </div>
+                  </div>
+                  <div className={styles.faceResults}>
+                    <div>Latino Hispanic</div>
+                    <div className="value">
+                      {faceData.race['latino hispanic'].toFixed(3)}%
+                    </div>
+                  </div>
+                  <div className={styles.faceResults}>
+                    <div>Black</div>
+                    <div className="value">
+                      {faceData.race['black'].toFixed(3)}%
+                    </div>
+                  </div>
+                </div>
+
+                <div>Region</div>
+                <div className={styles.tabbedData}>
+                  <div className={styles.faceResults}>
+                    <div>x</div>
+                    <div className="value">{faceData.region.x}</div>
+                  </div>
+                  <div className={styles.faceResults}>
+                    <div>y</div>
+                    <div className="value">{faceData.region.y}</div>
+                  </div>
+                  <div className={styles.faceResults}>
+                    <div>w</div>
+                    <div className="value">{faceData.region.w}</div>
+                  </div>
+                  <div className={styles.faceResults}>
+                    <div>h</div>
+                    <div className="value">{faceData.region.h}</div>
+                  </div>
+                </div>
               </div>
-              <div>fear</div>
-              <div className={styles.tabbedData}>{faceData.emotion.fear}</div>
-              <div>happy</div>
-              <div className={styles.tabbedData}>{faceData.emotion.happy}</div>
-              <div>sad</div>
-              <div className={styles.tabbedData}>{faceData.emotion.sad}</div>
-              <div>surprise</div>
-              <div className={styles.tabbedData}>
-                {faceData.emotion.surprise}
-              </div>
-              <div>neutral</div>
-              <div className={styles.tabbedData}>
-                {faceData.emotion.neutral}
-              </div>
-            </div>
-
-            <div>Dominant Emotion</div>
-            <div className={styles.tabbedData}>{faceData.dominant_emotion}</div>
-
-            <div>Region</div>
-            <div className={styles.tabbedData}>
-              <div>x</div>
-              <div className={styles.tabbedData}>{faceData.region.x}</div>
-              <div>y</div>
-              <div className={styles.tabbedData}>{faceData.region.y}</div>
-              <div>w</div>
-              <div className={styles.tabbedData}>{faceData.region.w}</div>
-              <div>h</div>
-              <div className={styles.tabbedData}>{faceData.region.h}</div>
-            </div>
-
-            <div>Age</div>
-            <div className={styles.tabbedData}>{faceData.age}</div>
-
-            <div>Gender</div>
-            <div className={styles.tabbedData}>{faceData.gender}</div>
-
-            <div>Race</div>
-            <div className={styles.tabbedData}>
-              <div>Asian</div>
-              <div className={styles.tabbedData}>{faceData.race['asian']}</div>
-              <div>Indian</div>
-              <div className={styles.tabbedData}>{faceData.race['indian']}</div>
-
-              <div>Middle Eastern</div>
-              <div className={styles.tabbedData}>
-                {faceData.race['middle eastern']}
-              </div>
-
-              <div>White</div>
-              <div className={styles.tabbedData}>{faceData.race['white']}</div>
-
-              <div>Latino Hispanic</div>
-              <div className={styles.tabbedData}>
-                {faceData.race['latino hispanic']}
-              </div>
-
-              <div>Black</div>
-              <div className={styles.tabbedData}>{faceData.race['black']}</div>
-            </div>
-
-            <div>Dominant Race</div>
-            <div className={styles.tabbedData}>{faceData.dominant_race}</div>
-          </div>
-        );
-      })}
+            );
+          })
+        : 'No faces detected'}
     </div>
   );
 };
