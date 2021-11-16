@@ -7,6 +7,7 @@ from sqlalchemy.orm.session import Session
 from sqlalchemy.orm import Session
 from io import BytesIO
 from PIL import Image
+import base64
 
 from api import schemas
 from api.image_features.image_describer import ImageDescriber
@@ -20,7 +21,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=['http://[2605:fd00:4:1001:f816:3eff:fe67:1ff9]', 'http://localhost'],
+    allow_origins=['http://[2605:fd00:4:1001:f816:3eff:fe67:1ff9]', 'http://localhost', 'http://localhost:3000'],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -108,9 +109,34 @@ async def get_features(files: List[UploadFile] = File(...), user: str = Depends(
         extension = file.filename.split(".")[-1] in ("jpg", "jpeg", "png")
         if not extension:
             return Response(content='File type must be .jpeg, .jpg or .png', status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
-        image_bytes.append(Image.open(BytesIO(await file.read())))
+        image_bytes.append({"id": file.filename , "bytes": Image.open(BytesIO(await file.read())).convert('RGB')})
 
     # perform and return analysis
     image_describer = ImageDescriber()
     image_features = image_describer.get_features_by_image(image_bytes)
+    return JSONResponse(content=jsonable_encoder(image_features))
+
+@app.post('/getImageFeaturesBase64')
+async def get_features(files: List[schemas.Base64Image], user: str = Depends(verify_jwt)):
+    """ Endpoint to get analysis of multiple base64 images
+
+    Args:
+        files (List[schemas.Base64Image]): List of Base64Images
+        user (str): [description]. Defaults to Depends(verify_jwt).
+
+    Returns:
+        JSONResponse: JSON response containing analysis summary
+    """
+    # read base64 into images array
+    images = []
+    for file in files:
+        try:
+            image_bytes = Image.open(BytesIO(base64.b64decode(file.img64))).convert('RGB') 
+            images.append({"id": file.id, "bytes": image_bytes})
+        except:
+            return Response(content=f'{file.id} base64 image string could not be processed', status_code=status.HTTP_400_BAD_REQUEST)
+
+    # perform and return analysis
+    image_describer = ImageDescriber()
+    image_features = image_describer.get_features_by_image(images)
     return JSONResponse(content=jsonable_encoder(image_features))

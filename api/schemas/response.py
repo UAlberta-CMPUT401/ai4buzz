@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from api import image_features
 
 class ImageDescription(BaseModel):
+    id: str
     sentiment_analysis: dict
     color_scheme_analysis: dict
     object_detection: dict
