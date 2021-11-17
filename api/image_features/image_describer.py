@@ -20,24 +20,24 @@ from api.image_features.facial_analysis.facial_detector import FaceDetector
 
 
 def color_scheme_analysis(image_string: Dict[str, Any]) -> Dict[str, Any]:
-    image = Image.fromstring(image_string['mode'], image_string['size'], image_string['pixels'])
+    image = Image.frombytes(image_string['mode'], image_string['size'], image_string['pixels'])
     color_scheme_analysis = ColorSchemeAnalyzer().get_descriptions(image)
     return color_scheme_analysis
 
 def object_detection(image_string: Dict[str, Any]) -> Dict[str, Any]:
-    image = Image.fromstring(image_string['mode'], image_string['size'], image_string['pixels'])
+    image = Image.frombytes(image_string['mode'], image_string['size'], image_string['pixels'])
     object_detections_descriptions = ObjectDetector(TFHubClient()).get_descriptions(image)
     object_detection_report = ReportGenerator().generate_report(object_detections_descriptions)
     return object_detection_report
 
 def image_classification(image_string: Dict[str, Any]) -> Dict[str, Any]:
-    image = Image.fromstring(image_string['mode'], image_string['size'], image_string['pixels'])
+    image = Image.frombytes(image_string['mode'], image_string['size'], image_string['pixels'])
     image_classification_descreptions = ImageClassifier(TFHubClient()).get_descriptions(image)
     image_classification_report = ReportGenerator().generate_report(image_classification_descreptions)
     return image_classification_report
 
 def sentiment_analysis(image_string: Dict[str, Any]) -> Dict[str, Any]:
-    image = Image.fromstring(image_string['mode'], image_string['size'], image_string['pixels'])
+    image = Image.frombytes(image_string['mode'], image_string['size'], image_string['pixels'])
     sentiment_analysis = SentimentAnalyzer(batch_size=1).get_descriptions([image])
     return sentiment_analysis
 
@@ -55,7 +55,7 @@ class ImageDescriber():
         feature_analysis_results = []
         for image_info in images:
             image = image_info["image"]
-            image_string = {'pixels': image.tostring(), 'size': image.size, 'mode': image.mode,}
+            image_string = {'pixels': image.tobytes(), 'size': image.size, 'mode': image.mode,}
             with ProcessPoolExecutor() as pool:
                 future_color_scheme_analysis = pool.submit(color_scheme_analysis, image_string)
                 future_object_detection = pool.submit(object_detection, image_string)
