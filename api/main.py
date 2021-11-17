@@ -103,17 +103,17 @@ async def get_features(files: List[UploadFile] = File(...), user: str = Depends(
         JSONResponse: JSON response containing analysis summary
     """
     # read image file bytes into array
-    image_bytes = []
+    images = []
     for file in files:
         # ensure files are images
         extension = file.filename.split(".")[-1] in ("jpg", "jpeg", "png")
         if not extension:
             return Response(content='File type must be .jpeg, .jpg or .png', status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
-        image_bytes.append({"id": file.filename , "bytes": Image.open(BytesIO(await file.read())).convert('RGB')})
+        images.append({"id": file.filename , "image": Image.open(BytesIO(await file.read())).convert('RGB')})
 
     # perform and return analysis
     image_describer = ImageDescriber()
-    image_features = image_describer.get_features_by_image(image_bytes)
+    image_features = image_describer.get_features_by_image(images)
     return JSONResponse(content=jsonable_encoder(image_features))
 
 @app.post('/getImageFeaturesBase64')
@@ -131,8 +131,8 @@ async def get_features(files: List[schemas.Base64Image], user: str = Depends(ver
     images = []
     for file in files:
         try:
-            image_bytes = Image.open(BytesIO(base64.b64decode(file.img64))).convert('RGB') 
-            images.append({"id": file.id, "bytes": image_bytes})
+            image = Image.open(BytesIO(base64.b64decode(file.img64))).convert('RGB') 
+            images.append({"id": file.id, "image": image})
         except:
             return Response(content=f'{file.id} base64 image string could not be processed', status_code=status.HTTP_400_BAD_REQUEST)
 
