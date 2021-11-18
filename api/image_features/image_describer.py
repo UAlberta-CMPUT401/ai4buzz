@@ -71,7 +71,7 @@ class ImageDescriber():
             face_analysis = face_detector.get_descriptions(image)
 
             feature_analysis_results.append({
-                "id": image["id"],
+                "id": image_info["id"],
                 "color_scheme_analysis": color_scheme_analysis_report,
                 "object_detection": object_detection_report,
                 "sentiment_analysis": sentiment_analysis_report,
