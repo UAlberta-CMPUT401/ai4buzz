@@ -6,6 +6,7 @@ from io import BytesIO
 from typing import Any, Dict
 from PIL import Image
 from concurrent.futures import ProcessPoolExecutor
+import imagehash
 
 from api.image_features.collage_generator import CollageGenerator
 from api.image_features.dendrogram_generator import DendrogramGenerator
@@ -18,6 +19,23 @@ from api.image_features.tf_hub_client import TFHubClient
 from api.image_features.text_recognition.text_recognizer import TextRecognizer
 from api.image_features.facial_analysis.facial_detector import FaceDetector
 
+def duplicate_remover(images):
+    hash_size = 8
+    hashes = {}
+    duplicates = []
+    print('\nFinding duplicate input images now:')
+    for image in images:
+        temp_hash = imagehash.average_hash(image['image'], hash_size)
+        if temp_hash in hashes:
+            duplicates.append(image)
+        else:
+            hashes[temp_hash] = image
+
+    for d in duplicates:
+        if d in images:
+            images.remove(d)
+
+    print("{} duplicates removed from {} input images\n".format(len(duplicates),len(duplicates)+len(images)))
 
 def color_scheme_analysis(image_string: Dict[str, Any]) -> Dict[str, Any]:
     image = Image.frombytes(image_string['mode'], image_string['size'], image_string['pixels'])
@@ -49,6 +67,9 @@ class ImageDescriber():
         :param images: List of Dicts where Dict = {'id':int, 'image':PIL Image}
         :return: dict containing formatted analysis data
         """
+
+        duplicate_remover(images)
+
         text_recognizer = TextRecognizer()
         face_detector = FaceDetector()
 
