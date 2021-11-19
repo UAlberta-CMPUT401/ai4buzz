@@ -90,7 +90,7 @@ class ImageDescriber():
         self.remove_duplicates(images_info)
 
         feature_analysis_results = []
-        with ProcessPoolExecutor() as pool:
+        with ProcessPoolExecutor(max_workers=4) as pool:
             for image_description in pool.map(describe_an_image, images_info):
                 feature_analysis_results.append(image_description)
             
