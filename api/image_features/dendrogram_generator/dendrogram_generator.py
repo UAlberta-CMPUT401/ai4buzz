@@ -16,7 +16,7 @@ class DendrogramGenerator:
         """
         data = report
         num_images = len(data['feature_analysis_results'])
-        total_data = np.zeros((num_images,9))
+        total_data = np.zeros((num_images,10))
         for i in range(num_images):
   
             total_data[i][0] = (data['feature_analysis_results'][i]['color_scheme_analysis']['count'])
@@ -40,6 +40,7 @@ class DendrogramGenerator:
                     object_count = object_count + data['feature_analysis_results'][i]["object_detection"][key]["freq"] 
             total_data[i][8] = object_count
 
+            total_data[i][9] = data['feature_analysis_results'][i]["face_analysis"]["count"]
 
         #print(total_data)
         #print(total_data.shape)
@@ -49,8 +50,8 @@ class DendrogramGenerator:
 
                 total_data[:,i] = total_data[:,i] / total_data[:,i].max()
 
-        print(total_data)
-
+        #print(total_data)
+        #try cosine
         temp = hierarchy.linkage(total_data, 'single')
         plt.figure()
   
