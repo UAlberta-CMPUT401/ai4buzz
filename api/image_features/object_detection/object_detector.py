@@ -16,7 +16,7 @@ class ObjectDetector:
 
     _model_name: str
     _tf_hub_client: tf_hub_client.TFHubClient
-    _MINIMUM_THRESHOLD_CONFIDENCE = 0.60
+    _MINIMUM_THRESHOLD_CONFIDENCE = 0.40
 
     def __init__(self, tf_hub_client: tf_hub_client.TFHubClient, 
         model_name: str = 'Faster R-CNN Inception ResNet V2 1024x1024') -> None:

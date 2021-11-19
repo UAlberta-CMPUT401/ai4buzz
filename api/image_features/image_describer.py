@@ -17,23 +17,6 @@ from api.image_features.tf_hub_client import TFHubClient
 from api.image_features.text_recognition.text_recognizer import TextRecognizer
 from api.image_features.facial_analysis.facial_detector import FaceDetector
 
-def duplicate_remover(images):
-    hash_size = 8
-    hashes = {}
-    duplicates = []
-    print('\nFinding duplicate input images now:')
-    for image in images:
-        temp_hash = imagehash.average_hash(image['image'], hash_size)
-        if temp_hash in hashes:
-            duplicates.append(image)
-        else:
-            hashes[temp_hash] = image
-
-    for d in duplicates:
-        if d in images:
-            images.remove(d)
-
-    print("{} duplicates removed from {} input images\n".format(len(duplicates),len(duplicates)+len(images)))
 
 def color_scheme_analysis(image_string: Dict[str, Any]) -> Dict[str, Any]:
     image = Image.frombytes(image_string['mode'], image_string['size'], image_string['pixels'])
@@ -57,6 +40,16 @@ def sentiment_analysis(image_string: Dict[str, Any]) -> Dict[str, Any]:
     sentiment_analysis = SentimentAnalyzer(batch_size=1).get_descriptions([image])
     return sentiment_analysis
 
+def text_recognition(image_string: Dict[str, Any]) -> Dict[str, Any]:
+    image = Image.frombytes(image_string['mode'], image_string['size'], image_string['pixels'])
+    text_recognition = TextRecognizer().get_descriptions(image)
+    return text_recognition
+
+def face_detection(image_string: Dict[str, Any]) -> Dict[str, Any]:
+    image = Image.frombytes(image_string['mode'], image_string['size'], image_string['pixels'])
+    face_detection = FaceDetector().get_descriptions(image)
+    return face_detection
+
 class ImageDescriber():
     """Extracts features for images."""
     def get_features_by_image(self, images):
@@ -65,11 +58,7 @@ class ImageDescriber():
         :param images: List of Dicts where Dict = {'id':int, 'image':PIL Image}
         :return: dict containing formatted analysis data
         """
-
-        duplicate_remover(images)
-
-        text_recognizer = TextRecognizer()
-        face_detector = FaceDetector()
+        self.remove_duplicates(images)
 
         feature_analysis_results = []
         for image_info in images:
@@ -80,14 +69,16 @@ class ImageDescriber():
                 future_object_detection = pool.submit(object_detection, image_string)
                 future_image_classification = pool.submit(image_classification, image_string)
                 future_sentiment_analysis = pool.submit(sentiment_analysis, image_string)
+                future_text_recognition = pool.submit(text_recognition, image_string)
+                future_face_detection = pool.submit(face_detection, image_string)
 
                 color_scheme_analysis_report = future_color_scheme_analysis.result()
                 object_detection_report = future_object_detection.result()
                 image_classification_report = future_image_classification.result()
                 sentiment_analysis_report = future_sentiment_analysis.result()
-  
-            text = text_recognizer.get_descriptions(image)
-            face_analysis = face_detector.get_descriptions(image)
+                text = future_text_recognition.result()
+                face_analysis = future_face_detection.result()
+
 
             feature_analysis_results.append({
                 "id": image_info["id"],
@@ -107,3 +98,18 @@ class ImageDescriber():
             "feature_analysis_results": feature_analysis_results,
             "collage_image_string": collage_image_string
         }
+
+    def remove_duplicates(self, images):
+        hash_size = 8
+        hashes = {}
+        duplicates = []
+        for image in images:
+            temp_hash = imagehash.average_hash(image['image'], hash_size)
+            if temp_hash in hashes:
+                duplicates.append(image)
+            else:
+                hashes[temp_hash] = image
+
+        for d in duplicates:
+            if d in images:
+                images.remove(d)
