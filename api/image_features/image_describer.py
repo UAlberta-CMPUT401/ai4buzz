@@ -44,12 +44,12 @@ def sentiment_analysis(image_string: Dict[str, Any]) -> Dict[str, Any]:
 
 def text_recognition(image_string: Dict[str, Any]) -> Dict[str, Any]:
     image = Image.frombytes(image_string['mode'], image_string['size'], image_string['pixels'])
-    text_recognition = TextRecognizer().get_descriptions([image])
+    text_recognition = TextRecognizer().get_descriptions(image)
     return text_recognition
 
 def face_detection(image_string: Dict[str, Any]) -> Dict[str, Any]:
     image = Image.frombytes(image_string['mode'], image_string['size'], image_string['pixels'])
-    face_detection = FaceDetector().get_descriptions([image])
+    face_detection = FaceDetector().get_descriptions(image)
     return face_detection
 
 class ImageDescriber():
