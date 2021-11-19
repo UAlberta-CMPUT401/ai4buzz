@@ -1,8 +1,6 @@
 """Contains the ImageDescriber class.
 
 This class is used to describe a givem image by running various models on the image."""
-import base64
-from io import BytesIO
 from typing import Any, Dict
 from PIL import Image
 from concurrent.futures import ProcessPoolExecutor
@@ -103,12 +101,7 @@ class ImageDescriber():
 
         collage_generator = CollageGenerator()
         collage = collage_generator.generate([img['image'] for img in images])
-
-        # convert to base64
-        buffer = BytesIO()
-        collage_rgb = collage.convert('RGB')
-        collage_rgb.save(buffer, format="JPEG")
-        collage_image_string = base64.b64encode(buffer.getvalue())
+        collage_image_string = ReportGenerator().generate_collage_report(collage)
 
         return {
             "feature_analysis_results": feature_analysis_results,
