@@ -9,7 +9,8 @@ class TextRecognizer:
     """Uses OpenCV to detect and tesseract to recognize text."""
 
     def __init__(self):
-        pytesseract.pytesseract.tesseract_cmd = r'/usr/bin/tesseract'
+        #pytesseract.pytesseract.tesseract_cmd = r'/usr/bin/tesseract'
+        pytesseract.pytesseract.tesseract_cmd = r'C:/Program Files/Tesseract-OCR/tesseract.exe'
     
     def get_descriptions(self, image) -> str:
         """image: PIL.JpegImagePlugin.JpegImageFile
