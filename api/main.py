@@ -92,16 +92,24 @@ def login_user(user: schemas.User, db: Session = Depends(get_db)):
     return JSONResponse(content=jsonable_encoder(response_data))
 
 @app.post('/getImageFeatures', response_model=schemas.GetImageFeaturesResponse)
-async def get_features(files: List[UploadFile] = File(...), user: str = Depends(verify_jwt)):
+async def get_features(features: str, files: List[UploadFile] = File(...), user: str = Depends(verify_jwt)):
     """ Endpoint to get analysis of multiple images
 
     Args:
+        features (str): List of features to be extracted as a comma separated string
         files (List[UploadFile], optional): Array of UploadFiles that are the images to analyze
         user (str): [description]. Defaults to Depends(verify_jwt).
 
     Returns:
         JSONResponse: JSON response containing analysis summary
     """
+    # check for types of analysis to perform
+    requested_features = features.split(',')
+    supported_feature_analysis = {'facial', 'sentiment', 'objectDetection', 'imageClassification', 'color', 'text'}
+    for feature in requested_features:
+        if feature not in supported_feature_analysis:
+            return Response(content=f'\'{feature}\' analysis not supported', status_code=status.HTTP_400_BAD_REQUEST)
+
     # read image file bytes into array
     images = []
     for file in files:
@@ -117,16 +125,24 @@ async def get_features(files: List[UploadFile] = File(...), user: str = Depends(
     return JSONResponse(content=jsonable_encoder(image_features))
 
 @app.post('/getImageFeaturesBase64')
-async def get_features(files: List[schemas.Base64Image], user: str = Depends(verify_jwt)):
+async def get_features(features: str, files: List[schemas.Base64Image], user: str = Depends(verify_jwt)):
     """ Endpoint to get analysis of multiple base64 images
 
     Args:
+        features (str): List of features to be extracted as a comma separated string
         files (List[schemas.Base64Image]): List of Base64Images
         user (str): [description]. Defaults to Depends(verify_jwt).
 
     Returns:
         JSONResponse: JSON response containing analysis summary
     """
+    # check for types of analysis to perform
+    requested_features = features.split(',')
+    supported_feature_analysis = {'facial', 'sentiment', 'objectDetection', 'imageClassification', 'color', 'text'}
+    for feature in requested_features:
+        if feature not in supported_feature_analysis:
+            return Response(content=f'\'{feature}\' analysis not supported', status_code=status.HTTP_400_BAD_REQUEST)
+
     # read base64 into images array
     images = []
     for file in files:
