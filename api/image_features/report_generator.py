@@ -3,6 +3,8 @@
 This class is used to generate report for the image based on the
 returned descriptions from the models."""
 
+import base64
+from io import BytesIO
 from typing import Dict, List, Union
 from api.image_features import descriptions
 
@@ -18,6 +20,14 @@ class ReportGenerator:
             return self._generate_report_for_image_classification(descriptions_)
         else:
             return {}
+
+    def generate_collage_report(self, collage) -> bytes:
+        # convert to base64
+        buffer = BytesIO()
+        collage_rgb = collage.convert('RGB')
+        collage_rgb.save(buffer, format="JPEG")
+        collage_image_string = base64.b64encode(buffer.getvalue())
+        return collage_image_string
 
     def  _generate_report_for_object_detection(self, descriptions_: descriptions.Descriptions) -> \
         Dict[str, Dict[str, Union[int, List[float]]]]:
