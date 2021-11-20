@@ -8,10 +8,11 @@ from sqlalchemy.orm import Session
 from io import BytesIO
 from PIL import Image
 import base64
+import gzip
 
 from api import schemas
 from api.image_features.image_describer import ImageDescriber
-from api.database import engine, SessionLocal
+from api.database import Base, engine, SessionLocal
 from api.database import models
 from api.utils.hashing import Hash, pwd_cxt
 from api.middleware.auth import verify_jwt
@@ -143,11 +144,14 @@ async def get_features(features: str, files: List[schemas.Base64Image], user: st
         if feature not in supported_feature_analysis:
             return Response(content=f'\'{feature}\' analysis not supported', status_code=status.HTTP_400_BAD_REQUEST)
 
-    # read base64 into images array
+    # read gzipped-base64 image strings into images array
     images = []
     for file in files:
         try:
-            image = Image.open(BytesIO(base64.b64decode(file.img64))).convert('RGB') 
+            image = file.img64
+            gzipped_image = base64.b64decode(image)
+            image_str = gzip.decompress(gzipped_image).decode("utf-8")
+            image = Image.open(BytesIO(base64.b64decode(image_str))).convert('RGB') 
             images.append({"id": file.id, "image": image})
         except:
             return Response(content=f'{file.id} base64 image string could not be processed', status_code=status.HTTP_400_BAD_REQUEST)

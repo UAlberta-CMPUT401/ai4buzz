@@ -64,7 +64,7 @@ class ImageDescriber():
         for image_info in images:
             image = image_info["image"]
             image_string = {'pixels': image.tobytes(), 'size': image.size, 'mode': image.mode,}
-            with ProcessPoolExecutor(max_workers=4) as pool:
+            with ProcessPoolExecutor() as pool:
                 future_color_scheme_analysis = pool.submit(color_scheme_analysis, image_string)
                 future_object_detection = pool.submit(object_detection, image_string)
                 future_image_classification = pool.submit(image_classification, image_string)
