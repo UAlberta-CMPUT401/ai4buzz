@@ -35,6 +35,14 @@ class ReportGeneratorTest(TestCase):
 
         self.assertEqual(expected_report, actual_report)
 
+    def test_generate_resport_for_dict(self):
+        expected_report = {'person': 98, 'bicycle': 97, 'bike': 47}
+
+        report_generator_ = report_generator.ReportGenerator()
+        actual_report = report_generator_.generate_report(expected_report)
+
+        self.assertEqual(expected_report, actual_report)
+
 
 if __name__ == '__main__':
     unittest.main()
