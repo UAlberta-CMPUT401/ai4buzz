@@ -43,6 +43,13 @@ class ReportGeneratorTest(TestCase):
 
         self.assertEqual(expected_report, actual_report)
 
+    def test_generate_resport_for_str(self):
+        expected_report = 'test string'
+
+        report_generator_ = report_generator.ReportGenerator()
+        actual_report = report_generator_.generate_report(expected_report)
+
+        self.assertEqual(expected_report, actual_report)
 
 if __name__ == '__main__':
     unittest.main()

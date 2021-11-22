@@ -13,7 +13,7 @@ class ReportGenerator:
 
     def generate_report(self, descriptions_: Union[descriptions.Descriptions, Any]) -> \
         Dict[str, Union[int, List[float]]]:
-        if isinstance(descriptions_, dict):
+        if not isinstance(descriptions_, descriptions.Descriptions):
             return descriptions_
         if descriptions_.feature == 'Object Detection':
             return self._generate_report_for_object_detection(descriptions_)
