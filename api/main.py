@@ -97,7 +97,7 @@ def login_user(user: schemas.User, db: Session = Depends(get_db)):
     return JSONResponse(content=jsonable_encoder(response_data))
 
 @app.post('/getImageFeatures', response_model=schemas.GetImageFeaturesResponse)
-async def get_features(features: str, files: List[UploadFile] = File(...), user: str = Depends(verify_jwt)):
+async def get_features(features: str = None, files: List[UploadFile] = File(...), user: str = Depends(verify_jwt)):
     """ Endpoint to get analysis of multiple images
 
     Args:
@@ -109,11 +109,13 @@ async def get_features(features: str, files: List[UploadFile] = File(...), user:
         JSONResponse: JSON response containing analysis summary
     """
     # check for types of analysis to perform
-    requested_features = features.split(',')
-    supported_feature_analysis = {'facial', 'sentiment', 'objectDetection', 'imageClassification', 'color', 'text'}
-    for feature in requested_features:
-        if feature not in supported_feature_analysis:
-            return Response(content=f'\'{feature}\' analysis not supported', status_code=status.HTTP_400_BAD_REQUEST)
+    requested_features = None
+    if features:
+        requested_features = tuple(features.split(','))
+        supported_feature_analysis = ImageInfo.image_features
+        for feature in requested_features:
+            if feature not in supported_feature_analysis:
+                return Response(content=f'\'{feature}\' analysis not supported', status_code=status.HTTP_400_BAD_REQUEST)
 
     # read image file bytes into array
     image_infos = []
@@ -122,9 +124,14 @@ async def get_features(features: str, files: List[UploadFile] = File(...), user:
         extension = file.filename.split(".")[-1] in ("jpg", "jpeg", "png")
         if not extension:
             return Response(content='File type must be .jpeg, .jpg or .png', status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
-        image_infos.append(
-            ImageInfo(id=file.filename, pil_image=Image.open(BytesIO(await file.read())).convert('RGB'))
-        )
+        if requested_features == None:
+            image_infos.append(
+                ImageInfo(id=file.filename, pil_image=Image.open(BytesIO(await file.read())).convert('RGB'))
+            )
+        else:
+            image_infos.append(
+                ImageInfo(id=file.filename, pil_image=Image.open(BytesIO(await file.read())).convert('RGB'), image_features=requested_features)
+            )
 
     # perform and return analysis
     image_describer = ImageDescriber(ImageFeatureModelFactory(), ReportGenerator(), ProcessPoolExecutor())
