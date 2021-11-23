@@ -11,6 +11,7 @@ from sqlalchemy.orm import Session
 from io import BytesIO
 from PIL import Image
 import base64
+import gzip
 
 from api import schemas
 from api.image_features.image_describer import ImageDescriber, ImageInfo
@@ -161,8 +162,11 @@ async def get_features(features: str, files: List[schemas.Base64Image], user: st
     image_infos = []
     for file in files:
         try:
-            image = Image.open(BytesIO(base64.b64decode(file.img64))).convert('RGB')
-            image_infos.append(ImageInfo(id=file.id, pil_image=image))
+            image = file.img64
+            gzipped_image = base64.b64decode(image)
+            image_str = gzip.decompress(gzipped_image).decode("utf-8")
+            image = Image.open(BytesIO(base64.b64decode(image_str))).convert('RGB') 
+            images.append({"id": file.id, "image": image})
         except:
             return Response(content=f'{file.id} base64 image string could not be processed', status_code=status.HTTP_400_BAD_REQUEST)
 
