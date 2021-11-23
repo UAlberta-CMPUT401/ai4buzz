@@ -8,7 +8,7 @@ from typing import Any, Dict, List, Tuple
 from api.image_features import descriptions
 from api.image_features import tf_hub_client
 from api.image_features.object_detection import object_detection_models_map
-from api.image_features.object_detection.object_detection.utils import visualization_utils as viz_utils
+from object_detection.utils import visualization_utils as viz_utils
 
 class ObjectDetector:
     """Used to detect objects present in a image using TF HUB models
@@ -16,7 +16,7 @@ class ObjectDetector:
 
     _model_name: str
     _tf_hub_client: tf_hub_client.TFHubClient
-    _MINIMUM_THRESHOLD_CONFIDENCE = 0.60
+    _MINIMUM_THRESHOLD_CONFIDENCE = 0.40
 
     def __init__(self, tf_hub_client: tf_hub_client.TFHubClient, 
         model_name: str = 'Faster R-CNN Inception ResNet V2 1024x1024') -> None:
