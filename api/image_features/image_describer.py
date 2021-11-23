@@ -111,6 +111,7 @@ class ImageDescriber():
         collage_rgb.save(buffer, format="JPEG")
         collage_image_string = base64.b64encode(buffer.getvalue())
 
+        buffer = BytesIO()
         dendrogram_generator = DendrogramGenerator()
         dendrogram = dendrogram_generator.generate(feature_analysis_results)
         dendrogram_rgb = dendrogram.convert('RGB')
@@ -121,5 +122,5 @@ class ImageDescriber():
         return {
             "feature_analysis_results": feature_analysis_results,
             "collage_image_string": collage_image_string,
-            "dendrogram_image_string": dendrogram_image_string.
+            "dendrogram_image_string": dendrogram_image_string,
         }
