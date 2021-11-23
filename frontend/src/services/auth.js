@@ -1,11 +1,13 @@
 import axios from 'axios';
+import getUrl from '../utils/getUrl';
 
 /**
  * http post signup user
  */
 export const signup = async (email, password) => {
+  const baseUrl = getUrl()
   return await axios.post(
-    'http://[2605:fd00:4:1001:f816:3eff:fe26:70dd]/users',
+    `${baseUrl}/users`,
     {
       email: email,
       password: password,
@@ -17,8 +19,9 @@ export const signup = async (email, password) => {
  * http post login user
  */
 export const login = async (email, password) => {
+  const baseUrl = getUrl()
   return await axios.post(
-    'http://[2605:fd00:4:1001:f816:3eff:fe26:70dd]/token',
+    `${baseUrl}/token`,
     {
       email: email,
       password: password,

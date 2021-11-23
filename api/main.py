@@ -140,7 +140,7 @@ async def get_features(features: str = None, files: List[UploadFile] = File(...)
     return JSONResponse(content=jsonable_encoder(image_features))
 
 @app.post('/getImageFeaturesBase64')
-async def get_features(features: str, files: List[schemas.Base64Image], user: str = Depends(verify_jwt)):
+async def get_features(files: List[schemas.Base64Image], features: str = None, user: str = Depends(verify_jwt)):
     """ Endpoint to get analysis of multiple base64 images
 
     Args:
@@ -152,11 +152,13 @@ async def get_features(features: str, files: List[schemas.Base64Image], user: st
         JSONResponse: JSON response containing analysis summary
     """
     # check for types of analysis to perform
-    requested_features = features.split(',')
-    supported_feature_analysis = {'facial', 'sentiment', 'objectDetection', 'imageClassification', 'color', 'text'}
-    for feature in requested_features:
-        if feature not in supported_feature_analysis:
-            return Response(content=f'\'{feature}\' analysis not supported', status_code=status.HTTP_400_BAD_REQUEST)
+    requested_features = None
+    if features:
+        requested_features = tuple(features.split(','))
+        supported_feature_analysis = ImageInfo.image_features
+        for feature in requested_features:
+            if feature not in supported_feature_analysis:
+                return Response(content=f'\'{feature}\' analysis not supported', status_code=status.HTTP_400_BAD_REQUEST)
 
     # read base64 into images array
     image_infos = []
@@ -166,7 +168,14 @@ async def get_features(features: str, files: List[schemas.Base64Image], user: st
             gzipped_image = base64.b64decode(image)
             image_str = gzip.decompress(gzipped_image).decode("utf-8")
             image = Image.open(BytesIO(base64.b64decode(image_str))).convert('RGB') 
-            images.append({"id": file.id, "image": image})
+            if requested_features == None:
+                image_infos.append(
+                    ImageInfo(id=file.id, pil_image=image)
+                )
+            else:
+                image_infos.append(
+                    ImageInfo(id=file.id, pil_image=image, image_features=requested_features)
+                )
         except:
             return Response(content=f'{file.id} base64 image string could not be processed', status_code=status.HTTP_400_BAD_REQUEST)
 
