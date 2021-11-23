@@ -1,9 +1,12 @@
 import pytest
+import gzip
+import base64
 import os
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from PIL import Image
+
 
 from api.main import app, get_db
 from api.database import Base
@@ -108,7 +111,7 @@ def test_get_image_features_invalid_format(test_db):
     """ Should return a 422 error for invalid file upload format
     """
     signup_response = client.post(
-        "/users", json={"email": "non_existent@test.com", "password": "wrongpassword"}
+        "/users", json={"email": "test@test.com", "password": "password"}
     )
     response = client.post(
         f"/getImageFeatures?access_token={signup_response.json()['access_token']}", files={"files": "unexpected format"}
@@ -116,10 +119,10 @@ def test_get_image_features_invalid_format(test_db):
     assert response.status_code == 422
 
 def test_get_image_features_success(test_db):
-    """ Should return a 401 error for invalid access token
+    """ Should return a full analysis on the uploaded image
     """
     signup_response = client.post(
-        "/users", json={"email": "non_existent@test.com", "password": "wrongpassword"}
+        "/users", json={"email": "test@test.com", "password": "password"}
     )
     test = os.path.dirname(__file__)
     file_path = os.path.join(test, './test.jpeg')
@@ -127,3 +130,96 @@ def test_get_image_features_success(test_db):
         f"/getImageFeatures?access_token={signup_response.json()['access_token']}", files={"files": ("test.jpeg", open(file_path, 'rb'), 'image/jpeg')}
     )
     assert response.status_code == 200
+
+def test_get_image_feature_by_feature_param_success(test_db):
+    """ Should return just the analysis for color scheme as specified in the feature query param
+    """
+    signup_response = client.post(
+        "/users", json={"email": "test@test.com", "password": "password"}
+    )
+    test = os.path.dirname(__file__)
+    file_path = os.path.join(test, './test.jpeg')
+    response = client.post(
+        f"/getImageFeatures?access_token={signup_response.json()['access_token']}&features=color_scheme_analysis", files={"files": ("test.jpeg", open(file_path, 'rb'), 'image/jpeg')}
+    )
+    analysis_results = response.json()
+    assert "collage_image_string" in analysis_results
+    assert "feature_analysis_results" in analysis_results
+    assert "color_scheme_analysis" in analysis_results["feature_analysis_results"][0]
+    assert response.status_code == 200
+
+def test_get_image_features_base_64_success(test_db):
+    """ Should return a full analysis on the uploaded gzipped base64 image
+    """
+    signup_response = client.post(
+        "/users", json={"email": "test@test.com", "password": "password"}
+    )
+    test = os.path.dirname(__file__)
+    file_path = os.path.join(test, './img_string.txt')
+    with open(file_path, 'r') as f:
+        img_str = f.readline()
+        data = bytes(img_str, "utf-8")
+        s_out = gzip.compress(data)
+        b64_img = str(base64.b64encode(s_out), 'ascii')
+
+        response = client.post(
+            f"/getImageFeaturesBase64?access_token={signup_response.json()['access_token']}", json=[{"id": "test_image", "img64": b64_img}]
+        )
+        response.json() == ''
+        assert response.status_code == 200
+
+def test_get_image_features_base_64_by_feature_param_invalid_gzipped_base64_img_str(test_db):
+    """ should return status code 400 for invalid gzipped base64 image string
+    """
+    signup_response = client.post(
+        "/users", json={"email": "test@test.com", "password": "password"}
+    )
+    test = os.path.dirname(__file__)
+    file_path = os.path.join(test, './img_string.txt')
+    with open(file_path, 'r') as f:
+        response = client.post(
+            f"/getImageFeaturesBase64?access_token={signup_response.json()['access_token']}", json=[{"id": "test_image", "img64": "invalid_img_str"}]
+        )
+        assert response.status_code == 400
+
+def test_get_image_features_base_64_by_feature_param_invalid_feature_string_list(test_db):
+    """ should return status code 400 for invalid image features string
+    """
+    signup_response = client.post(
+        "/users", json={"email": "test@test.com", "password": "password"}
+    )
+    test = os.path.dirname(__file__)
+    file_path = os.path.join(test, './img_string.txt')
+    with open(file_path, 'r') as f:
+        img_str = f.readline()
+        data = bytes(img_str, "utf-8")
+        s_out = gzip.compress(data)
+        b64_img = str(base64.b64encode(s_out), 'ascii')
+
+        response = client.post(
+            f"/getImageFeaturesBase64?access_token={signup_response.json()['access_token']}&features=invalid_list_item,thing2", json=[{"id": "test_image", "img64": b64_img}]
+        )
+        assert response.status_code == 400
+
+def test_get_image_features_base_64_by_feature_param_success(test_db):
+    """ Should return just the analysis for color scheme as specified in the feature query param from a gzipped base64 image string
+    """
+    signup_response = client.post(
+        "/users", json={"email": "test@test.com", "password": "password"}
+    )
+    test = os.path.dirname(__file__)
+    file_path = os.path.join(test, './img_string.txt')
+    with open(file_path, 'r') as f:
+        img_str = f.readline()
+        data = bytes(img_str, "utf-8")
+        s_out = gzip.compress(data)
+        b64_img = str(base64.b64encode(s_out), 'ascii')
+
+        response = client.post(
+            f"/getImageFeaturesBase64?access_token={signup_response.json()['access_token']}&features=color_scheme_analysis", json=[{"id": "test_image", "img64": b64_img}]
+        )
+        analysis_results = response.json()
+        assert "collage_image_string" in analysis_results
+        assert "feature_analysis_results" in analysis_results
+        assert "color_scheme_analysis" in analysis_results["feature_analysis_results"][0]
+        assert response.status_code == 200
