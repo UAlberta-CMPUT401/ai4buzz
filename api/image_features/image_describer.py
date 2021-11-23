@@ -6,6 +6,7 @@ from io import BytesIO
 from typing import Any, Dict
 from PIL import Image
 from concurrent.futures import ProcessPoolExecutor
+from api.image_features import dendrogram_generator
 import imagehash
 
 from api.image_features.collage_generator import CollageGenerator
@@ -110,7 +111,15 @@ class ImageDescriber():
         collage_rgb.save(buffer, format="JPEG")
         collage_image_string = base64.b64encode(buffer.getvalue())
 
+        dendrogram_generator = DendrogramGenerator()
+        dendrogram = dendrogram_generator.generate(feature_analysis_results)
+        dendrogram_rgb = dendrogram.convert('RGB')
+        dendrogram_rgb.save(buffer, format='JPEG')
+        dendrogram_image_string = base64.b64encode(buffer.getvalue())
+
+
         return {
             "feature_analysis_results": feature_analysis_results,
-            "collage_image_string": collage_image_string
+            "collage_image_string": collage_image_string,
+            "dendrogram_image_string": dendrogram_image_string.
         }
