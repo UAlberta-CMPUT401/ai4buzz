@@ -59,14 +59,6 @@ class SentimentAnalyzer(FeatureAnalyzer):
         self.description_dict = {}
         self.image_ID = 0
         self.batch_size = batch_size
-        self.device = torch.device("cpu")
-        self.model = VGG19(model_path).to(self.device)
-        self.transform = transforms.Compose([
-            transforms.Resize((224, 224)),
-            transforms.ToTensor(),
-            transforms.Lambda(lambda x: x[[2,1,0], ...] * 255),  # RGB -> BGR and [0,1] -> [0,255]
-            transforms.Normalize(mean=[116.8007, 121.2751, 130.4602], std=[1,1,1])  # mean subtraction
-            ])
 
     def get_descriptions(self, ImageList):
         """
@@ -75,7 +67,15 @@ class SentimentAnalyzer(FeatureAnalyzer):
         to turn off gradients computation
         """
 
-        dataset = ImageListDataset(ImageList, self.transform)
+        self.device = torch.device("cpu")
+        self.model = VGG19(model_path).to(self.device)
+        self.transform = transforms.Compose([
+            transforms.Resize((224, 224)),
+            transforms.ToTensor(),
+            transforms.Lambda(lambda x: x[[2,1,0], ...] * 255),  # RGB -> BGR and [0,1] -> [0,255]
+            transforms.Normalize(mean=[116.8007, 121.2751, 130.4602], std=[1,1,1])  # mean subtraction
+            ])
+        dataset = ImageListDataset([ImageList], self.transform)
         dataloader = DataLoader(dataset, self.batch_size, num_workers=0)
 
         self.model.eval()

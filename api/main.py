@@ -1,4 +1,7 @@
+""" The main filoe that is the entry for the program."""
+
 from typing import *
+from concurrent.futures import ProcessPoolExecutor
 from fastapi import FastAPI, Depends, status, Response, File, UploadFile
 from fastapi.encoders import jsonable_encoder
 from fastapi.middleware.cors import CORSMiddleware
@@ -11,8 +14,10 @@ import base64
 import gzip
 
 from api import schemas
-from api.image_features.image_describer import ImageDescriber
-from api.database import Base, engine, SessionLocal
+from api.image_features.image_describer import ImageDescriber, ImageInfo
+from api.image_features.report_generator import ReportGenerator
+from api.image_features.image_feature_model_factory import ImageFeatureModelFactory
+from api.database import engine, SessionLocal
 from api.database import models
 from api.utils.hashing import Hash, pwd_cxt
 from api.middleware.auth import verify_jwt
@@ -93,7 +98,7 @@ def login_user(user: schemas.User, db: Session = Depends(get_db)):
     return JSONResponse(content=jsonable_encoder(response_data))
 
 @app.post('/getImageFeatures', response_model=schemas.GetImageFeaturesResponse)
-async def get_features(features: str, files: List[UploadFile] = File(...), user: str = Depends(verify_jwt)):
+async def get_features(features: str = None, files: List[UploadFile] = File(...), user: str = Depends(verify_jwt)):
     """ Endpoint to get analysis of multiple images
 
     Args:
@@ -105,24 +110,33 @@ async def get_features(features: str, files: List[UploadFile] = File(...), user:
         JSONResponse: JSON response containing analysis summary
     """
     # check for types of analysis to perform
-    requested_features = features.split(',')
-    supported_feature_analysis = {'facial', 'sentiment', 'objectDetection', 'imageClassification', 'color', 'text'}
-    for feature in requested_features:
-        if feature not in supported_feature_analysis:
-            return Response(content=f'\'{feature}\' analysis not supported', status_code=status.HTTP_400_BAD_REQUEST)
+    requested_features = None
+    if features:
+        requested_features = tuple(features.split(','))
+        supported_feature_analysis = ImageInfo.image_features
+        for feature in requested_features:
+            if feature not in supported_feature_analysis:
+                return Response(content=f'\'{feature}\' analysis not supported', status_code=status.HTTP_400_BAD_REQUEST)
 
     # read image file bytes into array
-    images = []
+    image_infos = []
     for file in files:
         # ensure files are images
         extension = file.filename.split(".")[-1] in ("jpg", "jpeg", "png")
         if not extension:
             return Response(content='File type must be .jpeg, .jpg or .png', status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
-        images.append({"id": file.filename , "image": Image.open(BytesIO(await file.read())).convert('RGB')})
+        if requested_features == None:
+            image_infos.append(
+                ImageInfo(id=file.filename, pil_image=Image.open(BytesIO(await file.read())).convert('RGB'))
+            )
+        else:
+            image_infos.append(
+                ImageInfo(id=file.filename, pil_image=Image.open(BytesIO(await file.read())).convert('RGB'), image_features=requested_features)
+            )
 
     # perform and return analysis
-    image_describer = ImageDescriber()
-    image_features = image_describer.get_features_by_image(images)
+    image_describer = ImageDescriber(ImageFeatureModelFactory(), ReportGenerator(), ProcessPoolExecutor())
+    image_features = image_describer.get_features_by_image(image_infos)
     return JSONResponse(content=jsonable_encoder(image_features))
 
 @app.post('/getImageFeaturesBase64')
@@ -144,8 +158,8 @@ async def get_features(features: str, files: List[schemas.Base64Image], user: st
         if feature not in supported_feature_analysis:
             return Response(content=f'\'{feature}\' analysis not supported', status_code=status.HTTP_400_BAD_REQUEST)
 
-    # read gzipped-base64 image strings into images array
-    images = []
+    # read base64 into images array
+    image_infos = []
     for file in files:
         try:
             image = file.img64
@@ -157,6 +171,6 @@ async def get_features(features: str, files: List[schemas.Base64Image], user: st
             return Response(content=f'{file.id} base64 image string could not be processed', status_code=status.HTTP_400_BAD_REQUEST)
 
     # perform and return analysis
-    image_describer = ImageDescriber()
-    image_features = image_describer.get_features_by_image(images)
+    image_describer = ImageDescriber(ImageFeatureModelFactory(), ReportGenerator(), ProcessPoolExecutor())
+    image_features = image_describer.get_features_by_image(image_infos)
     return JSONResponse(content=jsonable_encoder(image_features))
