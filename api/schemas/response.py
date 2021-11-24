@@ -73,5 +73,5 @@ class ImageDescription(BaseModel):
 
 class GetImageFeaturesResponse(BaseModel):
     feature_analysis_results: List[ImageDescription]
-    collage_image_string: str
+    collage_image_string: Optional[str]
     dendrogram_image_string: Optional[str]
