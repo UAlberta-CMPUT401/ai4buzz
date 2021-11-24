@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './Dendrogram.module.css';
 
 const Dendrogram = ({ imgString }) => {
-  console.log(imgString)
   if (imgString) {
     return (
       <div className={styles.dendrogramPage}>

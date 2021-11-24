@@ -45,6 +45,7 @@ exports[`Redirects authenticated route page to login page if access token is not
     >
       <button
         className="submitButton"
+        disabled={true}
       >
         Login
       </button>

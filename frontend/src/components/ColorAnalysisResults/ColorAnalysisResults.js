@@ -6,7 +6,7 @@ const ColorAnalysisResults = ({results}) => {
             <div>RGB Values and Proportion</div>
             {results.colors.map((color, idx) => {
                 return (
-                <div style={{
+                <div key={idx} style={{
                     backgroundColor: `rgb(${color.red}, ${color.green}, ${color.blue})`,
                 }}>
                     <span style={{padding: '0.5rem'}}>

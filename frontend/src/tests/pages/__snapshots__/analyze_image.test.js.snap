@@ -26,6 +26,7 @@ exports[`Renders Analyze Image page correctly 1`] = `
       </div>
     </div>
     <input
+      accept="image/png, image/jpeg"
       className="chooseFilesInput"
       multiple={true}
       onChange={[Function]}

@@ -43,7 +43,301 @@ exports[`Renders Results page correctly 1`] = `
             </div>
           </div>
           <div>
-            {"count":5,"colors":[{"red":230,"green":226,"blue":216,"proportion":0.4253989209432653},{"red":9,"green":24,"blue":38,"proportion":0.16556650478570417},{"red":172,"green":165,"blue":158,"proportion":0.15257673629119714},{"red":112,"green":96,"blue":78,"proportion":0.09586900439840229},{"red":37,"green":33,"blue":23,"proportion":0.07738628479823256}]}
+            <div>
+              <div>
+                RGB Values and Proportion
+              </div>
+              <div
+                style={
+                  Object {
+                    "backgroundColor": "rgb(230, 226, 216)",
+                  }
+                }
+              >
+                <span
+                  style={
+                    Object {
+                      "padding": "0.5rem",
+                    }
+                  }
+                >
+                  <span
+                    style={
+                      Object {
+                        "mixBlendMode": "difference",
+                      }
+                    }
+                  >
+                    230
+                    , 
+                  </span>
+                  <span
+                    style={
+                      Object {
+                        "mixBlendMode": "difference",
+                      }
+                    }
+                  >
+                    226
+                    , 
+                  </span>
+                  <span
+                    style={
+                      Object {
+                        "mixBlendMode": "difference",
+                      }
+                    }
+                  >
+                    216
+                  </span>
+                </span>
+                <span>
+                  <span
+                    style={
+                      Object {
+                        "float": "right",
+                        "mixBlendMode": "difference",
+                      }
+                    }
+                  >
+                    42.540
+                    %
+                  </span>
+                </span>
+              </div>
+              <div
+                style={
+                  Object {
+                    "backgroundColor": "rgb(9, 24, 38)",
+                  }
+                }
+              >
+                <span
+                  style={
+                    Object {
+                      "padding": "0.5rem",
+                    }
+                  }
+                >
+                  <span
+                    style={
+                      Object {
+                        "mixBlendMode": "difference",
+                      }
+                    }
+                  >
+                    9
+                    , 
+                  </span>
+                  <span
+                    style={
+                      Object {
+                        "mixBlendMode": "difference",
+                      }
+                    }
+                  >
+                    24
+                    , 
+                  </span>
+                  <span
+                    style={
+                      Object {
+                        "mixBlendMode": "difference",
+                      }
+                    }
+                  >
+                    38
+                  </span>
+                </span>
+                <span>
+                  <span
+                    style={
+                      Object {
+                        "float": "right",
+                        "mixBlendMode": "difference",
+                      }
+                    }
+                  >
+                    16.557
+                    %
+                  </span>
+                </span>
+              </div>
+              <div
+                style={
+                  Object {
+                    "backgroundColor": "rgb(172, 165, 158)",
+                  }
+                }
+              >
+                <span
+                  style={
+                    Object {
+                      "padding": "0.5rem",
+                    }
+                  }
+                >
+                  <span
+                    style={
+                      Object {
+                        "mixBlendMode": "difference",
+                      }
+                    }
+                  >
+                    172
+                    , 
+                  </span>
+                  <span
+                    style={
+                      Object {
+                        "mixBlendMode": "difference",
+                      }
+                    }
+                  >
+                    165
+                    , 
+                  </span>
+                  <span
+                    style={
+                      Object {
+                        "mixBlendMode": "difference",
+                      }
+                    }
+                  >
+                    158
+                  </span>
+                </span>
+                <span>
+                  <span
+                    style={
+                      Object {
+                        "float": "right",
+                        "mixBlendMode": "difference",
+                      }
+                    }
+                  >
+                    15.258
+                    %
+                  </span>
+                </span>
+              </div>
+              <div
+                style={
+                  Object {
+                    "backgroundColor": "rgb(112, 96, 78)",
+                  }
+                }
+              >
+                <span
+                  style={
+                    Object {
+                      "padding": "0.5rem",
+                    }
+                  }
+                >
+                  <span
+                    style={
+                      Object {
+                        "mixBlendMode": "difference",
+                      }
+                    }
+                  >
+                    112
+                    , 
+                  </span>
+                  <span
+                    style={
+                      Object {
+                        "mixBlendMode": "difference",
+                      }
+                    }
+                  >
+                    96
+                    , 
+                  </span>
+                  <span
+                    style={
+                      Object {
+                        "mixBlendMode": "difference",
+                      }
+                    }
+                  >
+                    78
+                  </span>
+                </span>
+                <span>
+                  <span
+                    style={
+                      Object {
+                        "float": "right",
+                        "mixBlendMode": "difference",
+                      }
+                    }
+                  >
+                    9.587
+                    %
+                  </span>
+                </span>
+              </div>
+              <div
+                style={
+                  Object {
+                    "backgroundColor": "rgb(37, 33, 23)",
+                  }
+                }
+              >
+                <span
+                  style={
+                    Object {
+                      "padding": "0.5rem",
+                    }
+                  }
+                >
+                  <span
+                    style={
+                      Object {
+                        "mixBlendMode": "difference",
+                      }
+                    }
+                  >
+                    37
+                    , 
+                  </span>
+                  <span
+                    style={
+                      Object {
+                        "mixBlendMode": "difference",
+                      }
+                    }
+                  >
+                    33
+                    , 
+                  </span>
+                  <span
+                    style={
+                      Object {
+                        "mixBlendMode": "difference",
+                      }
+                    }
+                  >
+                    23
+                  </span>
+                </span>
+                <span>
+                  <span
+                    style={
+                      Object {
+                        "float": "right",
+                        "mixBlendMode": "difference",
+                      }
+                    }
+                  >
+                    7.739
+                    %
+                  </span>
+                </span>
+              </div>
+            </div>
           </div>
           <div
             className="gradient"
