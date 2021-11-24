@@ -8,6 +8,7 @@ class DendrogramGenerator:
     def __init__(self):
         self.formatted_data = None
         self.data = None
+        self.Image_IDs = []
 
     def generate(self, report):
         """ 
@@ -20,6 +21,7 @@ class DendrogramGenerator:
         num_images = len(self.data)
         self.formatted_data = np.zeros((num_images,10))
         for i in range(num_images):
+            self.Image_IDs.append(self.data[i]["id"])
   
             self.formatted_data[i][0] = (self.data[i]['color_scheme_analysis']['count'])
             self.formatted_data[i][1] = (self.data[i]['color_scheme_analysis']['colors'][0]['red'])
@@ -55,8 +57,7 @@ class DendrogramGenerator:
         #try cosine or euclidian 
         temp = hierarchy.linkage(self.formatted_data, 'single')
         plt.figure()
-  
-        dn = hierarchy.dendrogram(temp)
+        dn = hierarchy.dendrogram(temp, labels=self.Image_IDs,leaf_font_size=5)
         plt.savefig('api/image_features/dendrogram_generator/dendrogram.png')
 
         return Image.open('api/image_features/dendrogram_generator/dendrogram.png')
@@ -71,5 +72,5 @@ if __name__ == '__main__':
 
     #print(data['0'])
     gen = DendrogramGenerator()
-    gen.generate(data)
+    gen.generate(data['feature_analysis_results'])
     
