@@ -45,6 +45,7 @@ exports[`Renders signup page correctly 1`] = `
     >
       <button
         className="submitButton"
+        disabled={true}
       >
         Signup
       </button>

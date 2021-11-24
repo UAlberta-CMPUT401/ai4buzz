@@ -45,6 +45,7 @@ exports[`Test Login Page Renders login page correctly 1`] = `
     >
       <button
         className="submitButton"
+        disabled={true}
       >
         Login
       </button>

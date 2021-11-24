@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './FacialAnalysisResults.module.css';
 
 const FacialAnalysisResults = ({ facialResults }) => {
-  console.log(facialResults);
   return (
     <div>
       {facialResults.length

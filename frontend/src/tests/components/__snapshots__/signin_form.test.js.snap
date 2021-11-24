@@ -37,6 +37,7 @@ exports[`Renders SigninForm for auth type 'Login' correctly 1`] = `
   >
     <button
       className="submitButton"
+      disabled={false}
     >
       Login
     </button>
@@ -88,6 +89,7 @@ exports[`Renders SigninForm for auth type 'SignUp' correctly 1`] = `
   >
     <button
       className="submitButton"
+      disabled={false}
     >
       SignUp
     </button>
