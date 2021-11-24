@@ -60,7 +60,7 @@ class ImageDescriber:
         return features_analyses
 
     def _do_aggreagate_analysis_on_images(self, image_infos: List[ImageInfo],
-        feature_analysis_results: list[Dict[str, Any]]) -> Dict[str, Any]:
+        feature_analysis_results: List[Dict[str, Any]]) -> Dict[str, Any]:
         if len(image_infos) > 1:
             collage_generator = self._image_feature_model_factory.create_and_get_feature_model('collage')
             collage = collage_generator.generate([image_info.pil_image for image_info in image_infos])
