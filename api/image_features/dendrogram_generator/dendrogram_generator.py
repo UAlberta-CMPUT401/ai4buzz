@@ -20,9 +20,13 @@ class DendrogramGenerator:
         self.data = report
         num_images = len(self.data)
         self.formatted_data = np.zeros((num_images,10))
+
+        #runs through each images and records the data into a numpy array
         for i in range(num_images):
+            #set labels
             self.Image_IDs.append(self.data[i]["id"])
-  
+
+            #Add colour and sentiment to array
             self.formatted_data[i][0] = (self.data[i]['color_scheme_analysis']['count'])
             self.formatted_data[i][1] = (self.data[i]['color_scheme_analysis']['colors'][0]['red'])
             self.formatted_data[i][2] = (self.data[i]['color_scheme_analysis']['colors'][0]['green'])
@@ -31,13 +35,14 @@ class DendrogramGenerator:
             self.formatted_data[i][5] = (self.data[i]['sentiment_analysis']['sentiment_array[neg,neu,pos]'][1])
             self.formatted_data[i][6] = (self.data[i]['sentiment_analysis']['sentiment_array[neg,neu,pos]'][2])
 
+            # If there is text detected set value to 1, if not set to 0
             if self.data[i]['text_recognition'] == "":
                 self.formatted_data[i][7] = 0
             else:
                 self.formatted_data[i][7] = 1
 
+            #Count number of objects 
             object_keys = self.data[i]["object_detection"].keys()
-            #print(object_keys)
             object_count = 0
             for key in object_keys:
                 if key != 'processes_bounding_boxes_image_as_base64_string':
@@ -46,15 +51,14 @@ class DendrogramGenerator:
 
             self.formatted_data[i][9] = self.data[i]["face_analysis"]["count"]
 
-        print(self.formatted_data)
-
+        # normalize data in each category to between 0 and 1
         for i in range(self.formatted_data.shape[1]):
             if self.formatted_data[:,i].max() != 0 :
 
                 self.formatted_data[:,i] = self.formatted_data[:,i] / self.formatted_data[:,i].max()
 
-        print(self.formatted_data)
         #try cosine or euclidian 
+        #Generate dendrogram
         temp = hierarchy.linkage(self.formatted_data, 'single')
         plt.figure()
         dn = hierarchy.dendrogram(temp, labels=self.Image_IDs,leaf_font_size=5)
@@ -62,7 +66,6 @@ class DendrogramGenerator:
 
         return Image.open('api/image_features/dendrogram_generator/dendrogram.png')
 
-    #def add_colours(self):
         
 
 if __name__ == '__main__':
