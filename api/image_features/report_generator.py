@@ -22,13 +22,13 @@ class ReportGenerator:
         else:
             {}
 
-    def generate_collage_report(self, collage) -> bytes:
+    def generate_image_string(self, image) -> bytes:
         # convert to base64
         buffer = BytesIO()
-        collage_rgb = collage.convert('RGB')
-        collage_rgb.save(buffer, format="JPEG")
-        collage_image_string = base64.b64encode(buffer.getvalue())
-        return collage_image_string
+        image_rgb = image.convert('RGB')
+        image_rgb.save(buffer, format="JPEG")
+        image_string = base64.b64encode(buffer.getvalue())
+        return image_string
 
     def  _generate_report_for_object_detection(self, descriptions_: descriptions.Descriptions) -> \
         Dict[str, Dict[str, Union[int, List[float]]]]:
