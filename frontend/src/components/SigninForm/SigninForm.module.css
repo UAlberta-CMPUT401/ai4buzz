@@ -47,6 +47,10 @@
   border: none;
 }
 
+.submitButton:disabled {
+  background-color: gray;
+}
+
 .labelName {
   color: #888e99;
   font-size: 0.9rem;

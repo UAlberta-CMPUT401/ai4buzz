@@ -42,3 +42,8 @@ archive.zip
 venv/
 cached_tf_models/
 *.pth
+
+dendrogram.png
+collage.png
+api/image_features/collage_generator/collage.png
+api/image_features/dendrogram_generator/dendrogram.png

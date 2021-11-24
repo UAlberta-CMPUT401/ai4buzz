@@ -40,9 +40,12 @@ class ImageDescriber:
         collage = collage_generator.generate([image_info.pil_image for image_info in image_infos])
         collage_image_string = self._report_generator.generate_collage_report(collage)
 
-        dendrogram_generator = self._image_feature_model_factory.create_and_get_feature_model('dendrogram')
-        dendrogram = dendrogram_generator.generate(feature_analysis_results)
-        dendrogram_image_string = self._report_generator.generate_collage_report(dendrogram)
+        # can only create dendrogram if we have more than 1 image
+        dendrogram_image_string = None
+        if len(image_infos) > 1:
+            dendrogram_generator = self._image_feature_model_factory.create_and_get_feature_model('dendrogram')
+            dendrogram = dendrogram_generator.generate(feature_analysis_results)
+            dendrogram_image_string = self._report_generator.generate_collage_report(dendrogram)
 
         return {
             "feature_analysis_results": feature_analysis_results,

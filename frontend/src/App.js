@@ -18,7 +18,7 @@ import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRou
 function App() {
   const [images, setImages] = useState([]);
   const [results, setResults] = useState();
-
+  
   return (
     <Router>
       <Switch>
@@ -59,7 +59,7 @@ function App() {
             path="/dendrogram"
             exact
             component={() => {
-              return <Dendrogram data={results?.dendrogram_image_string} />;
+              return <Dendrogram imgString={results?.dendrogram_image_string} />;
             }}
           />
         </ResultsNav>

@@ -1,4 +1,5 @@
 import React from 'react';
+import ColorAnalysisResults from '../../components/ColorAnalysisResults/ColorAnalysisResults';
 import FacialAnalysisResults from '../../components/FacialAnalysisResults/FacialAnalysisResults';
 import ImageClassificationResults from '../../components/ImageClassificationResults/ImageClassificationResults';
 import ObjectDetectionResults from '../../components/ObjectDetectionResults/ObjectDetectionResults';
@@ -56,7 +57,7 @@ const Results = ({ results, images }) => {
                     <div className={styles.analysisHeader}>Color Analysis</div>
                   </div>
                   <div>
-                    {JSON.stringify(imageFeatures.color_scheme_analysis)}
+                    <ColorAnalysisResults results={imageFeatures.color_scheme_analysis} />
                   </div>
                   <div className={styles.gradient}>
                     <div className={styles.analysisHeader}>
