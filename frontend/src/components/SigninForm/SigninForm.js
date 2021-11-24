@@ -7,6 +7,8 @@ const SigninForm = ({
   authType,
   onSubmit,
   onEmailChange,
+  email, 
+  password,
   onPasswordChange,
   error,
 }) => {
@@ -39,7 +41,7 @@ const SigninForm = ({
       />
 
       <div className="buttonGradient">
-        <button className={styles.submitButton}>{authType}</button>
+        <button className={styles.submitButton} disabled={password?.length === 0 || email?.length === 0}>{authType}</button>
       </div>
       <Link
         to={`/${authType === 'Login' ? 'signup' : 'login'}`}

@@ -1,9 +1,20 @@
+import React from 'react';
+import styles from './Dendrogram.module.css';
+
 const Dendrogram = ({ imgString }) => {
+  console.log(imgString)
+  if (imgString) {
+    return (
+      <div className={styles.dendrogramPage}>
+        <img className={styles.dendrogram} src={`data:image/jpeg;base64,${imgString}`} alt="collage" />
+      </div>
+    );
+  }
   return (
-    <div>
-      <img src={`data:image/jpeg;base64,${imgString}`} alt="collage" />
+    <div className={styles.dendrogramPage}>
+      Cannot generate dendrogram with 1 image
     </div>
-  );
+  )
 };
 
 export default Dendrogram;

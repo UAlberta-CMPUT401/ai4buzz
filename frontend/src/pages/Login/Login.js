@@ -7,8 +7,8 @@ import SigninForm from '../../components/SigninForm/SigninForm';
 import styles from './Login.module.css';
 
 const Login = () => {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState();
   const history = useHistory();
 
@@ -28,6 +28,8 @@ const Login = () => {
       <SigninForm
         authType="Login"
         onSubmit={handleSubmit}
+        password={password}
+        email={email}
         onEmailChange={setEmail}
         onPasswordChange={setPassword}
         error={error}

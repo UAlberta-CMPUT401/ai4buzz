@@ -64,6 +64,7 @@ const AnalyzeImage = ({ setResults, setFiles, files }) => {
             className={styles.chooseFilesInput}
             type="file"
             multiple
+            accept="image/png, image/jpeg"
             onChange={handleChangeFiles}
           />
           <div className="buttonGradient">
