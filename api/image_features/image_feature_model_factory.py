@@ -9,6 +9,7 @@ from api.image_features.image_classification.image_classifiier import ImageClass
 from api.image_features.tf_hub_client import TFHubClient
 from api.image_features.text_recognition.text_recognizer import TextRecognizer
 from api.image_features.facial_analysis.facial_detector import FaceDetector
+from api.image_features.dendrogram_generator import DendrogramGenerator
 
 
 class ImageFeatureModelFactory:
@@ -27,5 +28,7 @@ class ImageFeatureModelFactory:
             return TextRecognizer()
         elif image_feature == 'face_analysis':
             return FaceDetector()
+        elif image_feature == 'dendrogram':
+            return DendrogramGenerator()
         elif image_feature == 'collage':
             return CollageGenerator()
