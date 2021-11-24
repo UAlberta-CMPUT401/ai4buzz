@@ -8,7 +8,6 @@ from concurrent.futures import ProcessPoolExecutor
 from api.image_features.image_feature_model_factory import ImageFeatureModelFactory
 from api.image_features.report_generator import ReportGenerator
 
-
 @dataclasses.dataclass(frozen=True)
 class ImageInfo:
     id: str
@@ -41,14 +40,19 @@ class ImageDescriber:
         collage = collage_generator.generate([image_info.pil_image for image_info in image_infos])
         collage_image_string = self._report_generator.generate_collage_report(collage)
 
+        dendrogram_generator = self._image_feature_model_factory.create_and_get_feature_model('dendrogram')
+        dendrogram = dendrogram_generator.generate(feature_analysis_results)
+        dendrogram_image_string = self._report_generator.generate_collage_report(dendrogram)
+
         return {
             "feature_analysis_results": feature_analysis_results,
-            "collage_image_string": collage_image_string
+            "collage_image_string": collage_image_string,
+            "dendrogram_image_string": dendrogram_image_string,
         }
 
     def _analyze_image(self, image_info: ImageInfo) -> Dict[str, Any]:
         features_analyses = {'id': image_info.id}
-        with self._process_pool_executor as pool:
+        with ProcessPoolExecutor() as pool:
             image_feature_futures = {}
             for image_feature in image_info.image_features:
                 image_feature_model = self._image_feature_model_factory\
