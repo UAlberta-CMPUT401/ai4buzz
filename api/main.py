@@ -44,7 +44,7 @@ def get_db():
     finally:
         db.close()
 
-@app.post('/users')
+@app.post('/users', response_model=schemas.response.AccessToken)
 def create_user(request: schemas.User, db: Session = Depends(get_db)):
     """ Create user, or sign up, endpoint
 
@@ -71,7 +71,7 @@ def create_user(request: schemas.User, db: Session = Depends(get_db)):
     response_data = {'access_token': access_token}
     return JSONResponse(content=jsonable_encoder(response_data))
 
-@app.post('/token')
+@app.post('/token', response_model=schemas.response.AccessToken)
 def login_user(user: schemas.User, db: Session = Depends(get_db)):
     """ Token, or login, endpoint
 
@@ -139,7 +139,7 @@ async def get_features(features: str = None, files: List[UploadFile] = File(...)
     image_features = image_describer.get_features_by_image(image_infos)
     return JSONResponse(content=jsonable_encoder(image_features))
 
-@app.post('/getImageFeaturesBase64')
+@app.post('/getImageFeaturesBase64', response_model=schemas.GetImageFeaturesResponse)
 async def get_features(files: List[schemas.Base64Image], features: str = None, user: str = Depends(verify_jwt)):
     """ Endpoint to get analysis of multiple base64 images
 
@@ -176,7 +176,8 @@ async def get_features(files: List[schemas.Base64Image], features: str = None, u
                 image_infos.append(
                     ImageInfo(id=file.id, pil_image=image, image_features=requested_features)
                 )
-        except:
+        except Exception as e:
+            print(e)
             return Response(content=f'{file.id} base64 image string could not be processed', status_code=status.HTTP_400_BAD_REQUEST)
 
     # perform and return analysis
