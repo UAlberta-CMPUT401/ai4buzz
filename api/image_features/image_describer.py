@@ -5,7 +5,7 @@ import dataclasses
 from typing import Any, Dict, List, Tuple
 from concurrent.futures import ProcessPoolExecutor
 
-from api.image_features.image_feature_model_factory import ImageFeatureModelFactory
+#from api.image_features.image_feature_model_factory import ImageFeatureModelFactory
 from api.image_features.report_generator import ReportGenerator
 
 @dataclasses.dataclass(frozen=True)
@@ -20,15 +20,15 @@ class ImageInfo:
 
 class ImageDescriber:
     """Does all feature analysis on an image."""
-    _image_feature_model_factory: ImageFeatureModelFactory
+    #_image_feature_model_factory: ImageFeatureModelFactory
     _report_generator: ReportGenerator
-    _process_pool_executor: ProcessPoolExecutor
+    _pool_executor: ProcessPoolExecutor
 
-    def __init__(self, image_feature_model_factory_: ImageFeatureModelFactory,
-        report_generator_: ReportGenerator, process_pool_executor_: ProcessPoolExecutor) -> None:
+    def __init__(self, image_feature_model_factory_,
+        report_generator_: ReportGenerator, pool_executor: ProcessPoolExecutor) -> None:
         self._image_feature_model_factory = image_feature_model_factory_
         self._report_generator = report_generator_
-        self._process_pool_executor = process_pool_executor_
+        self._pool_executor = pool_executor
 
     def get_features_by_image(self, image_infos: List[ImageInfo]) -> Dict[str, Any]:
         feature_analysis_results = []
@@ -55,7 +55,7 @@ class ImageDescriber:
 
     def _analyze_image(self, image_info: ImageInfo) -> Dict[str, Any]:
         features_analyses = {'id': image_info.id}
-        with ProcessPoolExecutor() as pool:
+        with self._pool_executor() as pool:
             image_feature_futures = {}
             for image_feature in image_info.image_features:
                 image_feature_model = self._image_feature_model_factory\
