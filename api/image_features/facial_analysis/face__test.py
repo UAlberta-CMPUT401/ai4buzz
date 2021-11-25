@@ -12,10 +12,18 @@ class FaceAnalysisTest(unittest.TestCase):
         actual_face = facial_detector.FaceDetector().get_descriptions(image)
 
         self.assertEqual(actual_face['count'], 1)
-
-        self.assertEqual(actual_face['analysis']['dominant_emotion'], 'happy')
-        self.assertEqual(actual_face['analysis']['likely age'], 30.0)
-        self.assertEqual(actual_face['analysis']['estimated_race'], 'middle eastern')
+        self.assertEqual(actual_face['analysis'][0]['emotion'], 
+        {'angry': 0, 'disgust': 0, 'fear': 0, 
+        'happy': 99.5799461758852, 'sad': 7.409249809739712e-05, 'surprise': 0, 
+        'neutral': 0.41994712946584145})
+        self.assertEqual(actual_face['analysis'][0]['dominant_emotion'], 'happy')
+        self.assertEqual(actual_face['analysis'][0]['likely age'], 37.333333333333336)
+        self.assertEqual(actual_face['analysis'][0]['estimated gender'], 'male')
+        self.assertEqual(actual_face['analysis'][0]['race'], 
+        {'asian': 0, 'indian': 0, 'black': 0,
+         'white': 99.99056061052644, 'middle eastern': 0.006221890914964973,
+         'latino hispanic': 0.0032200740658458386})
+        self.assertEqual(actual_face['analysis'][0]['estimated race'], 'white')
 
 if __name__ == '__main__':
     unittest.main()
