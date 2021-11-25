@@ -10,7 +10,8 @@ class FaceAnalysisTest(unittest.TestCase):
     def test_get_descreption(self):       
         image = Image.open('face_test.jpg')
         actual_face = facial_detector.FaceDetector().get_descriptions(image)
-
+        
+        #linux results
         self.assertEqual(actual_face['count'], 1)
         self.assertEqual(actual_face['analysis'][0]['emotion'], 
         {'angry': 0, 'disgust': 0, 'fear': 0, 
