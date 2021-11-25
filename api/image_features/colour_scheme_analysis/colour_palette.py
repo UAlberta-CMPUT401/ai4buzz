@@ -14,8 +14,9 @@ class ColorSchemeAnalyzer():
         :param image: PIL image object
         :return: dict containing color count and rgb values of colors
         """
-        colour_palette = self._get_palette(image, 20)
-        # k_means_colour_palette = self._get_palette_k_means(image, 3)
+        colour_palette = self._get_palette(image, 20) 
+        # can swap colorgram with k-means
+        #k_means_colour_palette = self._get_palette_k_means(image, 3)
         return self._format_description(colour_palette)
 
     def _format_description(self, description):
@@ -27,7 +28,7 @@ class ColorSchemeAnalyzer():
         colors = []
         count = 0
         for color in description:
-            if color.proportion > 0.05:
+            if color.proportion > 0.05: # only add colours above the set threshold %
                 
 
                 colors.append(
@@ -46,10 +47,21 @@ class ColorSchemeAnalyzer():
         }
 
     def _get_palette(self, img, num_colours):
+        """
+        use colorgram.py to get the 20 most common colours in the image
+
+        :param img: PIL image object
+        :param num_colours: number of colours to look for
+        :return: colorgram.Color object
+        """
         colours = colorgram.extract(img,num_colours)
         return colours
 
     def _get_palette_k_means(self, img, num_colours):
+        """"
+        Unused
+        Alternative option to colorgram
+        """
         image = np.array(img)
         image = cv.cvtColor(image, cv.COLOR_BGR2RGB)
         Z = image.reshape((-1,3))
@@ -58,10 +70,8 @@ class ColorSchemeAnalyzer():
         # define criteria, number of clusters(K) and apply kmeans()
         criteria = (cv.TERM_CRITERIA_EPS + cv.TERM_CRITERIA_MAX_ITER, 10, 1.0)
         K = num_colours
-        #centers = np.zeros(3)
         ret,label,center=cv.kmeans(Z,K,None,criteria,10,cv.KMEANS_RANDOM_CENTERS)
         # Now convert back into uint8, and make original image
-        #print(center)
         centers = np.copy(center)
         center = np.uint8(center)
 
