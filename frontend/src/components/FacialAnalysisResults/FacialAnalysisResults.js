@@ -10,12 +10,12 @@ const FacialAnalysisResults = ({ facialResults }) => {
               <div key={idx}>
                 <div className={styles.faceResults}>
                   <div>Age</div>
-                  <div className="value">{faceData.age}</div>
+                  <div className="value">{faceData["likely age"]}</div>
                 </div>
 
                 <div className={styles.faceResults}>
                   <div>Gender</div>
-                  <div className="value">{faceData.gender}</div>
+                  <div className="value">{faceData['estimated gender']}</div>
                 </div>
 
                 <div className={styles.faceResults}>
@@ -71,7 +71,7 @@ const FacialAnalysisResults = ({ facialResults }) => {
 
                 <div className={styles.faceResults}>
                   <div>Dominant Race</div>
-                  <div className="value">{faceData.dominant_race}</div>
+                  <div className="value">{faceData.estimated_race}</div>
                 </div>
 
                 <div>Race</div>
@@ -114,25 +114,6 @@ const FacialAnalysisResults = ({ facialResults }) => {
                   </div>
                 </div>
 
-                <div>Region</div>
-                <div className={styles.tabbedData}>
-                  <div className={styles.faceResults}>
-                    <div>x</div>
-                    <div className="value">{faceData.region.x}</div>
-                  </div>
-                  <div className={styles.faceResults}>
-                    <div>y</div>
-                    <div className="value">{faceData.region.y}</div>
-                  </div>
-                  <div className={styles.faceResults}>
-                    <div>w</div>
-                    <div className="value">{faceData.region.w}</div>
-                  </div>
-                  <div className={styles.faceResults}>
-                    <div>h</div>
-                    <div className="value">{faceData.region.h}</div>
-                  </div>
-                </div>
               </div>
             );
           })

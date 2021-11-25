@@ -96,7 +96,7 @@ class SentimentAnalyzerTest(TestCase):
         mock_image = Image.fromarray(a.astype('uint8')).convert('RGB')  # Random image
 
         sentiment_analyzer = SentimentAnalyzer(batch_size=1)
-        actual_description_len = len(sentiment_analyzer.get_descriptions([mock_image])['sentiment_array[neg,neu,pos]'])   
+        actual_description_len = len(sentiment_analyzer.get_descriptions(mock_image)['sentiment_array[neg,neu,pos]'])   
         self.assertEqual(actual_description_len, 3)
 
         

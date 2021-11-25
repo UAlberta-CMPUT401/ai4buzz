@@ -40,29 +40,32 @@ const mockData = {
         television: 0.014548316597938538,
       },
       text_recognition: '',
-      face_analysis: {
-        analysis: [
-          {age: 22,
-dominant_emotion: "happy",
-dominant_race: "white",
-emotion: {angry: 5.888953067055257e-8,
-  disgust: 9.406594389845943e-11,
-  fear: 5.528744358280318e-7,
-  happy: 99.98632669611851,
-  neutral: 0.013652960306425654,
-  sad: 5.4525238929900076e-8,
-  surprise: 0.00001572425628773115},
-gender: "Man",
-race: {asian: 0.0007496751550206682,
-  black: 0.00015141853282329976,
-  indian: 0.017956600640900433,
-  'latino hispanic': 1.8069805577397346,
-  'middle eastern': 11.54509037733078,
-  white: 86.62906885147095},
-region: {x: 17, y: 16, w: 169, h: 169}}
-        ],
-        count: 1
-      }
+      "face_analysis": {
+        "count": 2,
+        "analysis": {
+            "emotion": {
+                "angry": 0.2391964688116548,
+                "disgust": 0.002045524644826395,
+                "fear": 30.837110668357294,
+                "happy": 68.77959444718789,
+                "sad": 0.008633821044438134,
+                "surprise": 0.12629777239686976,
+                "neutral": 0.007117449318450958
+            },
+            "dominant_emotion": "happy",
+            "likely age": 32.333333333333336,
+            "estimated gender": "male",
+            "race": {
+                "asian": 18.11004209356997,
+                "indian": 3.1135811034670065,
+                "black": 0.726972792443863,
+                "white": 34.73537395454501,
+                "middle eastern": 21.67139240098549,
+                "latino hispanic": 21.642636452030526
+            },
+            "estimated_race": "white"
+        }
+    },
     },
   ],
   collage_image_string: 'base 64 string',
