@@ -65,6 +65,7 @@ class FaceDetector():
         to sway the gender analysis, more backends are available
         """
         backends = ['opencv', 'mtcnn', 'retinaface']
+        values = []
         for i in range(1, filePathCounter):
             analysis = {} #initialization for return format
             analysis['emotion'] = {'angry': 0, 'disgust': 0, 'fear': 0, 'happy': 0, 'sad': 0, 'surprise': 0, 'neutral': 0}
@@ -110,12 +111,12 @@ class FaceDetector():
                             if analysis['race'][race] > dominance:
                                 analysis['estimated_race'] = race
                                 dominance = analysis['race'][race]
-         
+            values.append(analysis)
         for i in range(1, filePathCounter): #removing all previously added files to reduce clutter
             path = 'face' + str(i) + '.jpg'
             os.remove(path)
 
-        return self._format_description(numFaces, analysis)
+        return self._format_description(numFaces, values)
 
     def _format_description(self, numFaces, info):
         #returns JSON format result
