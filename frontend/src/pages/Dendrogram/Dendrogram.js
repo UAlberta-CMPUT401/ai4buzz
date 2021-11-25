@@ -11,7 +11,7 @@ const Dendrogram = ({ imgString }) => {
   }
   return (
     <div className={styles.dendrogramPage}>
-      Cannot generate dendrogram with 1 image
+      Need more than 1 photo to generate dendrogram
     </div>
   )
 };

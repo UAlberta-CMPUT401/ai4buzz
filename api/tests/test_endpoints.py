@@ -143,7 +143,6 @@ def test_get_image_feature_by_feature_param_success(test_db):
         f"/getImageFeatures?access_token={signup_response.json()['access_token']}&features=color_scheme_analysis", files={"files": ("test.jpeg", open(file_path, 'rb'), 'image/jpeg')}
     )
     analysis_results = response.json()
-    assert "collage_image_string" in analysis_results
     assert "feature_analysis_results" in analysis_results
     assert "color_scheme_analysis" in analysis_results["feature_analysis_results"][0]
     assert response.status_code == 200
@@ -219,7 +218,6 @@ def test_get_image_features_base_64_by_feature_param_success(test_db):
             f"/getImageFeaturesBase64?access_token={signup_response.json()['access_token']}&features=color_scheme_analysis", json=[{"id": "test_image", "img64": b64_img}]
         )
         analysis_results = response.json()
-        assert "collage_image_string" in analysis_results
         assert "feature_analysis_results" in analysis_results
         assert "color_scheme_analysis" in analysis_results["feature_analysis_results"][0]
         assert response.status_code == 200

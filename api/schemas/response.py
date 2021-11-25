@@ -38,11 +38,12 @@ class Emotion(BaseModel):
 class FaceFeatures(BaseModel):
     emotion: Emotion
     dominant_emotion: str
+    likely_age: float = Field(..., alias="likely age") 
     age: int
     region: Region
-    gender: str
+    estimated_gender: str = Field(..., alias="estimated_gender") 
     race: Race
-    dominant_race: str
+    estimated_race: str
 
 class FaceAnalysis(BaseModel):
     count: int

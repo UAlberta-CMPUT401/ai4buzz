@@ -180,7 +180,7 @@ async def get_features(files: List[schemas.Base64Image], features: str = None, u
             print(e)
             return Response(content=f'{file.id} base64 image string could not be processed', status_code=status.HTTP_400_BAD_REQUEST)
 
-    # perform and return analysis
+    # perform and return analysis 
     image_describer = ImageDescriber(ImageFeatureModelFactory(), ReportGenerator(), ProcessPoolExecutor)
     image_features = image_describer.get_features_by_image(image_infos)
     return JSONResponse(content=jsonable_encoder(image_features))
