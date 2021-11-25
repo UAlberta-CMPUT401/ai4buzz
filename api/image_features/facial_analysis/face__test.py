@@ -24,7 +24,7 @@ class FaceAnalysisTest(unittest.TestCase):
         {'asian': 0, 'indian': 0, 'black': 0,
          'white': 99.99056061052644, 'middle eastern': 0.006221890914964973,
          'latino hispanic': 0.0032200740658458386})
-        self.assertEqual(actual_face['analysis'][0]['estimated race'], 'white')
+        self.assertEqual(actual_face['analysis'][0]['estimated_race'], 'white')
 
 if __name__ == '__main__':
     unittest.main()
