@@ -3,6 +3,7 @@
 import unittest
 from PIL import Image
 import facial_detector
+import os
 
 class FaceAnalysisTest(unittest.TestCase):
 
@@ -25,7 +26,7 @@ class FaceAnalysisTest(unittest.TestCase):
              'white': 99.9936540921529, 'middle eastern': 0.004135344837171337,
              'latino hispanic': 0.0022066935343900695})
             self.assertEqual(actual_face['analysis'][0]['estimated_race'], 'white')
-        elif os.name == 'posix'
+        elif os.name == 'posix':
             #linux results
             self.assertEqual(actual_face['count'], 1)
             self.assertEqual(actual_face['analysis'][0]['emotion'], 
