@@ -43,3 +43,6 @@ https://ualberta-cmput401.github.io/ai4buzz/
 ## Frontend
 
 - snap shot test: `yarn test`
+
+## Screencast
+https://drive.google.com/file/d/1Gijqd3WXwUsRNdpM-ITVAIPL44Fg5tlj/view?usp=sharing
