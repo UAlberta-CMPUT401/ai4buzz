@@ -1,6 +1,6 @@
 # ai4buzz
-https://cmput401.ca/projects/a3bc8e93-1275-434e-9e88-f4af38bb276c
-https://ualberta-cmput401.github.io/ai4buzz/
+- https://cmput401.ca/projects/a3bc8e93-1275-434e-9e88-f4af38bb276c
+- https://ualberta-cmput401.github.io/ai4buzz/
 
 # REST-API
 
