@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="None">
+  
+  
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>AI4Buzz</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Project Requirements";
+    var mkdocs_page_input_path = "index.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="." class="icon icon-home"> AI4Buzz</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href=".">Project Requirements</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#executive-summary">Executive Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#project-glossary">Project Glossary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#user-stories">User Stories</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#us-101-rest-api-and-database-setup">US 1.01 - REST API and Database setup</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#us-102-image-analysis-result">US 1.02 - Image analysis result</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#us-103-generate-dendrogram">US 1.03 - Generate Dendrogram</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#us-104-generate-collage">US 1.04 - Generate collage</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#us-105-colour-scheme-analysis">US 1.05 - Colour scheme analysis</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#us-106-image-sentiment-classification">US 1.06 - Image sentiment classification</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#us-107-object-detection">US 1.07 - Object detection</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#us-108-facial-detection">US 1.08 - Facial Detection</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#us-109-text-extraction">US 1.09 - Text extraction</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#us-110-batch-processing">US 1.10 - Batch processing</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#us-111-text-detection">US 1.11 - Text Detection</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#us-201-web-client-image-upload">US 2.01 - Web client image upload</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#us-202-web-client-analysis">US 2.02 - Web client analysis</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#us-203-web-client-view-collage">US 2.03 - Web client view collage</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#us-204-web-client-view-dendrogram">US 2.04 - Web client View Dendrogram</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#us-205-web-client-authentication">US 2.05 - Web client authentication</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#us-206-web-client-json-download">US 2.06 - Web client JSON download</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#moscow">MoSCoW</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#must-have">Must Have</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#should-have">Should Have</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#could-have">Could Have</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#would-like-but-wont-get">Would Like but Won’t get</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#similar-products">Similar Products</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#open-source-projects">Open-Source Projects</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#technical-resources">Technical Resources</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#machine-learning">Machine Learning:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#backend-fastapi-postgresql">Backend: FastAPI + PostgreSQL</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#frontend-react">Frontend: React</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#deployment-docker">Deployment: Docker</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="design/">Software Design</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="project-management/">Project Management</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href=".">AI4Buzz</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Project Requirements</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="project-requirements">Project Requirements</h1>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>This project is to develop a web service to allow researchers to gain insight into the meanings and semantics of what makes a social media post more influential. Specifically, this project will expose a web REST API to allow researchers at AI4Society to upload images and retrieve a summary of an analysis of that photo. This analysis may contain anything from a color scheme analysis to sentiment classification of the photo.</p>
+<h2 id="project-glossary">Project Glossary</h2>
+<ul>
+<li><strong>AI4Society</strong> One of the five Signature Areas of Research and Teaching of the University of Alberta, and is focused on Artificial Intelligence, its applications, and its transformative role for our society.</li>
+<li><strong>Sentiment Analysis</strong> The process of computational analysis to identify and categorize a particular photos attitude/sentiment.</li>
+<li><strong>Dendrogram</strong> a tree diagram, especially one showing taxonomic relationships.</li>
+<li><strong>Base 64</strong> Base64 is a binary to a text encoding scheme that represents binary data in an ASCII string format. It is designed to carry data stored in binary format across the network channels.</li>
+<li><strong>Batch processing</strong> When data is processed in large quantities (e.g. uploading a large amount of files) within a certain timespan where the amount of data provided is finite and known beforehand. The results are then provided after the job is completed.</li>
+<li><strong>Streaming processing</strong> This is when data is streamed to the system in real time; the analysis of each data inputted should be returned after a few milliseconds/seconds. The amount of data is not known beforehand and can theoretically be infinite and thus the input graph is dynamic rather than static.</li>
+<li><strong>Convolution neural network</strong> A class of artificial neural networks used in image recognition that is specifically used to process pixel data.</li>
+<li><strong>Dense Classifier</strong> In a neural network, each node in each layer (except for the input layer) is connected to each of the nodes in the previous layer, hence making it dense.</li>
+<li><strong>Web user</strong> User accessing the website and its features from the frontend web client.</li>
+<li><strong>Researcher</strong> a researcher is a user from AI4Society gaining information about images.</li>
+</ul>
+<h2 id="user-stories">User Stories</h2>
+<h3 id="us-101-rest-api-and-database-setup">US 1.01 - REST API and Database setup</h3>
+<blockquote>
+<p><strong>As</strong> a researcher, <strong>I want</strong> to register myself in the database when I initially set up the API, <strong>so that</strong> images are analyzed with those who have permission</p>
+<p><strong>Acceptance Tests</strong></p>
+<ol>
+<li>Expose endpoint that allows for the upload of multiple images</li>
+<li>Throw an error if the user tries to send data that is not of the expected format</li>
+<li>Only allow registered users to acess other endpoints</li>
+</ol>
+</blockquote>
+<h3 id="us-102-image-analysis-result">US 1.02 - Image analysis result</h3>
+<blockquote>
+<p><strong>As</strong> a researcher, <strong>I want</strong> to retrieve the results of the analysis using a web API, <strong>so that</strong> I can run my own analysis on the results</p>
+<p><strong>Acceptance Tests</strong></p>
+<ol>
+<li>Return analysis of the results in JSON format as a response to an image upload request</li>
+</ol>
+</blockquote>
+<h3 id="us-103-generate-dendrogram">US 1.03 - Generate Dendrogram</h3>
+<blockquote>
+<p><strong>As</strong> a researcher, <strong>I want</strong> to retrieve a dendrogram of a batch of images using a web API <strong>so that</strong> I can further understand the images</p>
+<p><strong>Acceptance Tests</strong></p>
+<ol>
+<li>Return dendrogram as a base 64 encoded string as a response to a dendrogram request</li>
+</ol>
+</blockquote>
+<h3 id="us-104-generate-collage">US 1.04 - Generate collage</h3>
+<blockquote>
+<p><strong>As</strong> a researcher, <strong>I want</strong> to retrieve a collage of images using a web API <strong>so that</strong> I can further understand them.</p>
+<p><strong>Acceptance Tests</strong></p>
+<ol>
+<li>Return collage as a base 64 encoded string as a response to a dendrogram request</li>
+</ol>
+</blockquote>
+<h3 id="us-105-colour-scheme-analysis">US 1.05 - Colour scheme analysis</h3>
+<blockquote>
+<p><strong>As</strong> a researcher, <strong>I want</strong> to get the colour scheme analysis of an image <strong>so that</strong> I can know how color affects popularity of an image.</p>
+<p><strong>Acceptance Tests</strong></p>
+<ol>
+<li>Given an image, return colour scheme analysis in response body of image upload request</li>
+</ol>
+</blockquote>
+<h3 id="us-106-image-sentiment-classification">US 1.06 - Image sentiment classification</h3>
+<blockquote>
+<p><strong>As</strong> a researcher, <strong>I want</strong> to get the sentiment classification of an image <strong>so that</strong> I can know the mood of the image.</p>
+<p><strong>Acceptance Tests</strong></p>
+<ol>
+<li>Given an image, return the sentiment of the image as a string</li>
+<li>Need to ensure 70-80% accuracy</li>
+</ol>
+</blockquote>
+<h3 id="us-107-object-detection">US 1.07 - Object detection</h3>
+<blockquote>
+<p><strong>As</strong> a researcher, <strong>I want</strong> to be able to know the objects detected in a photo <strong>so that</strong> I can know the contents of the image.</p>
+<p><strong>Acceptance Tests</strong></p>
+<ol>
+<li>Returns the number of objects in photo</li>
+<li>Return the bounding box coordinates of those objects in the image</li>
+<li>Return labels of those objects</li>
+<li>Need to ensure 80-90% accuracy</li>
+</ol>
+</blockquote>
+<h3 id="us-108-facial-detection">US 1.08 - Facial Detection</h3>
+<blockquote>
+<p><strong>As</strong> a researcher, <strong>I want</strong> to be able to know the number of faces detected in a photo <strong>so that</strong> I can know how the number of people affects popularity.</p>
+<p><strong>Acceptance Tests</strong></p>
+<ol>
+<li>Returns the number of faces in photo</li>
+<li>Return the bounding box coordinates of those faces in the image</li>
+<li>Need to ensure 80-90% accuracy</li>
+</ol>
+</blockquote>
+<h3 id="us-109-text-extraction">US 1.09 - Text extraction</h3>
+<blockquote>
+<p><strong>As</strong> a researcher, <strong>I want</strong> to be able to know if an image contains text and what that text is <strong>so that</strong> I can analyze the text in the image.</p>
+<p><strong>Acceptance Tests</strong></p>
+<ol>
+<li>Extracts text from an image</li>
+<li>Need to ensure 80-90% accuracy</li>
+</ol>
+</blockquote>
+<h3 id="us-110-batch-processing">US 1.10 - Batch processing</h3>
+<blockquote>
+<p><strong>As</strong> a researcher, <strong>I want</strong> to be able to upload more than one image to a web service, <strong>so that</strong> I can get batch image analysis in real time.</p>
+<p><strong>Acceptance Tests</strong></p>
+<ol>
+<li>Allow client to upload more than one image to the web service</li>
+<li>Allow for images to be sent to backend and results to be sent back</li>
+</ol>
+</blockquote>
+<h3 id="us-111-text-detection">US 1.11 - Text Detection</h3>
+<blockquote>
+<p><strong>As</strong> a researcher, <strong>I want</strong> to detect if an image has text in it <strong>so that</strong> I can analyze the impact the presence of text has in an images popularity</p>
+<p><strong>Acceptance Tests</strong></p>
+<ol>
+<li>Model correctly detects whether there is text in an image or not</li>
+<li>Ensure model accuracy better than 80%</li>
+</ol>
+</blockquote>
+<h3 id="us-201-web-client-image-upload">US 2.01 - Web client image upload</h3>
+<blockquote>
+<p><strong>As</strong> a web user, <strong>I want</strong> to upload one or many images, <strong>so that</strong> the images can be analyzed</p>
+<p><strong>Acceptance Tests</strong></p>
+<ol>
+<li>Allow user to select images by selecting a single image or directory of images from their local machine to upload</li>
+<li>Ensure that image(s) are uploaded as base 64 strings</li>
+</ol>
+</blockquote>
+<h3 id="us-202-web-client-analysis">US 2.02 - Web client analysis</h3>
+<blockquote>
+<p><strong>As</strong> a web user, <strong>I want</strong> to view the results of the analysis, <strong>so that</strong> I can see the features about an image to gain understanding about it.</p>
+<p><strong>Acceptance Tests</strong></p>
+<ol>
+<li>List the results of the analysis beside the image(s) that were uploaded</li>
+<li>Allow user to browse through the uploaded images and their results by scrolling through or clicking through the images</li>
+</ol>
+</blockquote>
+<h3 id="us-203-web-client-view-collage">US 2.03 - Web client view collage</h3>
+<blockquote>
+<p><strong>As</strong> a web user, <strong>I want</strong> to view a collage of the images <strong>so that</strong> I can do aggregate analysis.</p>
+<p><strong>Acceptance Tests</strong></p>
+<ol>
+<li>Ensure that collage renders properly on the frontend client</li>
+<li>On clicking a button, the collage should render</li>
+</ol>
+</blockquote>
+<h3 id="us-204-web-client-view-dendrogram">US 2.04 - Web client View Dendrogram</h3>
+<blockquote>
+<p><strong>As</strong> a web user, <strong>I want</strong> to view a dendrogram of the images <strong>so that</strong> I can understand the relationship between them.</p>
+<p><strong>Acceptance Tests</strong></p>
+<ol>
+<li>Need to ensure dendrogram is rendered on the frontend client on click of a button</li>
+<li>Need to ensure dendrogram is rendered correctly</li>
+</ol>
+</blockquote>
+<h3 id="us-205-web-client-authentication">US 2.05 - Web client authentication</h3>
+<blockquote>
+<p><strong>As</strong> a web user, <strong>I want</strong> to authenticate with my email <strong>so that</strong> I can access the website and its features.</p>
+<p><strong>Acceptance Tests</strong></p>
+<ol>
+<li>If user inputs correct info, it allows them onto the website</li>
+<li>If the user inputs incorrect information, it declines entry onto website</li>
+</ol>
+</blockquote>
+<h3 id="us-206-web-client-json-download">US 2.06 - Web client JSON download</h3>
+<blockquote>
+<p><strong>As</strong> a web user, <strong>I want</strong> to be able to generate an entire report of the features above in a JSON file, <strong>so I</strong> can use the file to do additional analysis.</p>
+<p><strong>Acceptance Tests</strong></p>
+<ol>
+<li>Allow web user to download the report as a json file on click of a download button</li>
+<li>Ensure that user can only request a download if they have uploaded an image(s) for analysis</li>
+</ol>
+</blockquote>
+<h2 id="moscow">MoSCoW</h2>
+<h3 id="must-have">Must Have</h3>
+<ul>
+<li>US 1.01 - REST API and Database setup</li>
+<li>US 1.02 - Image analysis results</li>
+<li>US 1.05 - Color scheme analysis</li>
+<li>US 1.06 - Image sentiment classification</li>
+<li>US 1.07 - Object detection</li>
+<li>US 1.08 - Facial detection</li>
+<li>US 1.11 - Text Detection</li>
+</ul>
+<h3 id="should-have">Should Have</h3>
+<ul>
+<li>US 2.01 - Webclient image upload</li>
+<li>US 2.02 - Webclient analysis</li>
+<li>US 1.04 - Generate Collage</li>
+<li>US 2.03 - Web client view collage</li>
+<li>US 2.05 - Web client authentication</li>
+<li>US 2.06 - Web client JSON download</li>
+<li>US 1.10 - Batch processing</li>
+</ul>
+<h3 id="could-have">Could Have</h3>
+<ul>
+<li>US 1.03 - Generate Dendrogram</li>
+<li>US 2.04 - Web client view dendrogram</li>
+<li>US 1.09 - Text extraction</li>
+</ul>
+<h3 id="would-like-but-wont-get">Would Like but Won’t get</h3>
+<ul>
+<li>None</li>
+</ul>
+<h2 id="similar-products">Similar Products</h2>
+<ul>
+<li>
+<p><a href="https://cloud.google.com/vision">Google Vision AI API</a></p>
+</li>
+<li>
+<p>Cloud based image detection and classification service.</p>
+</li>
+<li>The “Try me” section of the page has a simple and nice UI which we will draw inspiration from</li>
+<li>
+<p>The response schema is also something that we might draw inspiration from</p>
+</li>
+<li>
+<p><a href="https://imagga.com/solutions/auto-tagging">Image Tagging API</a></p>
+</li>
+<li>A service that provides object detection and assignment of relevant tags to vast collections of data and object detection of 3000 everyday objects to images</li>
+</ul>
+<h2 id="open-source-projects">Open-Source Projects</h2>
+<ul>
+<li><a href="https://tfhub.dev/">Tensor Flow Hub</a></li>
+<li>Hub for pre-trained TensorFlow Models</li>
+<li>Might browse the pre-trained models offered and tweak some to fit our needs</li>
+</ul>
+<h2 id="technical-resources">Technical Resources</h2>
+<h3 id="machine-learning">Machine Learning:</h3>
+<ul>
+<li><a href="https://opencv.org/">OpenCV Documentation</a></li>
+<li><a href="https://scikit-image.org/">Scikit-image Documentation</a></li>
+<li><a href="https://www.tensorflow.org/">TensorFlow Documentation</a></li>
+<li><a href="https://keras.io/">Keras Documentation</a></li>
+<li><a href="https://pytorch.org/">Pytorch Documentation</a></li>
+</ul>
+<h3 id="backend-fastapi-postgresql">Backend: FastAPI + PostgreSQL</h3>
+<ul>
+<li><a href="https://fastapi.tiangolo.com/">FastAPI Documentation</a></li>
+<li><a href="https://www.sqlalchemy.org/">SQLAlchemy</a></li>
+<li><a href="https://www.postgresql.org/docs/">PostgreSQL</a></li>
+</ul>
+<h3 id="frontend-react">Frontend: React</h3>
+<ul>
+<li><a href="https://reactjs.org/">React Documentation</a></li>
+</ul>
+<h3 id="deployment-docker">Deployment: Docker</h3>
+<ul>
+<li><a href="https://fastapi.tiangolo.com/deployment/docker/">Deploy FastAPI with Docker</a></li>
+<li><a href="https://docs.docker.com/">Get started with docker</a></li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="design/" class="btn btn-neutral float-right" title="Software Design">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+      <span><a href="design/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme_extra.js" defer></script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.2.3
+Build Date UTC : 2022-01-20 01:27:18.650986+00:00
+-->
