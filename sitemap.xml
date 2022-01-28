@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>None</loc>
-         <lastmod>2022-01-20</lastmod>
+         <loc>https://ualberta-cmput401.github.io/ai4buzz/</loc>
+         <lastmod>2022-01-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2022-01-20</lastmod>
+         <loc>https://ualberta-cmput401.github.io/ai4buzz/design/</loc>
+         <lastmod>2022-01-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2022-01-20</lastmod>
+         <loc>https://ualberta-cmput401.github.io/ai4buzz/project-management/</loc>
+         <lastmod>2022-01-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
