@@ -1,7 +1,3 @@
-site_url: https://ualberta-cmput401.github.io/ai4buzz/
 site_name: AI4Buzz
 theme: readthedocs
-nav:
-    - Project Requirements: index.md
-    - Software Design: design.md
-    - Project Management: project-management.md
+
